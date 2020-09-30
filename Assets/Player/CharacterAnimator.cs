@@ -10,11 +10,11 @@ public class CharacterAnimator : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
     }
  
-     public void PlayIdleAnimation(Vector3 p) {
+     public void PlayIdleAnimation() {
          animator.Play("Idle");
     }
 
-    public void PlayWalkAnimation(Vector3 p) {
+    public void PlayWalkAnimation() {
         animator.Play("Move");
     }
 }
