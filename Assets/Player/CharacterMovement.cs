@@ -7,10 +7,13 @@ using CodeMonkey.Utils;
 
 public class CharacterMovement : MonoBehaviour
 {
+    enum CharacterControlType { LookingMouse=0, Independent=1}; //Type of movement control for the character
+
     private CharacterAnimator characterAnimator;
     private Camera cam;
     private float speed = 60f; //character speed
     private Vector3 mousePos; //mouse position
+    private CharacterControlType characterControlType = 0;
 
     private void Awake()
     {
@@ -20,8 +23,15 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        SwapCharacterControlType(); 
         HandleMovement();
         AimAtMouse();
+    }
+
+    private void SwapCharacterControlType() {
+        if(Input.GetKeyDown(KeyCode.K)){
+            characterControlType =  characterControlType == CharacterControlType.Independent ? CharacterControlType.LookingMouse : CharacterControlType.Independent;
+        }
     }
 
     private void AimAtMouse() {
@@ -47,22 +57,34 @@ public class CharacterMovement : MonoBehaviour
         else {
             characterAnimator.PlayWalkAnimation(); //Play walk animation
             Vector3 moveDir = new Vector3(moveX, moveY).normalized; //Direction
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition); 
-            mousePos.z = 0;
-            Vector3 aimDir = (mousePos - transform.position).normalized; //Pointing to the mouse
-            Vector3 aimDirLateral = new Vector3(); //Lateral movement
-            Vector3 aimDirFrontal = new Vector3(); //Forward or backward movement
-            if(moveDir.x > 0 ) //to the right
-                aimDirLateral = Quaternion.Euler(0, 0, -90) * aimDir;
-            if(moveDir.x < 0 ) //to the left
-                aimDirLateral = Quaternion.Euler(0, 0, 90) * aimDir;
-            if(moveDir.y > 0 ) //forward
-                aimDirFrontal = aimDir;
-            if(moveDir.y < 0 ) //backward
-                aimDirFrontal = Quaternion.Euler(0, 0, 180) * aimDir;
-            aimDir = (aimDirFrontal + aimDirLateral).normalized;
-            aimDir.z = 0;
-            transform.position += aimDir * speed * Time.deltaTime; //Move           
+            //check character control to use
+            switch(characterControlType) {
+                case CharacterControlType.Independent:
+                    transform.position += moveDir * speed * Time.deltaTime; //Move
+                    break;
+                case CharacterControlType.LookingMouse: //same as default
+                default:
+                    mousePos = cam.ScreenToWorldPoint(Input.mousePosition); 
+                    mousePos.z = 0;
+                    Vector3 aimDir = (mousePos - transform.position).normalized; //Pointing to the mouse
+                    Vector3 aimDirLateral = new Vector3(); //Lateral movement
+                    Vector3 aimDirFrontal = new Vector3(); //Forward or backward movement
+                    if(moveDir.x > 0 ) //to the right
+                        aimDirLateral = Quaternion.Euler(0, 0, -90) * aimDir;
+                    if(moveDir.x < 0 ) //to the left
+                        aimDirLateral = Quaternion.Euler(0, 0, 90) * aimDir;
+                    if(moveDir.y > 0 ) //forward
+                        aimDirFrontal = aimDir;
+                    if(moveDir.y < 0 ) //backward
+                        aimDirFrontal = Quaternion.Euler(0, 0, 180) * aimDir;
+                    aimDir = (aimDirFrontal + aimDirLateral).normalized;
+                    aimDir.z = 0;
+                    transform.position += aimDir * speed * Time.deltaTime; //Move
+                    break;
+            }
+
+
+                       
         }
     }
 }
