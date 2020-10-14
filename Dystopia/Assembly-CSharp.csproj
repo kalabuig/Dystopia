@@ -44,7 +44,9 @@
      <Compile Include="Assets\Scripts\InventoryEquipment\EquipmentPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipment\Item.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipment\ItemSlot.cs" />
+     <Compile Include="Assets\Scripts\Stats\StatDisplay.cs" />
      <Compile Include="Assets\Scripts\Player\TriggersHandler.cs" />
+     <Compile Include="Assets\Scripts\Tooltip\ItemTooltip.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipment\EquipmentSlot.cs" />
      <Compile Include="Assets\Scripts\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\RandomExistance.cs" />
@@ -52,8 +54,8 @@
      <Compile Include="Assets\Scripts\InventoryEquipment\Inventory.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipment\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\Stats\StatDisplay.cs" />
-     <Compile Include="Assets\Scripts\Tooltip\ItemTooltip.cs" />
+     <Compile Include="Assets\Scripts\Crafting\CraftingRecipe.cs" />
+     <Compile Include="Assets\Scripts\Crafting\IItemsContainer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

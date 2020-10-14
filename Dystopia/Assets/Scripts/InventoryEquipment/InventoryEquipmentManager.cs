@@ -97,28 +97,48 @@ public class InventoryEquipmentManager : MonoBehaviour
     }
 
     private void Drop(ItemSlot dropItemSlot) {
-        //if destination slot can receive and original slot can receive
-        if(dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item)) {
-            //Check if slots are from inventory or equipment
-            EquippableItem dragItem = draggedSlot.item as EquippableItem;
-            EquippableItem dropItem = dropItemSlot.item as EquippableItem;
-            //if both items are in invenotry slots, swap them
-            if(draggedSlot is EquipmentSlot == false && dropItemSlot is EquipmentSlot == false) {
-                Item draggedItem = draggedSlot.item; //remember the dragged item
-                draggedSlot.item = dropItemSlot.item;
-                dropItemSlot.item = draggedItem;
+        if(draggedSlot == null) return;
+        //Are the same items and are stackable?
+        if(dropItemSlot.CanAddStack(draggedSlot.item)) {
+            AddStacks(dropItemSlot);
+        } //We can swap if destination slot can receive and original slot can receive
+        else if(dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item)) {
+            SwapItems(dropItemSlot);
+        }
+    }
+
+    private void AddStacks(ItemSlot dropItemSlot) {
+        Debug.Log("Inside addstacks");
+        int howManyToAdd = Mathf.Min(dropItemSlot.item.MaximumStacks - dropItemSlot.amount, draggedSlot.amount); //check how many we can stack in this slot
+        Debug.Log("how many to stack: " + howManyToAdd.ToString());
+        dropItemSlot.amount += howManyToAdd; //Add stacks until slot is full
+        draggedSlot.amount -= howManyToAdd; //remove the moved items from the dragged slot (only the amount moved)
+    }
+
+    private void SwapItems(ItemSlot dropItemSlot) {
+        //Check if slots are from inventory or equipment
+        EquippableItem dragItem = draggedSlot.item as EquippableItem;
+        EquippableItem dropItem = dropItemSlot.item as EquippableItem;
+        //if both items are in invenotry slots, swap them
+        if(draggedSlot is EquipmentSlot == false && dropItemSlot is EquipmentSlot == false) {
+             //Temporary data needed to swap
+            Item draggedItem = draggedSlot.item; //remember the dragged item
+            int draggedItemAmount = draggedSlot.amount; //remember the amout
+            //Swap:
+            draggedSlot.item = dropItemSlot.item;
+            draggedSlot.amount = dropItemSlot.amount;
+            dropItemSlot.item = draggedItem;
+            dropItemSlot.amount = draggedItemAmount;
+        }
+        else { //at least on slot is an equipment slot
+            if(draggedSlot is EquipmentSlot) { //If origin is equipment slot
+                if(dragItem != null) Unequip(dragItem);
+                if(dropItem != null) Equip(dropItem);
             }
-            else { //at least on slot is an equipment slot
-                if(draggedSlot is EquipmentSlot) { //If origin is equipment slot
-                    if(dragItem != null) Unequip(dragItem);
-                    if(dropItem != null) Equip(dropItem);
-                }
-                if(dropItemSlot is EquipmentSlot) { //If destination is equipment slot
-                    if(dragItem != null) Equip(dragItem);
-                    if(dropItem != null) Unequip(dropItem);
-                }
+            if(dropItemSlot is EquipmentSlot) { //If destination is equipment slot
+                if(dragItem != null) Equip(dragItem);
+                if(dropItem != null) Unequip(dropItem);
             }
-            
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IItemsContainer
 {
-    [SerializeField] List<Item> startingItems; //Starting items in the inventory
+    [SerializeField] Item[] startingItems; //Starting items in the inventory
     [SerializeField] Transform itemsParent; //GridLayout (UI)
     [SerializeField] ItemSlot[] itemSlots; //Item Slots (UI)
 
@@ -38,19 +38,23 @@ public class Inventory : MonoBehaviour
     private void SetStartingItems() {
         int i = 0;
         //Populate slots with items
-        for(; i < startingItems.Count && i < itemSlots.Length; i++) {
-            itemSlots[i].item = startingItems[i];
+        for(; i < startingItems.Length && i < itemSlots.Length; i++) {
+            itemSlots[i].item = startingItems[i].GetCopy(); //Instantiate a new item based on the scriptobject
+            itemSlots[i].amount = 1; //Setting the amount to 1
         }
         //Populate slots with empty
         for(; i < itemSlots.Length; i++) {
             itemSlots[i].item = null;
+            itemSlots[i].amount = 0; //Setting the amount to 0
         }
     }
 
     public bool AddItem(Item item) {
         for(int i = 0; i < itemSlots.Length; i++) {
-            if(itemSlots[i].item == null) {
-                itemSlots[i].item = item;
+            // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable)
+            if(itemSlots[i].item == null || (itemSlots[i].item.ID == item.ID && itemSlots[i].amount < item.MaximumStacks) ) {
+                itemSlots[i].item = item; //set item in the slot
+                itemSlots[i].amount++; //increase amount
                 return true;
             }
         }
@@ -60,11 +64,24 @@ public class Inventory : MonoBehaviour
     public bool RemoveItem(Item item) {
         for(int i = 0; i < itemSlots.Length; i++) {
             if(itemSlots[i].item == item) {
-                itemSlots[i].item = null;
+                itemSlots[i].amount--; //decrease amount
                 return true;
             }
         }
         return false;
+    }
+
+    public Item RemoveItem(string itemID)
+    {
+        Item item = null;
+        for(int i = 0; i < itemSlots.Length; i++) {
+            item = itemSlots[i].item;
+            if(item != null && item.ID == itemID) {
+                itemSlots[i].amount--; //decrease amount
+                return item;
+            }
+        }
+        return null;
     }
 
     public bool IsFull() {
@@ -75,4 +92,16 @@ public class Inventory : MonoBehaviour
         }
         return true; //otherwise, inventory is full
     }
+
+    public int ItemCount(string itemID)
+    {
+        int counter = 0;
+        for(int i = 0; i < itemSlots.Length; i++) {
+            if(itemSlots[i].item.ID == itemID) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 }

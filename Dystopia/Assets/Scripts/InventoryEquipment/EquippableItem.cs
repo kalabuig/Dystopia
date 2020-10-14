@@ -19,4 +19,12 @@ public class EquippableItem : Item
     public int damage;
     [Space]
     public EquipmentType equipmentType;
+
+    public override Item GetCopy() {
+        return Instantiate(this); //Equippable items are not stackable, so we create a new instance
+    }
+
+    public override void Destroy() {
+        Destroy(this);
+    }
 }

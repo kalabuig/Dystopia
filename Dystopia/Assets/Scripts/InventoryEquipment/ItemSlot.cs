@@ -8,6 +8,7 @@ using System;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     [SerializeField] protected Image image;
+    [SerializeField] protected Text amountText;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -34,12 +35,31 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    private int _amount;
+    public int amount {
+        get { return _amount; }
+        set {
+            _amount = value;
+            if(_amount < 0) _amount = 0;
+            if(_amount == 0) item = null;
+            amountText.enabled = _item != null && _amount > 1;
+            if(amountText.enabled) {
+                amountText.text = _amount.ToString();
+            }
+        }
+    }
+
     private void OnValidate() { //Only works in editor mode
         gameObject.name = "Slot";
     }
 
     private void Awake() {
         image = GetComponent<Image>();
+        amountText = GetComponentInChildren<Text>();
+    }
+
+    public virtual bool CanAddStack(Item otherItem, int amountToAdd = 1) {
+        return item != null && item.ID == otherItem.ID && amount + amountToAdd < otherItem.MaximumStacks;
     }
 
     public virtual bool CanReceiveItem(Item item) {
