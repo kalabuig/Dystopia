@@ -9,13 +9,15 @@ public class InventoryEquipmentManager : MonoBehaviour
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
+    [SerializeField] Character character;
 
     private ItemSlot draggedSlot; //what slot we started with to drag
 
     private void Awake() {
+        character = GameObject.Find("Player")?.GetComponent<Character>(); //Get Character script from the player
         //Right Click (Equip / Unequip)
-        inventory.OnRightClickEvent += Equip;
-        equipmentPanel.OnRightClickEvent += Unequip;
+        inventory.OnRightClickEvent += InventoryRightClick;
+        equipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
         //Tooltip (Show / Hide)
         inventory.OnPointerEnterEvent += ShowToolTip;
         inventory.OnPointerExitEvent += HideToolTip;
@@ -32,17 +34,30 @@ public class InventoryEquipmentManager : MonoBehaviour
         equipmentPanel.OnDropEvent += Drop;
     }
 
-    private void Equip(ItemSlot itemSlot) {
+    private void InventoryRightClick(ItemSlot itemSlot) {
+        if(itemSlot.item is EquippableItem) {
+            Equip((EquippableItem)itemSlot.item); //Equip item
+        }
+        else if(itemSlot.item is UsableItem) {
+            UsableItem usableItem = (UsableItem)itemSlot.item;
+            usableItem.Use(character); //Use item
+            if(usableItem.IsConsumable) { //Remove item from inventory if it is a consumable item
+                inventory.RemoveItem(usableItem);
+                usableItem.Destroy();
+            }
+        }
+        
+        
+        
         EquippableItem equippableItem = itemSlot.item as EquippableItem;
         if(equippableItem != null) {
             Equip(equippableItem);
         }
     }
 
-    private void Unequip(ItemSlot itemSlot) {
-        EquippableItem equippableItem = itemSlot.item as EquippableItem;
-        if(equippableItem != null) {
-            Unequip(equippableItem);
+    private void EquipmentPanelRightClick(ItemSlot itemSlot) {
+        if(itemSlot.item is EquippableItem) {
+            Unequip((EquippableItem)itemSlot.item); //Unequip item
         }
     }
 
@@ -98,8 +113,10 @@ public class InventoryEquipmentManager : MonoBehaviour
 
     private void Drop(ItemSlot dropItemSlot) {
         if(draggedSlot == null) return;
+        if(dropItemSlot == null) return;
         //Are the same items and are stackable?
-        if(dropItemSlot.CanAddStack(draggedSlot.item)) {
+        //if(dropItemSlot.CanAddStack(draggedSlot.item)) {
+        if(dropItemSlot.item != null && dropItemSlot.item.MaximumStacks - dropItemSlot.amount > 0 && dropItemSlot.item.ID == draggedSlot.item.ID) {
             AddStacks(dropItemSlot);
         } //We can swap if destination slot can receive and original slot can receive
         else if(dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item)) {
@@ -108,9 +125,7 @@ public class InventoryEquipmentManager : MonoBehaviour
     }
 
     private void AddStacks(ItemSlot dropItemSlot) {
-        Debug.Log("Inside addstacks");
         int howManyToAdd = Mathf.Min(dropItemSlot.item.MaximumStacks - dropItemSlot.amount, draggedSlot.amount); //check how many we can stack in this slot
-        Debug.Log("how many to stack: " + howManyToAdd.ToString());
         dropItemSlot.amount += howManyToAdd; //Add stacks until slot is full
         draggedSlot.amount -= howManyToAdd; //remove the moved items from the dragged slot (only the amount moved)
     }

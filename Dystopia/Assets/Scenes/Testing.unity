@@ -4936,13 +4936,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 127373f7e64e14142a6fa658b53af4eb, type: 2}
   - {fileID: 11400000, guid: 3d35764949c4dfa4eafebd581002e670, type: 2}
   - {fileID: 11400000, guid: 00d32e65dfd88114ea411c5d3d9fa8fc, type: 2}
-  - {fileID: 11400000, guid: 95246bc09d4314141b6e0ba445c68e48, type: 2}
+  - {fileID: 11400000, guid: 8a072a2efde09dd44a2217492cb080c4, type: 2}
   - {fileID: 11400000, guid: 48ffeea9c9258c94aa0ea638a3270fd3, type: 2}
   - {fileID: 11400000, guid: c4d5ffece541e3c4896c10896cda8776, type: 2}
   - {fileID: 11400000, guid: c4d5ffece541e3c4896c10896cda8776, type: 2}
   - {fileID: 11400000, guid: c4d5ffece541e3c4896c10896cda8776, type: 2}
-  - {fileID: 11400000, guid: 74e0817ef300126488d133230acee85e, type: 2}
-  - {fileID: 11400000, guid: c4d5ffece541e3c4896c10896cda8776, type: 2}
+  - {fileID: 11400000, guid: 757a03736e25d434fac923245781309d, type: 2}
+  - {fileID: 11400000, guid: 757a03736e25d434fac923245781309d, type: 2}
   itemsParent: {fileID: 2058185742}
   itemSlots:
   - {fileID: 480705090}
@@ -6416,6 +6416,7 @@ MonoBehaviour:
   equipmentPanel: {fileID: 372040897}
   itemTooltip: {fileID: 626030997}
   draggableItem: {fileID: 622182149}
+  character: {fileID: 0}
 --- !u!1 &1686142598
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,3 +7486,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
+--- !u!1 &3868298502415412912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3868298503565952389, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
+  m_PrefabInstance: {fileID: 3868298502415412911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3868298502415412913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868298502415412912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8acf04ed792bb4db5c54e32dcc56af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hungry: 100
+  thirst: 100
+  fatigue: 100
