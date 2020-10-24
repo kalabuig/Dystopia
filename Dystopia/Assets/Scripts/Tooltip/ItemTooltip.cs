@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ItemTooltip : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class ItemTooltip : MonoBehaviour
     private void writeAttribute(string attributeName, int attributeValue) {
         itemAttributesText.text += string.Concat(
             attributeValue > 0 ? "<color=#00FF00>+ ":"<color=#FF0000>- ",
-            attributeValue.ToString(),
+            Math.Abs(attributeValue).ToString(),
             " ",
             attributeName,
             "</color>",

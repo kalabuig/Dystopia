@@ -29,10 +29,12 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        SwapCharacterControlType(); 
-        HandleMovement();
-        Vector3 aimDir = AimAtMouse();
-        SetFieldOfView(aimDir);
+        if(GameHandler.gameIsPaused == false) {
+            SwapCharacterControlType();
+            HandleMovement();
+            Vector3 aimDir = AimAtMouse();
+            SetFieldOfView(aimDir);
+        }
     }
 
     private void FixedUpdate() {

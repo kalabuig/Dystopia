@@ -56,3 +56,6 @@ TagManager:
   - name: Walls
     uniqueID: 3642029369
     locked: 0
+  - name: Roof
+    uniqueID: 1798625785
+    locked: 0

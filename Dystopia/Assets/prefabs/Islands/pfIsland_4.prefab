@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &856347302540921406
+--- !u!1 &3105178061060910060
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,34 +8,34 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 856347302540921407}
+  - component: {fileID: 3105178061060910061}
   m_Layer: 0
-  m_Name: Island
+  m_Name: pfIsland_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &856347302540921407
+--- !u!4 &3105178061060910061
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856347302540921406}
+  m_GameObject: {fileID: 3105178061060910060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 856347304020628459}
-  - {fileID: 2736170368942016542}
-  - {fileID: 2736170368853281213}
-  - {fileID: 2736170369963762521}
-  - {fileID: 2736170368852569036}
+  - {fileID: 3105178061718204985}
+  - {fileID: 364019571393489356}
+  - {fileID: 364019571356395631}
+  - {fileID: 364019572450017931}
+  - {fileID: 364019571355011614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &856347304020628461
+--- !u!1 &3105178061718204991
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,8 +43,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 856347304020628459}
-  - component: {fileID: 856347304020628458}
+  - component: {fileID: 3105178061718204985}
+  - component: {fileID: 3105178061718204984}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -52,27 +52,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &856347304020628459
+--- !u!4 &3105178061718204985
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856347304020628461}
+  m_GameObject: {fileID: 3105178061718204991}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_Children: []
-  m_Father: {fileID: 856347302540921407}
+  m_Father: {fileID: 3105178061060910061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &856347304020628458
+--- !u!212 &3105178061718204984
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856347304020628461}
+  m_GameObject: {fileID: 3105178061718204991}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -117,12 +117,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &856347302363734512
+--- !u!1001 &3105178061101776930
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 856347302540921407}
+    m_TransformParent: {fileID: 3105178061060910061}
     m_Modifications:
     - target: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -168,23 +168,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8546839584558054065, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
+      propertyPath: buildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 5348568353670933084, guid: 195a6d80727797d4e93700752ddd215e, type: 3}
     - target: {fileID: 9220600415913999184, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_Name
       value: BuildingSpamPoint_SE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
---- !u!4 &2736170368852569036 stripped
+--- !u!4 &364019571355011614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
-  m_PrefabInstance: {fileID: 856347302363734512}
+  m_PrefabInstance: {fileID: 3105178061101776930}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &856347302365365121
+--- !u!1001 &3105178061102244435
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 856347302540921407}
+    m_TransformParent: {fileID: 3105178061060910061}
     m_Modifications:
     - target: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,23 +234,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8546839584558054065, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
+      propertyPath: buildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 5348568353670933084, guid: 195a6d80727797d4e93700752ddd215e, type: 3}
     - target: {fileID: 9220600415913999184, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_Name
       value: BuildingSpamPoint_NE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
---- !u!4 &2736170368853281213 stripped
+--- !u!4 &364019571356395631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
-  m_PrefabInstance: {fileID: 856347302365365121}
+  m_PrefabInstance: {fileID: 3105178061102244435}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &856347302402720290
+--- !u!1001 &3105178061190718448
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 856347302540921407}
+    m_TransformParent: {fileID: 3105178061060910061}
     m_Modifications:
     - target: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,23 +300,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8546839584558054065, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
+      propertyPath: buildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 5348568353670933084, guid: 195a6d80727797d4e93700752ddd215e, type: 3}
     - target: {fileID: 9220600415913999184, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_Name
       value: BuildingSpamPoint_NW
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
---- !u!4 &2736170368942016542 stripped
+--- !u!4 &364019571393489356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
-  m_PrefabInstance: {fileID: 856347302402720290}
+  m_PrefabInstance: {fileID: 3105178061190718448}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &856347303459072357
+--- !u!1001 &3105178062212647095
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 856347302540921407}
+    m_TransformParent: {fileID: 3105178061060910061}
     m_Modifications:
     - target: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,14 +366,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8546839584558054065, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
+      propertyPath: buildings.Array.data[0]
+      value: 
+      objectReference: {fileID: 5348568353670933084, guid: 195a6d80727797d4e93700752ddd215e, type: 3}
     - target: {fileID: 9220600415913999184, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
       propertyPath: m_Name
       value: BuildingSpamPoint_SW
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
---- !u!4 &2736170369963762521 stripped
+--- !u!4 &364019572450017931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3322125050150718012, guid: 953874f664d2aa84ebfbc37bc6899165, type: 3}
-  m_PrefabInstance: {fileID: 856347303459072357}
+  m_PrefabInstance: {fileID: 3105178062212647095}
   m_PrefabAsset: {fileID: 0}
