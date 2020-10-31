@@ -38,8 +38,9 @@
   <ItemGroup>
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Toggle.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Layout\ContentSizeFitter.cs" />
-     <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\GraphicRaycaster.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Text.cs" />
+     <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\GraphicRaycaster.cs" />
+     <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Image.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Scrollbar.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Button.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Layout\VerticalLayoutGroup.cs" />
@@ -53,7 +54,6 @@
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\EventSystem\ExecuteEvents.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\VertexModifiers\PositionAsUV1.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\EventSystem\InputModules\TouchInputModule.cs" />
-     <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Image.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Layout\GridLayoutGroup.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\Utility\ObjectPool.cs" />
      <Compile Include="C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui\Runtime\UI\Core\ColorBlock.cs" />

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryEquipmentManager : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
+    [SerializeField] ScavengingInventory scavengingInventory;
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] CraftingPanel craftingPanel;
     [SerializeField] ItemTooltip itemTooltip;
@@ -21,11 +22,16 @@ public class InventoryEquipmentManager : MonoBehaviour
         inventory.OnRightClickEvent += InventoryRightClick;
         equipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
         craftingPanel.OnRightClickEvent += CraftingPanelRightClick;
+        scavengingInventory.OnRightClickEvent += ScavengingPanelRightClick;
         //Tooltip (Show / Hide)
         inventory.OnPointerEnterEvent += ShowToolTip;
         inventory.OnPointerExitEvent += HideToolTip;
         equipmentPanel.OnPointerEnterEvent += ShowToolTip;
         equipmentPanel.OnPointerExitEvent += HideToolTip;
+        craftingPanel.OnPointerEnterEvent += ShowToolTip;
+        craftingPanel.OnPointerExitEvent += HideToolTip;
+        scavengingInventory.OnPointerEnterEvent += ShowToolTip;
+        scavengingInventory.OnPointerExitEvent += HideToolTip;
         //Drag & Drop
         inventory.OnBeginDragEvent += BeginDrag;
         inventory.OnEndDragEvent += EndDrag;
@@ -39,6 +45,10 @@ public class InventoryEquipmentManager : MonoBehaviour
         craftingPanel.OnEndDragEvent += EndDrag;
         craftingPanel.OnDragEvent += Drag;
         craftingPanel.OnDropEvent += Drop;
+        scavengingInventory.OnBeginDragEvent += BeginDrag;
+        scavengingInventory.OnEndDragEvent += EndDrag;
+        scavengingInventory.OnDragEvent += Drag;
+        scavengingInventory.OnDropEvent += Drop;
     }
 
     private void InventoryRightClick(ItemSlot itemSlot) {
@@ -53,12 +63,6 @@ public class InventoryEquipmentManager : MonoBehaviour
                 usableItem.Destroy();
             }
         }
-        /*
-        EquippableItem equippableItem = itemSlot.item as EquippableItem;
-        if(equippableItem != null) {
-            Equip(equippableItem);
-        }
-        */
     }
 
     private void EquipmentPanelRightClick(ItemSlot itemSlot) {
@@ -69,14 +73,26 @@ public class InventoryEquipmentManager : MonoBehaviour
 
     private void CraftingPanelRightClick(ItemSlot itemSlot) {
         if(itemSlot!=null) {
-            ReturnItemToInventory(itemSlot.item); //Return item
+            ItemFromCraftingToInventory(itemSlot.item); //Return item
         }
     }
 
-    private void ReturnItemToInventory(Item item)
-    {
+    private void ScavengingPanelRightClick(ItemSlot itemSlot) {
+        if(itemSlot!=null) {
+            ItemFromScavengingToInventory(itemSlot.item); //Send item to inventory
+        }
+    }
+
+    private void ItemFromCraftingToInventory(Item item) {
         //if inventory is not full, remove the item from crafting panel
         if(inventory.IsFull() == false && craftingPanel.RemoveItem(item)) {
+            inventory.AddItem(item); //Add item to inventory
+        }
+    }
+
+    private void ItemFromScavengingToInventory(Item item) {
+        //if inventory is not full, remove the item from scavenging panel
+        if(inventory.IsFull() == false && scavengingInventory.RemoveItem(item)) {
             inventory.AddItem(item); //Add item to inventory
         }
     }

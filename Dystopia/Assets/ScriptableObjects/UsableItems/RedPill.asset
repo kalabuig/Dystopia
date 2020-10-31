@@ -19,4 +19,4 @@ MonoBehaviour:
   IsConsumable: 1
   listOfEffects:
   - {fileID: 11400000, guid: 64e131e47e53e5640be5bba14df8cf88, type: 2}
-  - {fileID: 11400000, guid: 13b432471f75f294d955c46192231c05, type: 2}
+  - {fileID: 11400000, guid: db33bbc80f472ed4dbb61f71eac63345, type: 2}

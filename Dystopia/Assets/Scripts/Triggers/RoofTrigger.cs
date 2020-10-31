@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class RoofTrigger : MonoBehaviour
 {
-    //private MeshRenderer meshRenderer;
     private SpriteRenderer spriteRenderer;
 
     private void Awake() {
-        //meshRenderer = GetComponent<MeshRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
  

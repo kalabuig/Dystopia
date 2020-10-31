@@ -8,7 +8,7 @@ public class HealItemEffect : UsableItemEffect
 
     public override void ExecuteEffect(UsableItem parentItem, Character character)
     {
-        character.health += healthAmount;
+        character.ModifyHealth(healthAmount);
     }
 
     public override string GetTooltipDescription()

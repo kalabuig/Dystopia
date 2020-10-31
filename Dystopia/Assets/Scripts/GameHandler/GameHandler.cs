@@ -5,9 +5,20 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
+    //Camera
     private CameraBehavior cameraBehavior;
+    
+    //Player
     private Transform playerTransform;
+    
+    //Container
+    private GameObject selectedContainer;
+
+    //Panels
     private GameObject characterPanel;
+    private GameObject craftingPanel;
+    private GameObject scavengingPanel;
+    public GameObject textPanel;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
 
@@ -31,19 +42,26 @@ public class GameHandler : MonoBehaviour
         playerTransform = GameObject.Find("Player").transform;
         //CharacterPanel
         characterPanel = GameObject.Find("CharacterPanel");
+        //Crafting Panel
+        craftingPanel = GameObject.Find("CraftingPanel");
+        //Scavenging Panel
+        scavengingPanel = GameObject.Find("ScavengingPanel");
         //PausePanel
         pausePanel = GameObject.Find("PausePanel");
         //GameOverPanel
         gameOverPanel = GameObject.Find("GameOverPanel");
     }
-    
     void Start()
     {
+        TimeTickSystem.Create(); //Create the TimeTickSystem game object
         cameraBehavior.setFocus(() => playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
-        characterPanel.SetActive(false);
+        CloseInventoryPanel();
+        CloseCraftingPanel();
+        CloseScavengingPanel();
         gameOverPanel.SetActive(false);
         ResumeGame(); //inside it is --> pausePanel.SetActive(false);
+        selectedContainer = null;
     }
 
     private void Update() {
@@ -61,6 +79,23 @@ public class GameHandler : MonoBehaviour
             HandleKeyboardInputs();
         } else { //if paused
             HandlePausedKeyboardInputs();
+        }
+    }
+
+    public void SetContainer(GameObject container) {
+        if(container.layer == LayerMask.NameToLayer("Containers")) {
+            selectedContainer = container;
+            scavengingPanel.GetComponent<ScavengingInventory>()?.loadItems(container.GetComponent<Container>());
+            textPanel.SetActive(true);
+        }
+    }
+
+    public void UnSetContainer(GameObject container) {
+        if(container.layer == LayerMask.NameToLayer("Containers")) {
+            scavengingPanel.GetComponent<ScavengingInventory>()?.storeItems(container.GetComponent<Container>());
+            selectedContainer = null;
+            textPanel.SetActive(false);
+            CloseScavengingPanel();
         }
     }
 
@@ -93,6 +128,19 @@ public class GameHandler : MonoBehaviour
         //Open or close the character panel
         if(Input.GetKeyDown(KeyCode.I)){
             OpenCloseCharacterPanel();
+        }
+        //Open crafting panel
+        if(Input.GetKeyDown(KeyCode.C)) {
+            characterPanel.SetActive(true);
+            OpenCraftingPanel();
+        }
+        //Interact
+        if(Input.GetKeyDown(KeyCode.E)) {
+            if(selectedContainer!=null) {
+                textPanel.SetActive(false);
+                scavengingPanel.SetActive(true);
+            }
+            
         }
     }
 
@@ -139,6 +187,23 @@ public class GameHandler : MonoBehaviour
         }
         //Zoom limits
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
+    }
+
+    public void CloseInventoryPanel() {
+        characterPanel.SetActive(false);
+    }
+
+    public void CloseCraftingPanel() {
+        craftingPanel.SetActive(false);
+    }
+
+    public void CloseScavengingPanel() {
+        scavengingPanel.GetComponent<ScavengingInventory>()?.StopScavenge();
+        scavengingPanel.SetActive(false);
+    }
+
+    public void OpenCraftingPanel() {
+        craftingPanel.SetActive(true);
     }
 
 }

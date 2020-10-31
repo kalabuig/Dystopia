@@ -11,7 +11,8 @@ public static class Loader
     public enum Scene {
         LoadingScene,
         MainMenuScene,
-        GameScene
+        GameScene,
+        SettingsScene
     }
 
     private static Action onLoaderCallBack;

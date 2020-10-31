@@ -5,9 +5,9 @@ using System;
 
 public class Inventory : MonoBehaviour, IItemsContainer
 {
-    [SerializeField] Item[] startingItems; //Starting items in the inventory
+    [SerializeField] Container.ContainerItem[] startingItems; //Starting items in the inventory
     [SerializeField] Transform itemsParent; //GridLayout (UI)
-    [SerializeField] ItemSlot[] itemSlots; //Item Slots (UI)
+    [SerializeField] protected ItemSlot[] itemSlots; //Item Slots (UI)
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour, IItemsContainer
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
 
-    private void Start() {
+    protected virtual void Start() {
         for(int i = 0; i < itemSlots.Length; i++) {
             itemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent; //Subscribe to event (listening event)
             itemSlots[i].OnPointerExitEvent += OnPointerExitEvent; //Subscribe to event (listening event)
@@ -30,17 +30,21 @@ public class Inventory : MonoBehaviour, IItemsContainer
         SetStartingItems(); // to set to null all the slots (disable image)
     }
 
+/*
     private void OnValidate() { //Only works in editor mode
         if(itemsParent != null) 
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
     }
+*/
 
     private void SetStartingItems() {
         int i = 0;
         //Populate slots with items
         for(; i < startingItems.Length && i < itemSlots.Length; i++) {
-            itemSlots[i].item = startingItems[i].GetCopy(); //Instantiate a new item based on the scriptobject
-            itemSlots[i].amount = 1; //Setting the amount to 1
+            if(startingItems[i].item!=null && startingItems[i].amount>0) {
+                itemSlots[i].item = startingItems[i].item.GetCopy(); //Instantiate a new item based on the scriptobject
+                itemSlots[i].amount = startingItems[i].amount; //Setting the amount
+            }
         }
         //Populate slots with empty
         for(; i < itemSlots.Length; i++) {
@@ -50,12 +54,14 @@ public class Inventory : MonoBehaviour, IItemsContainer
     }
 
     public bool AddItem(Item item) {
-        for(int i = 0; i < itemSlots.Length; i++) {
-            // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable)
-            if(itemSlots[i].item == null || (itemSlots[i].item.ID == item.ID && itemSlots[i].amount < item.MaximumStacks) ) {
-                itemSlots[i].item = item; //set item in the slot
-                itemSlots[i].amount++; //increase amount
-                return true;
+        if(item!=null) {
+            for(int i = 0; i < itemSlots.Length; i++) {
+                // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable)
+                if(itemSlots[i].item == null || (itemSlots[i].item.ID == item.ID && itemSlots[i].amount < item.MaximumStacks) ) {
+                    itemSlots[i].item = item; //set item in the slot
+                    itemSlots[i].amount++; //increase amount
+                    return true;
+                }
             }
         }
         return false;
