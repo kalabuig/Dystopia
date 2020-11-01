@@ -53,6 +53,7 @@ public class GameHandler : MonoBehaviour
     }
     void Start()
     {
+        SuscribeToCharacterEvents();
         TimeTickSystem.Create(); //Create the TimeTickSystem game object
         cameraBehavior.setFocus(() => playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
@@ -80,6 +81,19 @@ public class GameHandler : MonoBehaviour
         } else { //if paused
             HandlePausedKeyboardInputs();
         }
+    }
+
+    private void SuscribeToCharacterEvents() {
+        playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
+    }
+
+    private void Character_OnHealthZero(object sender, EventArgs e) {
+        Invoke("PlayerDie", 0.5f); //Wait for sound and image effects to end
+    }
+
+    private void PlayerDie() {
+        PauseGame();
+        gameOverPanel.SetActive(true);
     }
 
     public void SetContainer(GameObject container) {

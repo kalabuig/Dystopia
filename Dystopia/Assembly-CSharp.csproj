@@ -41,6 +41,7 @@
      <Compile Include="Assets\Scripts\GameHandler\Map\BuildingSpamer.cs" />
      <Compile Include="Assets\Scripts\Items\ItemAssets.cs" />
      <Compile Include="Assets\Scripts\GameHandler\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\Settings\SettingsPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BoxSpamer.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\MainMenuHandler.cs" />
@@ -50,6 +51,7 @@
      <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\SettingsLoader.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingRecipe.cs" />
      <Compile Include="Assets\Scripts\ProgressBar\ProgressBar.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentPanel.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\CraftingPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ScavengingInventory.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\RandomExistance.cs" />
+     <Compile Include="Assets\Scripts\Settings\SaveSettingsSystem.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundAssets.cs" />
      <Compile Include="Assets\Scripts\TimeTickSystem\TimeTickSystem.cs" />
@@ -88,12 +91,11 @@
      <Compile Include="Assets\Scripts\Settings\VideoSettings.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\VigorItemEffect.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\Settings\SaveSettingsSystem.cs" />
-     <Compile Include="Assets\Scripts\Settings\SettingsPanel.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\SettingsLoader.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
+     <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
+     <Compile Include="Assets\Scripts\Testing\DevPanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

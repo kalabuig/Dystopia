@@ -8,10 +8,11 @@ public class Character : MonoBehaviour
         public int amount;
     }
 
-    public event EventHandler<AmountEventArgs> OnHealthChange; //On Health Change event handler
-    public event EventHandler<AmountEventArgs> OnHungryChange; //On Hungry Change event handler
-    public event EventHandler<AmountEventArgs> OnThirstChange; //On Thirst Change event handler
-    public event EventHandler<AmountEventArgs> OnVigorChange; //On Vigor Change event handler
+    public event EventHandler OnHealthZero; //On Health equal to zero event 
+    public event EventHandler<AmountEventArgs> OnHealthChange; //On Health Change event 
+    public event EventHandler<AmountEventArgs> OnHungryChange; //On Hungry Change event 
+    public event EventHandler<AmountEventArgs> OnThirstChange; //On Thirst Change event 
+    public event EventHandler<AmountEventArgs> OnVigorChange; //On Vigor Change event 
 
     [SerializeField] protected int _health = 100;
     public int health { get => _health; }
@@ -82,6 +83,9 @@ public class Character : MonoBehaviour
         }
         if(amount<0) {
             SoundManager.PlaySound(SoundManager.Sound.PlayerDamage);
+        }
+        if(_health==0 && OnHealthZero!=null) { //if health is zero
+            OnHealthZero(this, new EventArgs());
         }
     }
 
