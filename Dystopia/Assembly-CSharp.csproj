@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
      <Compile Include="Assets\Scripts\GameHandler\SettingsLoader.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingRecipe.cs" />
+     <Compile Include="Assets\Scripts\Testing\DevPanel.cs" />
      <Compile Include="Assets\Scripts\ProgressBar\ProgressBar.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentPanel.cs" />
      <Compile Include="Assets\Scripts\Player\Character.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\Scripts\GameHandler\MapHandler.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\CraftingPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ScavengingInventory.cs" />
+     <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\RandomExistance.cs" />
      <Compile Include="Assets\Scripts\Settings\SaveSettingsSystem.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
@@ -94,8 +96,8 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
-     <Compile Include="Assets\Scripts\Testing\DevPanel.cs" />
+     <Compile Include="Assets\Scripts\Crafting\RecipeAssets.cs" />
+     <Compile Include="Assets\Scripts\Crafting\Crafting.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

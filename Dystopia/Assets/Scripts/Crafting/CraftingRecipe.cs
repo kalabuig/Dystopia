@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public struct ItemAmout {
+public struct ItemAmount {
     public Item item;
     [Range(1, 9999)]
     public int amount;
@@ -13,9 +13,12 @@ public struct ItemAmout {
 [CreateAssetMenu]
 public class CraftingRecipe : ScriptableObject
 {
-    public List<ItemAmout> materials;
-    public List<ItemAmout> results;
 
+
+    public List<ItemAmount> materials;
+    public List<ItemAmount> results;
+
+/*
     public bool CanCraft(IItemsContainer itemsContainer) {
         foreach(ItemAmout itemAmout in materials) {
             if(itemsContainer.ItemCount(itemAmout.item.ID) < itemAmout.amount) {
@@ -43,4 +46,6 @@ public class CraftingRecipe : ScriptableObject
             }
         }
     }
+*/
+
 }

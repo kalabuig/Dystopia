@@ -22,9 +22,7 @@ public class ItemAssets : GenericSingletonClass<ItemAssets>
             id.SetMaxValue(totalWeight);
         }
 
-        Debug.Log("totalWeight " + totalWeight); // !!!!
         int randNum = UnityEngine.Random.Range(0, totalWeight+1); //Return a number between 0 (inclusive) and totalWeight+1 (exclusive)
-        Debug.Log(randNum); // !!!!
         ItemData result = itemsList.Find( x => x.GetMinValue() >= randNum); // && x.GetMaxValue() < randNum);
         return result != null ? result.item : null;
     }

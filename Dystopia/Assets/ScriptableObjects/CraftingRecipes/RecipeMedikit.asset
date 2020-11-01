@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: RecipeMedikit
   m_EditorClassIdentifier: 
   materials:
-  - item: {fileID: 11400000, guid: c4d5ffece541e3c4896c10896cda8776, type: 2}
+  - item: {fileID: 11400000, guid: 27dc93363548df8469eb6d48abfaeebf, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 74e0817ef300126488d133230acee85e, type: 2}
+  - item: {fileID: 11400000, guid: 757a03736e25d434fac923245781309d, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 00d32e65dfd88114ea411c5d3d9fa8fc, type: 2}
+  - item: {fileID: 0}
     amount: 1
-  results: []
+  results:
+  - item: {fileID: 11400000, guid: 8a072a2efde09dd44a2217492cb080c4, type: 2}
+    amount: 1

@@ -99,6 +99,16 @@ public class Inventory : MonoBehaviour, IItemsContainer
         return true; //otherwise, inventory is full
     }
 
+    public int NumEmptySlots() {
+        int numEmptySlots = 0;
+        for(int i = 0; i < itemSlots.Length; i++) {
+            if(itemSlots[i].item == null) { //if there is one slot empty
+                numEmptySlots++;
+            }
+        }
+        return numEmptySlots;
+    }
+
     public int ItemCount(string itemID)
     {
         int counter = 0;
