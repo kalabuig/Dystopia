@@ -4,35 +4,34 @@ using UnityEngine;
 
 public class Crafting : MonoBehaviour
 {
-    public ComponentSlot[] componentSlots;
-    public ResultSlot[] resultSlots;
+    private ComponentSlot[] componentSlots;
+    //public ResultSlot[] resultSlots;
     public RecipeAssets recipeAssets;
     
     private List<CraftingRecipe> listCraftingRecipes;
     private Inventory inventory; 
 
     private void Awake() {
+        componentSlots = GetComponent<CraftingPanel>()?.componentSlots;
         listCraftingRecipes = recipeAssets.GetCraftingRecipesList();
         inventory = GameObject.Find("InventoryPanel")?.GetComponent<Inventory>();
     }
 
     public void Craft() {
-        //If there are no components or the result slot is full, don't do anything
-        if(ComponentSlotsEmpty() == true || ResultSlotsEmpty() == false) return;
+        //If there are no components don't do anything
+        if(ComponentSlotsEmpty() == true) return;
         //Check crafting recipes
         foreach(CraftingRecipe cr in listCraftingRecipes) {
             //Check if all the materials of the recipe are in the component slots
             if(CheckAllComponents(cr)) { 
                 //We have a candidate, Check if all the component slots have a component that is part of the recipe
                 if(CheckAllMaterials(cr)) {
-                    Debug.Log("ok: " + cr.name);
                     CreateItems(cr);//Create crafted item
                     return;
                 }
             }
         }
     }
-
 
     private void CreateItems(CraftingRecipe cr) {
         //Check how many different items are we creating (how many slots we need to store it)
@@ -103,6 +102,7 @@ public class Crafting : MonoBehaviour
         return true;
     }
 
+/*
     //Check if all the result slots are empty
     private bool ResultSlotsEmpty() {
         foreach(ResultSlot slot in resultSlots) {
@@ -112,5 +112,5 @@ public class Crafting : MonoBehaviour
         }
         return true;
     }
-
+*/
 }

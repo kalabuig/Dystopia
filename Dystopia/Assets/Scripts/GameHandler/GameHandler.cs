@@ -17,6 +17,7 @@ public class GameHandler : MonoBehaviour
     //Panels
     private GameObject characterPanel;
     private GameObject craftingPanel;
+    private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
     public GameObject textPanel;
     private GameObject pausePanel;
@@ -44,6 +45,8 @@ public class GameHandler : MonoBehaviour
         characterPanel = GameObject.Find("CharacterPanel");
         //Crafting Panel
         craftingPanel = GameObject.Find("CraftingPanel");
+        //Craftin Book Panel
+        craftingBookPanel = GameObject.Find("CraftingBookPanel");
         //Scavenging Panel
         scavengingPanel = GameObject.Find("ScavengingPanel");
         //PausePanel
@@ -59,6 +62,7 @@ public class GameHandler : MonoBehaviour
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
         CloseInventoryPanel();
         CloseCraftingPanel();
+        CloseCraftingBookPanel();
         CloseScavengingPanel();
         gameOverPanel.SetActive(false);
         ResumeGame(); //inside it is --> pausePanel.SetActive(false);
@@ -207,10 +211,6 @@ public class GameHandler : MonoBehaviour
         characterPanel.SetActive(false);
     }
 
-    public void CloseCraftingPanel() {
-        craftingPanel.SetActive(false);
-    }
-
     public void CloseScavengingPanel() {
         scavengingPanel.GetComponent<ScavengingInventory>()?.StopScavenge();
         scavengingPanel.SetActive(false);
@@ -218,6 +218,18 @@ public class GameHandler : MonoBehaviour
 
     public void OpenCraftingPanel() {
         craftingPanel.SetActive(true);
+    }
+
+    public void CloseCraftingPanel() {
+        craftingPanel.SetActive(false);
+    }
+
+    public void OpenCraftingBookPanel() {
+        craftingBookPanel.SetActive(true);
+    }
+
+    public void CloseCraftingBookPanel() {
+        craftingBookPanel.SetActive(false);
     }
 
 }

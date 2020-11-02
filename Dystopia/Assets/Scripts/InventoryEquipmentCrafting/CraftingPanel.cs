@@ -6,8 +6,8 @@ using System;
 public class CraftingPanel : MonoBehaviour
 {
     [SerializeField] Transform craftingSlotsParent; //
-    [SerializeField] ComponentSlot[] componentSlots; //Components slots (UI)
-    [SerializeField] ResultSlot resultSlot; //Result slot (UI)
+    [SerializeField] public ComponentSlot[] componentSlots; //Components slots (UI)
+    //[SerializeField] ResultSlot resultSlot; //Result slot (UI)
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
