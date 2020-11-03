@@ -111,10 +111,13 @@ public class Inventory : MonoBehaviour, IItemsContainer
 
     public int ItemCount(string itemID)
     {
+        if(itemID==null) return 0;
         int counter = 0;
         for(int i = 0; i < itemSlots.Length; i++) {
-            if(itemSlots[i].item.ID == itemID) {
-                counter++;
+            if(itemSlots[i]!=null && itemSlots[i].item!=null) {
+                if(itemSlots[i].item.ID == itemID) {
+                    counter++;
+                }
             }
         }
         return counter;

@@ -13,39 +13,34 @@ public struct ItemAmount {
 [CreateAssetMenu]
 public class CraftingRecipe : ScriptableObject
 {
-
-
     public List<ItemAmount> materials;
     public List<ItemAmount> results;
 
-/*
-    public bool CanCraft(IItemsContainer itemsContainer) {
-        foreach(ItemAmout itemAmout in materials) {
-            if(itemsContainer.ItemCount(itemAmout.item.ID) < itemAmout.amount) {
+    public bool CanCraft(Inventory inventory) {
+        foreach(ItemAmount itemAmount in materials) {
+            if(inventory.ItemCount(itemAmount.item.ID) < itemAmount.amount) {
                 return false; //there are not enough materials
             }
         }
         return true; //there are enough materials, we can craft it
     }
 
-    public void Craft(IItemsContainer itemsContainer) {
-        if(CanCraft(itemsContainer)) {
-            //Remove from the container every material used to craft
-            foreach(ItemAmout itemAmout in materials) {
-                for(int i = 0; i < itemAmout.amount; i++) {
-                    Item oldItem = itemsContainer.RemoveItem(itemAmout.item.ID);
+    public void Craft(Inventory inventory) {
+        if(CanCraft(inventory)) {
+            //Remove from the inventory every material used to craft
+            foreach(ItemAmount itemAmount in materials) {
+                for(int i = 0; i < itemAmount.amount; i++) {
+                    Item oldItem = inventory.RemoveItem(itemAmount.item.ID);
                     oldItem.Destroy();
                 }
             }
-            //Add to the container every result from the craft
-            foreach(ItemAmout itemAmout in results) {
-                for(int i = 0; i < itemAmout.amount; i++) {
-                    itemsContainer.AddItem(itemAmout.item.GetCopy());
-                    
+            //Add to the inventory every result from the craft
+            foreach(ItemAmount itemAmount in results) {
+                for(int i = 0; i < itemAmount.amount; i++) {
+                    inventory.AddItem(itemAmount.item.GetCopy());
                 }
             }
         }
     }
-*/
 
 }

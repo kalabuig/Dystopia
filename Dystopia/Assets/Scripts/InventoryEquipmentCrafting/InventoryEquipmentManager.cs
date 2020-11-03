@@ -10,6 +10,7 @@ public class InventoryEquipmentManager : MonoBehaviour
     [SerializeField] ScavengingInventory scavengingInventory;
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] CraftingPanel craftingPanel;
+    [SerializeField] CraftingBookPanel craftingBookPanel;
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
     Character character;
@@ -32,6 +33,8 @@ public class InventoryEquipmentManager : MonoBehaviour
         craftingPanel.OnPointerExitEvent += HideToolTip;
         scavengingInventory.OnPointerEnterEvent += ShowToolTip;
         scavengingInventory.OnPointerExitEvent += HideToolTip;
+        craftingBookPanel.OnPointerEnterEvent += ShowToolTip;
+        craftingBookPanel.OnPointerExitEvent += HideToolTip;
         //Drag & Drop
         inventory.OnBeginDragEvent += BeginDrag;
         inventory.OnEndDragEvent += EndDrag;
@@ -124,6 +127,16 @@ public class InventoryEquipmentManager : MonoBehaviour
     }
 
     private void HideToolTip(ItemSlot itemSlot) {
+            itemTooltip.HideTooltip();
+    }
+
+    private void ShowToolTip(RecipeSlot recipeSlot) {
+        if(recipeSlot != null) {
+            itemTooltip.ShowTooltip(recipeSlot.item);
+        }
+    }
+
+    private void HideToolTip(RecipeSlot recipeSlot) {
             itemTooltip.HideTooltip();
     }
 
