@@ -814,6 +814,9 @@ MonoBehaviour:
   craftingRecipes:
   - {fileID: 11400000, guid: 4fa622989876beb498f26568db853416, type: 2}
   - {fileID: 11400000, guid: 38e255df2832a884f8de305c565bff54, type: 2}
+  - {fileID: 11400000, guid: d3218c190960315428fe0dacbaa9ab30, type: 2}
+  - {fileID: 11400000, guid: 58754c1d405301c4997b98ac7555b75f, type: 2}
+  - {fileID: 11400000, guid: 294cba57df78edc44aab78e4d5370cfe, type: 2}
 --- !u!1 &93949465
 GameObject:
   m_ObjectHideFlags: 0
@@ -7304,8 +7307,16 @@ MonoBehaviour:
     weightChance: 3
   - item: {fileID: 11400000, guid: b6146ef216ea9fd4bb44af34b6ebe8e2, type: 2}
     weightChance: 3
+  - item: {fileID: 11400000, guid: e62c3ee5c489e9647bc6e9969c57677c, type: 2}
+    weightChance: 5
+  - item: {fileID: 11400000, guid: f24e934a021ebba45a5aada8e89e0470, type: 2}
+    weightChance: 1
   - item: {fileID: 11400000, guid: d2db8fdf4543b0b4fb2b5d58fa35588a, type: 2}
     weightChance: 1
+  - item: {fileID: 11400000, guid: c594b4fbb91ced74cbefc4f565fc73fd, type: 2}
+    weightChance: 2
+  - item: {fileID: 11400000, guid: 1dd177e6be805504db22d5177194fc0a, type: 2}
+    weightChance: 2
 --- !u!1001 &934945055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12292,10 +12303,7 @@ MonoBehaviour:
   pfRecipeUI: {fileID: 6493623808286080671, guid: d577306328cde4043baf9c9d50ed6301, type: 3}
   recipeUIParent: {fileID: 1111452953}
   craftingRecipeUIs: []
-  inventory: {fileID: 1965184171}
-  craftingRecipes:
-  - {fileID: 11400000, guid: 4fa622989876beb498f26568db853416, type: 2}
-  - {fileID: 11400000, guid: 38e255df2832a884f8de305c565bff54, type: 2}
+  knownCraftingRecipes: []
 --- !u!114 &1765189208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13222,8 +13230,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1861368739}
-        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
-        m_MethodName: Craft
+        m_TargetAssemblyTypeName: InvestigateRecipe, Assembly-CSharp
+        m_MethodName: TryRecipe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13323,10 +13331,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861368737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57367283c9a945d4eb75b3ce4269de30, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cbd54fe06ef272488f44392e1f52ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeAssets: {fileID: 84597310}
+  craftingBookPanel: {fileID: 1765189206}
 --- !u!114 &1861368740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14266,14 +14274,16 @@ MonoBehaviour:
     amount: 1
   - item: {fileID: 11400000, guid: 127373f7e64e14142a6fa658b53af4eb, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 3d35764949c4dfa4eafebd581002e670, type: 2}
-    amount: 1
+  - item: {fileID: 11400000, guid: c594b4fbb91ced74cbefc4f565fc73fd, type: 2}
+    amount: 2
   - item: {fileID: 11400000, guid: 1aa4c6d973cd2584084615374a7a4ef1, type: 2}
     amount: 4
   - item: {fileID: 11400000, guid: b6146ef216ea9fd4bb44af34b6ebe8e2, type: 2}
-    amount: 2
+    amount: 3
   - item: {fileID: 11400000, guid: 00d32e65dfd88114ea411c5d3d9fa8fc, type: 2}
     amount: 1
+  - item: {fileID: 11400000, guid: c594b4fbb91ced74cbefc4f565fc73fd, type: 2}
+    amount: 60
   itemsParent: {fileID: 2058185742}
   itemSlots:
   - {fileID: 480705090}

@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -119,10 +119,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 678, y: 321}
+  m_MaxSize: {x: 12003, y: 8021}
   vertical: 0
-  controlID: 63
+  controlID: 16
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,8 +144,8 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 947
-  m_MinSize: {x: 403, y: 492}
-  m_MaxSize: {x: 10001, y: 14042}
+  m_MinSize: {x: 403, y: 321}
+  m_MaxSize: {x: 8003, y: 8021}
   vertical: 1
   controlID: 17
 --- !u!114 &7
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 400
     height: 624
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -247,15 +247,15 @@ MonoBehaviour:
     y: 624
     width: 1368
     height: 323
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 18}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,8 +275,8 @@ MonoBehaviour:
     y: 0
     width: 552
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -512,9 +512,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3663faff
+      m_SelectedIDs: c43e0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 54fbffffbc4500003e4700006447000010480000d4480000044900003e490000ea4900007a4a0000a04a0000284b0000d24b0000
+      m_ExpandedIDs: 54fbffffea4700005a4800009e4800003249000064490000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -574,9 +574,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 826.8743, y: 604.863, z: -2407.864}
+    m_Target: {x: 867.87415, y: 594.3283, z: -2431.3513}
     speed: 2
-    m_Value: {x: 826.8743, y: 604.863, z: -2407.864}
+    m_Value: {x: 867.87415, y: 594.3283, z: -2431.3513}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -627,9 +627,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 549.6331
+    m_Target: 682.1717
     speed: 2
-    m_Value: 549.6331
+    m_Value: 682.1717
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -842,21 +842,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Crafting
+    - Assets/Scripts/InventoryEquipmentCrafting
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Crafting
+  - Assets/Scripts/InventoryEquipmentCrafting
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\unity3dprojects\Dystopia
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 106.545456}
-    m_SelectedIDs: 0e560000
-    m_LastClickedID: 22030
-    m_ExpandedIDs: 00000000be550000c0550000c2550000c4550000c6550000c8550000ca550000cc550000ce550000d0550000d2550000d4550000
+    scrollPos: {x: 0, y: 180}
+    m_SelectedIDs: 6a540000
+    m_LastClickedID: 21610
+    m_ExpandedIDs: 00000000185400001a5400001c5400001e54000020540000225400002454000026540000285400002a5400002c5400002e540000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -884,7 +884,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000be550000c0550000c2550000c4550000c6550000c8550000ca550000cc550000ce550000d0550000d2550000d4550000
+    m_ExpandedIDs: 00000000185400001a5400001c5400001e54000020540000225400002454000026540000285400002a5400002c5400002e540000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -909,24 +909,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: c43e0000
+    m_LastClickedInstanceID: 16068
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000383c0000fc660000a64800009e63000000000000a250000048540000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Item
+      m_OriginalName: Item
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 13434
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 19104
+  m_LastSelectedObjectID: 18788
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1025,7 +1025,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 399
   m_AssetGUID: 
   m_InstanceID: 0
   m_LockTracker:

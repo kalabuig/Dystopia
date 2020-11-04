@@ -14,10 +14,13 @@ public enum EquipmentType {
 [CreateAssetMenu(menuName = "Items / Equippable Item")]
 public class EquippableItem : Item
 {
+    [Space]
+    [Header("Modifiers")]
     public int warm; //How many increases your warm
     public int protection; //How many increases your protection to physical damage
     public int damage;
     [Space]
+    [Header("Equipment Type")]
     public EquipmentType equipmentType;
 
     public override Item GetCopy() {

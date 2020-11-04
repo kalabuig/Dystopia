@@ -45,6 +45,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             amountText.enabled = _item != null && _amount > 1;
             if(amountText.enabled) {
                 amountText.text = _amount.ToString();
+                //Only for tools
+                if(_item.isTool) {
+                    amountText.text = Mathf.Floor(100f * _amount / _item.maxToolUses).ToString() + "%";
+                }
             }
         }
     }

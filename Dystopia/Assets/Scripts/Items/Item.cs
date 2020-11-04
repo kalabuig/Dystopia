@@ -10,13 +10,16 @@ public class Item : ScriptableObject
     public Sprite icon; //image of the item
     [Range(1,9999)]
     public int MaximumStacks = 1; //Objects are stackable if this is greater than 1 (the maximum amount of objects in the stack is this number)
+    [Space]
+    [Header("Conditions")]
+    public bool isTool; //When craftint don't desapear, only consumes one use
+    public int maxToolUses;
 
-/*
     private void OnValidate() { //Only works on editor mode
         string path = AssetDatabase.GetAssetPath(this); 
         id = AssetDatabase.AssetPathToGUID(path); //Getting the unity UID created
+
     }
-*/
 
     public virtual Item GetCopy() {
         return MaximumStacks > 1 ? this: Instantiate(this); //Create a new instance if the object is not stackable

@@ -62,8 +62,12 @@ public class InventoryEquipmentManager : MonoBehaviour
             UsableItem usableItem = (UsableItem)itemSlot.item;
             usableItem.Use(character); //Use item
             if(usableItem.IsConsumable) { //Remove item from inventory if it is a consumable item
+                Item subproduct = usableItem.GetSubProduct(); //get the subproduct after use this item
                 inventory.RemoveItem(usableItem);
                 usableItem.Destroy();
+                if(subproduct!=null) {
+                    inventory.AddItem(subproduct); //Add the subproduct to the inventory
+                }
             }
         }
     }
@@ -165,7 +169,8 @@ public class InventoryEquipmentManager : MonoBehaviour
         if(dropItemSlot == null) return;
         //Are the same items and are stackable?
         //if(dropItemSlot.CanAddStack(draggedSlot.item)) {
-        if(dropItemSlot.item != null && dropItemSlot.item.MaximumStacks - dropItemSlot.amount > 0 && dropItemSlot.item.ID == draggedSlot.item.ID) {
+        if(dropItemSlot.item != null && dropItemSlot.item.MaximumStacks - dropItemSlot.amount > 0 && dropItemSlot.item.ID == draggedSlot.item.ID
+            && dropItemSlot.item.isTool == false) {
             AddStacks(dropItemSlot);
         } //We can swap if destination slot can receive and original slot can receive
         else if(dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item)) {

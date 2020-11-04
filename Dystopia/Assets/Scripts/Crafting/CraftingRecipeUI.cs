@@ -5,13 +5,14 @@ using System;
 
 public class CraftingRecipeUI : MonoBehaviour
 {
-    public event Action<RecipeSlot> OnPointerEnterEvent;
-    public event Action<RecipeSlot> OnPointerExitEvent;
+    public Action<RecipeSlot> OnPointerEnterEvent;
+    public Action<RecipeSlot> OnPointerExitEvent;
 
-    [SerializeField] RectTransform craftButtonTransform;
+    //[SerializeField] RectTransform craftButtonTransform;
     [SerializeField] RecipeSlot[] recipeSlots; //slots of the recipe row
 
-    //public CraftingBook craftingBook; //inventory of known recipes
+    [Space]
+    [Header("Autopopulated fields")]
     public Inventory inventory; //player inventory (crafted items destination)
 
     private CraftingRecipe _craftingRecipe;

@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab0ff32a77ec4147b8ce3aa3084c15e, type: 3}
   m_Name: Rodillo
   m_EditorClassIdentifier: 
+  id: 127373f7e64e14142a6fa658b53af4eb
   itemName: Rodillo
   icon: {fileID: 21300000, guid: 311080fcaad04f344a73c0449b5fda8d, type: 3}
+  MaximumStacks: 1
+  isTool: 1
+  maxToolUses: 100
+  remainUses: 100
   warm: 0
   protection: 0
   damage: 2

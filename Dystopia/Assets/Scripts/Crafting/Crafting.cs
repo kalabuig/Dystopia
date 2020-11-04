@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//////// DEPRECATED ////////
 public class Crafting : MonoBehaviour
 {
     private ComponentSlot[] componentSlots;

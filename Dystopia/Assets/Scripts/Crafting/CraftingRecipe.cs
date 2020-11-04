@@ -30,8 +30,20 @@ public class CraftingRecipe : ScriptableObject
             //Remove from the inventory every material used to craft
             foreach(ItemAmount itemAmount in materials) {
                 for(int i = 0; i < itemAmount.amount; i++) {
-                    Item oldItem = inventory.RemoveItem(itemAmount.item.ID);
-                    oldItem.Destroy();
+                    /*
+                    if(itemAmount.item.isTool == true) { //if it is a tool
+                        itemAmount.item.DecreaseRemainUses(1); //One use
+                        if(itemAmount.item.GetRemainUses()<=0) {
+                            Item oldItem = inventory.RemoveItem(itemAmount.item.ID); //remove or decrease item amount
+                            oldItem.Destroy();
+                        }
+                    } else { //if it is not a tool
+                    */
+                        Item oldItem = inventory.RemoveItem(itemAmount.item.ID); //remove or decrease item amount
+                        oldItem.Destroy();
+                    /*
+                    }
+                    */
                 }
             }
             //Add to the inventory every result from the craft

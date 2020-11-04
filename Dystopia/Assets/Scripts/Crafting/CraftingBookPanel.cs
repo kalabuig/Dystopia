@@ -10,12 +10,15 @@ public class CraftingBookPanel : MonoBehaviour
 
     [SerializeField] CraftingRecipeUI pfRecipeUI; //prefab of the recipe row
     [SerializeField] RectTransform recipeUIParent; //content object of the scroll view
-    [SerializeField] List<CraftingRecipeUI> craftingRecipeUIs; //crafting recipe rows list
+    
+    public List<CraftingRecipeUI> craftingRecipeUIs; //crafting recipe rows list
+    
+    private Inventory inventory; //player inventory
 
-    public Inventory inventory; //player inventory
-    public List<CraftingRecipe> craftingRecipes; //list of crafting recipes to show
+    public List<CraftingRecipe> knownCraftingRecipes; //list of known crafting recipes to show
 
     private void Start() {
+        inventory = GameObject.Find("InventoryPanel")?.GetComponent<Inventory>();
         StartCraftingRecipeRowsList();
     }
 
@@ -24,17 +27,17 @@ public class CraftingBookPanel : MonoBehaviour
         UpdateCraftingRecipeRowsList();
     }
 
-    private void UpdateCraftingRecipeRowsList() { //Update the rows of recipes to show
+    public void UpdateCraftingRecipeRowsList() { //Update the rows of recipes to show
         //foreach recipe to show
-        for(int i = 0; i < craftingRecipes.Count; i++) {
+        for(int i = 0; i < knownCraftingRecipes.Count; i++) {
             if(craftingRecipeUIs.Count == i) { //if we are at the end of the list
                 craftingRecipeUIs.Add(Instantiate(pfRecipeUI, recipeUIParent, false)); //add a new row
             } 
             craftingRecipeUIs[i].inventory = inventory; //assign inventory to the row
-            craftingRecipeUIs[i].craftingRecipe = craftingRecipes[i]; //assign recipe to the row
+            craftingRecipeUIs[i].craftingRecipe = knownCraftingRecipes[i]; //assign recipe to the row
         }
         //if thereare more rows that recipes, set them to null (maybe this is not necessary to do)
-        for(int i = craftingRecipes.Count; i < craftingRecipeUIs.Count; i++) {
+        for(int i = knownCraftingRecipes.Count; i < craftingRecipeUIs.Count; i++) {
             craftingRecipeUIs[i].craftingRecipe = null; // null --> deactivate it
         }
     }

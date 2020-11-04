@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcfc14462b4d04c9292d68844afa06, type: 3}
   m_Name: Pala
   m_EditorClassIdentifier: 
+  id: 48ffeea9c9258c94aa0ea638a3270fd3
   itemName: Pala
   icon: {fileID: 21300000, guid: df74920d14f11454f9efacdffa9df79b, type: 3}
+  MaximumStacks: 1
+  isTool: 1
+  maxToolUses: 100
+  remainUses: 100

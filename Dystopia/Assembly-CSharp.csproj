@@ -51,7 +51,9 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoadingProgressBar.cs" />
      <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
+     <Compile Include="Assets\Scripts\Crafting\CraftingBook.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
+     <Compile Include="Assets\Scripts\Crafting\CraftingBookPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\SettingsLoader.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingRecipe.cs" />
      <Compile Include="Assets\Scripts\Crafting\Crafting.cs" />
@@ -74,6 +76,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentSlot.cs" />
      <Compile Include="Assets\Scripts\Player\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\GameHandler\MapHandler.cs" />
+     <Compile Include="Assets\Scripts\Crafting\CraftingRecipeUI.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\CraftingPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ScavengingInventory.cs" />
      <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
@@ -85,6 +88,7 @@
      <Compile Include="Assets\Scripts\Items\Effects\UsableItemEffect.cs" />
      <Compile Include="Assets\Scripts\Triggers\ContainerTrigger.cs" />
      <Compile Include="Assets\Scripts\Player\CameraBehavior.cs" />
+     <Compile Include="Assets\Scripts\Crafting\RecipeSlot.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\Inventory.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\Container.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\IslandSpamer.cs" />
@@ -98,10 +102,7 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\Crafting\RecipeSlot.cs" />
-     <Compile Include="Assets\Scripts\Crafting\CraftingBook.cs" />
-     <Compile Include="Assets\Scripts\Crafting\CraftingRecipeUI.cs" />
-     <Compile Include="Assets\Scripts\Crafting\CraftingBookPanel.cs" />
+     <Compile Include="Assets\Scripts\Crafting\InvestigateRecipe.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />
