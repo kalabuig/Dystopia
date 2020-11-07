@@ -9,6 +9,8 @@ public static class SoundManager
         Search,
         Eat,
         Drink,
+        ItemFound,
+        ItemNotFound,
     }
 
     //Static attributes no use just one instance (performance)

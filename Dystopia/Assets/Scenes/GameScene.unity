@@ -4078,7 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.15294118, g: 0.33333334, b: 0.42352942, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4703,6 +4703,7 @@ MonoBehaviour:
   - {fileID: 581494990}
   - {fileID: 1215952183}
   - {fileID: 237748051}
+  title: {fileID: 988719754}
   progressSlider: {fileID: 797825885}
   progressText: {fileID: 1681011796}
   gameHandler: {fileID: 1889029284}
@@ -14833,6 +14834,12 @@ MonoBehaviour:
   soundsList:
   - sound: 0
     audioClip: {fileID: 8300000, guid: ce06212f96068d4439e8483c50af1b1e, type: 3}
+    delayTime: 1
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 44b4d6857a22d22409cf5deab139be44, type: 3}
+    delayTime: 1
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: 974fb8664ec31e04eaec49b6665540e4, type: 3}
     delayTime: 1
 --- !u!4 &2015875460
 Transform:

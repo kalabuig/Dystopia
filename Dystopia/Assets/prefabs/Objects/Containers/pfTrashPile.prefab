@@ -218,8 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d8445c045ff2b418ba638916f960ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  containerName: Trash Pile
   itemAssets: {fileID: 4099928456192171660}
-  items: []
+  minAmountToScavenge: 2
+  maxAmountToScavenge: 6
 --- !u!114 &4480071023192210293
 MonoBehaviour:
   m_ObjectHideFlags: 0

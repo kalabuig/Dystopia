@@ -160,7 +160,7 @@ public class GameHandler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) {
             if(selectedContainer!=null) {
                 textPanel.SetActive(false);
-                scavengingPanel.SetActive(true);
+                OpenScavengingPanel();
             }
             
         }
@@ -213,6 +213,11 @@ public class GameHandler : MonoBehaviour
 
     public void CloseInventoryPanel() {
         characterPanel.SetActive(false);
+    }
+
+    public void OpenScavengingPanel() {
+        scavengingPanel.GetComponent<ScavengingInventory>()?.AutoSetTitle();
+        scavengingPanel.SetActive(true);
     }
 
     public void CloseScavengingPanel() {

@@ -8,33 +8,58 @@ public class Container : MonoBehaviour
     public struct ContainerItem {
         public Item item;
         public int amount;
-        // It looks like properties can't be serialized in the editor
-        /*
-        private Item _item;
-        public Item item {
-            get { return _item; }
-            set {
-                _item = value;
-            }
-        }
-        private int _amount;
-        public int amount {
-            get { return _amount; }
-            set {
-                _amount = value;
-                if(_amount < 0) _amount = 0;
-                if(_amount == 0) item = null;
-            }
-        }
-        */
     }
 
+    [SerializeField] private string containerName = "Container";
+
+    [Space]
+    [Header("Item Assets of the container")]
     [SerializeField] ItemAssets itemAssets; //The list of items that this container can spam (starting items and scavenging items)
-    [SerializeField] private List<ContainerItem> items; //Items in the container
+    
+    [Space]
+    [Header("Scavenging")]
+    [Range(0,10)]
+    [SerializeField] int minAmountToScavenge = 0;
+    [Range(0,10)]
+    [SerializeField] int maxAmountToScavenge = 5;
 
-    public ItemAssets GetItemAssets() {
-        return itemAssets;
+    private List<ContainerItem> items; //Items in the container
+    private int remainingScavengings;
+
+    private void Awake() {
+        StartingSetting();
     }
+
+    public string GetContainerName() {
+        return containerName;
+    }
+
+    private void StartingSetting() {
+        //Set the remaining scavengings (randomly generated)
+        if(minAmountToScavenge>maxAmountToScavenge) {
+            remainingScavengings = minAmountToScavenge;
+            return;
+        } 
+        if(minAmountToScavenge==0 && maxAmountToScavenge==0) {
+            remainingScavengings = 0;
+            return;
+        };
+        remainingScavengings = UnityEngine.Random.Range(minAmountToScavenge, maxAmountToScavenge+1); //Return a number between minAmountToScavenge (inclusive) and maxAmountToScavenge+1 (exclusive)
+    }
+
+    public Item GetRandomItem() {
+        if(remainingScavengings>0) {
+            remainingScavengings--;
+            return itemAssets.GetRandomItem();
+        } else {
+            return null;
+        }
+        
+    }
+
+    //public ItemAssets GetItemAssets() {
+    //    return itemAssets;
+    //}
 
     public List<ContainerItem> GetItems() {
         return items;

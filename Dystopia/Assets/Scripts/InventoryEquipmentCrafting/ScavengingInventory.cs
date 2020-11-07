@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScavengingInventory : Inventory
 {
-     [SerializeField] Slider progressSlider;
-     [SerializeField] Text progressText;
-     [SerializeField] GameHandler gameHandler;
-     //[SerializeField] ItemAssets itemAssets;
-
+    [Header("Panel Title")]
+    [SerializeField] TextMeshProUGUI title;
+    [Space]
+    [Header("Progress Bar")]
+    [SerializeField] Slider progressSlider;
+    [SerializeField] Text progressText;
+    [Space]
+    [Header("Game Handler")]
+    [SerializeField] GameHandler gameHandler;
+    
     //Management of scavenging time
     private int scavengeTick;
     private int scavengeTickMax;
     private bool isScavenging;
+
+    public void AutoSetTitle() {
+        if(gameHandler != null) {
+            GameObject container = gameHandler.GetSelectedContainer();
+            if(container != null) {
+                title.text = "Scavenging " + container.GetComponent<Container>()?.GetContainerName();
+            }
+        }
+    }
 
     public void Scavenge(int ticksToScavenge) {
         scavengeTickMax = ticksToScavenge;
@@ -45,10 +60,12 @@ public class ScavengingInventory : Inventory
         List<Container.ContainerItem> itemsToLoad = c.GetItems(); //Get the items to load in the scavenging panel
          int i = 0;
         //Populate slots with items
-        for(; i<itemsToLoad.Count && i < itemSlots.Length; i++) {
-            if(itemsToLoad[i].item!=null && itemsToLoad[i].amount>0) {
-                itemSlots[i].item = itemsToLoad[i].item.GetCopy(); //Instantiate a new item based on the scriptobject
-                itemSlots[i].amount = itemsToLoad[i].amount; //Setting the amount
+        if(itemsToLoad!=null && itemsToLoad.Count>0) {
+            for(; i<itemsToLoad.Count && i < itemSlots.Length; i++) {
+                if(itemsToLoad[i].item!=null && itemsToLoad[i].amount>0) {
+                    itemSlots[i].item = itemsToLoad[i].item.GetCopy(); //Instantiate a new item based on the scriptobject
+                    itemSlots[i].amount = itemsToLoad[i].amount; //Setting the amount
+                }
             }
         }
         //Populate slots with empty
@@ -74,9 +91,12 @@ public class ScavengingInventory : Inventory
             if(scavengeTick>=scavengeTickMax) { //Scavenging finished
                 isScavenging = false;
                 UnSuscribe(); //unsubscribe from the tick system
-                Item scavengedItem = gameHandler.GetSelectedContainer()?.GetComponent<Container>()?.GetItemAssets()?.GetRandomItem(); //itemAssets.GetRandomItem();
+                Item scavengedItem = gameHandler.GetSelectedContainer()?.GetComponent<Container>()?.GetRandomItem();
                 if(scavengedItem!=null) {
                     AddItem(scavengedItem); //Add item to the scavenging inventory/panel
+                    SoundManager.PlaySound(SoundManager.Sound.ItemFound);
+                } else {
+                    SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
                 }
             }
             progressText.text = (scavengeTick * 100f / scavengeTickMax).ToString() + "%";

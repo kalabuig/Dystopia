@@ -228,8 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d8445c045ff2b418ba638916f960ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  containerName: Box
   itemAssets: {fileID: 4646542164021282931}
-  items: []
+  minAmountToScavenge: 0
+  maxAmountToScavenge: 2
 --- !u!114 &3066539391274375519
 MonoBehaviour:
   m_ObjectHideFlags: 0
