@@ -8,7 +8,8 @@ public class ScavengingInventory : Inventory
 {
      [SerializeField] Slider progressSlider;
      [SerializeField] Text progressText;
-     [SerializeField] ItemAssets itemAssets;
+     [SerializeField] GameHandler gameHandler;
+     //[SerializeField] ItemAssets itemAssets;
 
     //Management of scavenging time
     private int scavengeTick;
@@ -41,10 +42,10 @@ public class ScavengingInventory : Inventory
             slot.item = null;
             slot.amount = 0;
         }
-        Container.ContainerItem[] itemsToLoad = c.GetItems(); //Get the items to load in the scavenging panel
+        List<Container.ContainerItem> itemsToLoad = c.GetItems(); //Get the items to load in the scavenging panel
          int i = 0;
         //Populate slots with items
-        for(; i<itemsToLoad.Length && i < itemSlots.Length; i++) {
+        for(; i<itemsToLoad.Count && i < itemSlots.Length; i++) {
             if(itemsToLoad[i].item!=null && itemsToLoad[i].amount>0) {
                 itemSlots[i].item = itemsToLoad[i].item.GetCopy(); //Instantiate a new item based on the scriptobject
                 itemSlots[i].amount = itemsToLoad[i].amount; //Setting the amount
@@ -73,7 +74,7 @@ public class ScavengingInventory : Inventory
             if(scavengeTick>=scavengeTickMax) { //Scavenging finished
                 isScavenging = false;
                 UnSuscribe(); //unsubscribe from the tick system
-                Item scavengedItem = itemAssets.GetRandomItem();
+                Item scavengedItem = gameHandler.GetSelectedContainer()?.GetComponent<Container>()?.GetItemAssets()?.GetRandomItem(); //itemAssets.GetRandomItem();
                 if(scavengedItem!=null) {
                     AddItem(scavengedItem); //Add item to the scavenging inventory/panel
                 }

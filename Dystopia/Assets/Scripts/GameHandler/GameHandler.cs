@@ -117,6 +117,10 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public GameObject GetSelectedContainer() {
+        return selectedContainer;
+    }
+
     private void HandlePausedKeyboardInputs() {
         //Open or close the character panel
         if(Input.GetKeyDown(KeyCode.R)){ //resume game

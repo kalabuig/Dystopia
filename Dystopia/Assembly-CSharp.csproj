@@ -90,7 +90,7 @@
      <Compile Include="Assets\Scripts\Player\CameraBehavior.cs" />
      <Compile Include="Assets\Scripts\Crafting\RecipeSlot.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\Inventory.cs" />
-     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\Container.cs" />
+     <Compile Include="Assets\Scripts\Containers\Container.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\IslandSpamer.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\GameHandler\PlayerProgressBarsHandler.cs" />
@@ -99,10 +99,11 @@
      <Compile Include="Assets\Scripts\Settings\VideoSettings.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\VigorItemEffect.cs" />
+     <Compile Include="Assets\Scripts\Crafting\InvestigateRecipe.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\Crafting\InvestigateRecipe.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerStartingItems.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />
