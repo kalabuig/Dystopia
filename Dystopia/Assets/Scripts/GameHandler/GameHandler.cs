@@ -12,13 +12,14 @@ public class GameHandler : MonoBehaviour
     private Transform playerTransform;
     
     //Container
-    private GameObject selectedContainer;
+    private static GameObject selectedContainer;
 
     //Panels
     private GameObject characterPanel;
     private GameObject craftingPanel;
     private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
+    private GameObject waterFillerPanel;
     public GameObject textPanel;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
@@ -49,6 +50,8 @@ public class GameHandler : MonoBehaviour
         craftingBookPanel = GameObject.Find("CraftingBookPanel");
         //Scavenging Panel
         scavengingPanel = GameObject.Find("ScavengingPanel");
+        //Water Filler Panel
+        waterFillerPanel = GameObject.Find("WaterFillerPanel");
         //PausePanel
         pausePanel = GameObject.Find("PausePanel");
         //GameOverPanel
@@ -64,6 +67,7 @@ public class GameHandler : MonoBehaviour
         CloseCraftingPanel();
         CloseCraftingBookPanel();
         CloseScavengingPanel();
+        CloseWaterFillerPanel();
         gameOverPanel.SetActive(false);
         ResumeGame(); //inside it is --> pausePanel.SetActive(false);
         selectedContainer = null;
@@ -106,6 +110,11 @@ public class GameHandler : MonoBehaviour
             scavengingPanel.GetComponent<ScavengingInventory>()?.loadItems(container.GetComponent<Container>());
             textPanel.SetActive(true);
         }
+        if(container.layer == LayerMask.NameToLayer("WaterFillers")) {
+            selectedContainer = container;
+            waterFillerPanel.GetComponent<WaterFillerInventory>()?.loadItems(container.GetComponent<Container>());
+            textPanel.SetActive(true);
+        }
     }
 
     public void UnSetContainer(GameObject container) {
@@ -115,9 +124,15 @@ public class GameHandler : MonoBehaviour
             textPanel.SetActive(false);
             CloseScavengingPanel();
         }
+        if(container.layer == LayerMask.NameToLayer("WaterFillers")) {
+            waterFillerPanel.GetComponent<WaterFillerInventory>()?.storeItems(container.GetComponent<Container>());
+            selectedContainer = null;
+            textPanel.SetActive(false);
+            CloseWaterFillerPanel();
+        }
     }
 
-    public GameObject GetSelectedContainer() {
+    public static GameObject GetSelectedContainer() {
         return selectedContainer;
     }
 
@@ -160,9 +175,13 @@ public class GameHandler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) {
             if(selectedContainer!=null) {
                 textPanel.SetActive(false);
-                OpenScavengingPanel();
+                if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("Containers")) {
+                    OpenScavengingPanel();
+                }
+                if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("WaterFillers")) {
+                    OpenWaterFillerPanel();
+                }
             }
-            
         }
     }
 
@@ -193,22 +212,24 @@ public class GameHandler : MonoBehaviour
     }
 
     private void HandleZoom() {
-        //Keyboard zoom control
-        if(Input.GetKey(KeyCode.KeypadPlus)) { //Zoom in
-            zoom -= zoomSpeed * Time.deltaTime;
+        if(craftingBookPanel.activeSelf == false) {
+            //Keyboard zoom control
+            if(Input.GetKey(KeyCode.KeypadPlus)) { //Zoom in
+                zoom -= zoomSpeed * Time.deltaTime;
+            }
+            if(Input.GetKey(KeyCode.KeypadMinus)) { //Zoom out
+                zoom += zoomSpeed * Time.deltaTime;
+            };
+            //Mouse wheel zoom control
+            if(Input.mouseScrollDelta.y > 0) {
+                zoom -= zoomSpeed * Time.deltaTime * zoomWheelSensibility;
+            }
+            if(Input.mouseScrollDelta.y < 0) {
+                zoom += zoomSpeed * Time.deltaTime * zoomWheelSensibility;
+            }
+            //Zoom limits
+            zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
         }
-        if(Input.GetKey(KeyCode.KeypadMinus)) { //Zoom out
-            zoom += zoomSpeed * Time.deltaTime;
-        };
-        //Mouse wheel zoom control
-        if(Input.mouseScrollDelta.y > 0) {
-            zoom -= zoomSpeed * Time.deltaTime * zoomWheelSensibility;
-        }
-        if(Input.mouseScrollDelta.y < 0) {
-            zoom += zoomSpeed * Time.deltaTime * zoomWheelSensibility;
-        }
-        //Zoom limits
-        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
     }
 
     public void CloseInventoryPanel() {
@@ -239,6 +260,15 @@ public class GameHandler : MonoBehaviour
 
     public void CloseCraftingBookPanel() {
         craftingBookPanel.SetActive(false);
+    }
+
+    public void OpenWaterFillerPanel() {
+        waterFillerPanel.GetComponent<WaterFillerInventory>()?.AutoSetTitle();
+        waterFillerPanel.SetActive(true);
+    }
+
+    public void CloseWaterFillerPanel() {
+        waterFillerPanel.SetActive(false);
     }
 
 }

@@ -2,7 +2,19 @@
 
 public class BoxSpamer : MonoBehaviour
 {
+    [SerializeField] 
+    [Range(1,100)]
+    private int chanceToSpawn = 100;
+    [Space]
+    [Header("Containers")]
     public GameObject[] boxes;
+
+    private void Awake() {
+        int randNum = Random.Range(0, 101);
+        if(randNum>chanceToSpawn) {
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
