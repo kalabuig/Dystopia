@@ -12,13 +12,12 @@ public class Item : ScriptableObject
     public int MaximumStacks = 1; //Objects are stackable if this is greater than 1 (the maximum amount of objects in the stack is this number)
     [Space]
     [Header("Conditions")]
-    public bool isTool; //When craftint don't desapear, only consumes one use
-    public int maxToolUses;
+    public bool isMultiUsable; //When craftint don't desapear, only consumes one use
+    public int maxMultiUses;
 
     private void OnValidate() { //Only works on editor mode
         string path = AssetDatabase.GetAssetPath(this); 
         id = AssetDatabase.AssetPathToGUID(path); //Getting the unity UID created
-
     }
 
     public virtual Item GetCopy() {
@@ -26,6 +25,6 @@ public class Item : ScriptableObject
     }
 
     public virtual void Destroy() {
-        if(MaximumStacks == 1) Destroy(this); //We just need to destroy the object if it is not stackable
+        //if(MaximumStacks == 1) Destroy(this); //We just need to destroy the object if it is not stackable
     }
 }

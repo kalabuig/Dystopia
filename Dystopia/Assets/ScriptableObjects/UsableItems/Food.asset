@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Food
   icon: {fileID: 21300000, guid: 76a238b2af5c9ba46a183a9ca3d0a4c7, type: 3}
   MaximumStacks: 5
+  isMultiUsable: 1
+  maxMultiUses: 2
   IsConsumable: 1
+  SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: 653bb9feb2d7f1b4a9ff765e5b747fbb, type: 2}

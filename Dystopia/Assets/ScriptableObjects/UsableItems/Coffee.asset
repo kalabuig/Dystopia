@@ -16,7 +16,10 @@ MonoBehaviour:
   itemName: Coffee
   icon: {fileID: 21300000, guid: 7b0970a901fa36444b92f630aa12b866, type: 3}
   MaximumStacks: 5
+  isMultiUsable: 1
+  maxMultiUses: 4
   IsConsumable: 1
+  SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: 63e9b5e5d60a02f48aff1b92d1cce93a, type: 2}
   - {fileID: 11400000, guid: db33bbc80f472ed4dbb61f71eac63345, type: 2}

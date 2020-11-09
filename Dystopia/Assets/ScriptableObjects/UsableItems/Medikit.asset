@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Medikit
   icon: {fileID: 21300000, guid: d278f23b3aad19d4980e97765df156fc, type: 3}
   MaximumStacks: 5
+  isMultiUsable: 1
+  maxMultiUses: 2
   IsConsumable: 1
+  SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: 13b432471f75f294d955c46192231c05, type: 2}

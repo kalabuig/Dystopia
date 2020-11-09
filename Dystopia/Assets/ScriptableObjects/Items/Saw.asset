@@ -16,6 +16,5 @@ MonoBehaviour:
   itemName: Saw
   icon: {fileID: 21300000, guid: 66844a118850c9740ace92291209a426, type: 3}
   MaximumStacks: 1
-  isTool: 1
-  maxToolUses: 100
-  remainUses: 100
+  isMultiUsable: 1
+  maxMultiUses: 100

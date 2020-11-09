@@ -15,7 +15,6 @@ MonoBehaviour:
   id: 697fd42b4aa2b974db6d2bd90e54bc81
   itemName: EmptyBottle
   icon: {fileID: 21300000, guid: 9f31edaf98ea25d4593e9dd9759866dc, type: 3}
-  MaximumStacks: 5
-  isTool: 0
-  maxToolUses: 0
-  remainUses: 0
+  MaximumStacks: 1
+  isMultiUsable: 0
+  maxMultiUses: 0

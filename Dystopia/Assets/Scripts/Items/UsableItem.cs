@@ -6,7 +6,6 @@ using UnityEngine;
 public class UsableItem : Item
 {
     public bool IsConsumable; //if true, remove after use it
-    public bool IsWaterContainer; //Can be filled with water
     [Space]
     [Header("Subproduct after use")]
     [SerializeField] private Item SubProduct; //Some items, when used, creates a subproduct (for example: Bottle full of water -- use --> Empty Bottle)
@@ -23,4 +22,5 @@ public class UsableItem : Item
     public Item GetSubProduct() {
         return SubProduct;
     }
+
 }

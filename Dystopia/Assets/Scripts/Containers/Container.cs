@@ -54,7 +54,6 @@ public class Container : MonoBehaviour
         } else {
             return null;
         }
-        
     }
 
     //public ItemAssets GetItemAssets() {

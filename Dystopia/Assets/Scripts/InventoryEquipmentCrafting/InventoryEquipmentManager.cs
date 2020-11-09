@@ -70,11 +70,15 @@ public class InventoryEquipmentManager : MonoBehaviour
             UsableItem usableItem = (UsableItem)itemSlot.item;
             usableItem.Use(character); //Use item
             if(usableItem.IsConsumable) { //Remove item from inventory if it is a consumable item
-                Item subproduct = usableItem.GetSubProduct(); //get the subproduct after use this item
-                inventory.RemoveItem(usableItem);
-                usableItem.Destroy();
-                if(subproduct!=null) {
-                    inventory.AddItem(subproduct); //Add the subproduct to the inventory
+                if(itemSlot.amount>1) {
+                    itemSlot.amount--;
+                } else {
+                    Item subproduct = usableItem.GetSubProduct(); //get the subproduct after use this item
+                    inventory.RemoveItem(usableItem);
+                    usableItem.Destroy();
+                    if(subproduct!=null) {
+                        inventory.AddItem(subproduct); //Add the subproduct to the inventory
+                    }
                 }
             }
         }
@@ -120,9 +124,13 @@ public class InventoryEquipmentManager : MonoBehaviour
 
     private void ItemFromWaterFillerToInventory(Item item) {
         //if inventory is not full, remove the item from water filler panel
-        if(inventory.IsFull() == false && waterFillerInventory.RemoveItem(item)) {
-            inventory.AddItem(item); //Add item to inventory
-        }
+        if(inventory.IsFull() == false) {
+            for(int i = 0; i < item.maxMultiUses; i++) {
+                if(waterFillerInventory.RemoveItem(item)) { //remove item
+                    inventory.AddItem(item); //Add item to inventory
+                }
+            }
+        } 
     }
 
     public void Equip(EquippableItem item) {
@@ -188,10 +196,9 @@ public class InventoryEquipmentManager : MonoBehaviour
     private void Drop(ItemSlot dropItemSlot) {
         if(draggedSlot == null) return;
         if(dropItemSlot == null) return;
-        //Are the same items and are stackable?
-        //if(dropItemSlot.CanAddStack(draggedSlot.item)) {
+        //Are the same items and are stackable? (and is not a tool item)
         if(dropItemSlot.item != null && dropItemSlot.item.MaximumStacks - dropItemSlot.amount > 0 && dropItemSlot.item.ID == draggedSlot.item.ID
-            && dropItemSlot.item.isTool == false) {
+            && dropItemSlot.item.isMultiUsable == false) {
             AddStacks(dropItemSlot);
         } //We can swap if destination slot can receive and original slot can receive
         else if(dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item)) {
@@ -220,12 +227,12 @@ public class InventoryEquipmentManager : MonoBehaviour
             dropItemSlot.item = draggedItem;
             dropItemSlot.amount = draggedItemAmount;
         }
-        else { //at least on slot is an equipment slot
-            if(draggedSlot is EquipmentSlot) { //If origin is equipment slot
+        else { //at least one slot is an equipment slot
+            if(draggedSlot is EquipmentSlot) { //If origin is an equipment slot
                 if(dragItem != null) Unequip(dragItem);
                 if(dropItem != null) Equip(dropItem);
             }
-            if(dropItemSlot is EquipmentSlot) { //If destination is equipment slot
+            if(dropItemSlot is EquipmentSlot) { //If destination is an equipment slot
                 if(dragItem != null) Equip(dragItem);
                 if(dropItem != null) Unequip(dropItem);
             }

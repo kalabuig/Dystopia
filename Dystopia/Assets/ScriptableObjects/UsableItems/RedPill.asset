@@ -16,7 +16,13 @@ MonoBehaviour:
   itemName: Red Pill
   icon: {fileID: 21300000, guid: 07fd2e8ea09b22c44b410cd8207bf700, type: 3}
   MaximumStacks: 20
+  isTool: 0
+  maxToolUses: 0
   IsConsumable: 1
+  IsWaterContainer: 0
+  remainingUses: 1
+  maxUses: 1
+  SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: 64e131e47e53e5640be5bba14df8cf88, type: 2}
   - {fileID: 11400000, guid: db33bbc80f472ed4dbb61f71eac63345, type: 2}

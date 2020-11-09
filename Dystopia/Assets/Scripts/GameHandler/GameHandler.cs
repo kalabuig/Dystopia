@@ -112,7 +112,7 @@ public class GameHandler : MonoBehaviour
         }
         if(container.layer == LayerMask.NameToLayer("WaterFillers")) {
             selectedContainer = container;
-            waterFillerPanel.GetComponent<WaterFillerInventory>()?.loadItems(container.GetComponent<Container>());
+            waterFillerPanel.GetComponent<WaterFillerInventory>()?.loadItems(container.GetComponent<WaterResource>());
             textPanel.SetActive(true);
         }
     }
@@ -125,7 +125,7 @@ public class GameHandler : MonoBehaviour
             CloseScavengingPanel();
         }
         if(container.layer == LayerMask.NameToLayer("WaterFillers")) {
-            waterFillerPanel.GetComponent<WaterFillerInventory>()?.storeItems(container.GetComponent<Container>());
+            waterFillerPanel.GetComponent<WaterFillerInventory>()?.storeItems(container.GetComponent<WaterResource>());
             selectedContainer = null;
             textPanel.SetActive(false);
             CloseWaterFillerPanel();

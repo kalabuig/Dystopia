@@ -16,7 +16,13 @@ MonoBehaviour:
   itemName: Blue Pill
   icon: {fileID: 21300000, guid: f75b6de45f6940c4696b18b80e78e5f0, type: 3}
   MaximumStacks: 20
+  isTool: 0
+  maxToolUses: 0
   IsConsumable: 1
+  IsWaterContainer: 0
+  remainingUses: 1
+  maxUses: 1
+  SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: 13b432471f75f294d955c46192231c05, type: 2}
   - {fileID: 11400000, guid: eceeaa53843850942a649be961956745, type: 2}
