@@ -9,8 +9,9 @@ public class WaterFillerInventory : WorldInventory
         }
     }
 
-    public void FillWithWater(int ticksToScavenge) {
-        DoAction(ticksToScavenge);
+    public void FillWithWater(int ticksToFinish) {
+        if(itemSlots==null || itemSlots[0]==null || itemSlots[0].item==null) return;
+        DoAction(ticksToFinish);
     }
 
     public void StopFillWithWater() {
@@ -31,7 +32,6 @@ public class WaterFillerInventory : WorldInventory
                 SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
             }
         }
-        
     }
 
     public void loadItems(WaterResource wr) {

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: e62c3ee5c489e9647bc6e9969c57677c
   itemName: Pure Water Bottle
   icon: {fileID: 21300000, guid: 4fc2914b422952e46bef5fc2f9c4a78e, type: 3}
-  MaximumStacks: 5
+  MaximumStacks: 4
   isMultiUsable: 1
   maxMultiUses: 4
   IsConsumable: 1

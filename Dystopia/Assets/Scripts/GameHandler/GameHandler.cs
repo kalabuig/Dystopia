@@ -20,6 +20,7 @@ public class GameHandler : MonoBehaviour
     private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
     private GameObject waterFillerPanel;
+    private GameObject fireSourcePanel;
     public GameObject textPanel;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
@@ -52,6 +53,8 @@ public class GameHandler : MonoBehaviour
         scavengingPanel = GameObject.Find("ScavengingPanel");
         //Water Filler Panel
         waterFillerPanel = GameObject.Find("WaterFillerPanel");
+        //Fire Source Panel
+        fireSourcePanel = GameObject.Find("FireSourcePanel");
         //PausePanel
         pausePanel = GameObject.Find("PausePanel");
         //GameOverPanel
@@ -68,6 +71,7 @@ public class GameHandler : MonoBehaviour
         CloseCraftingBookPanel();
         CloseScavengingPanel();
         CloseWaterFillerPanel();
+        CloseFireSourcePanel();
         gameOverPanel.SetActive(false);
         ResumeGame(); //inside it is --> pausePanel.SetActive(false);
         selectedContainer = null;
@@ -115,6 +119,11 @@ public class GameHandler : MonoBehaviour
             waterFillerPanel.GetComponent<WaterFillerInventory>()?.loadItems(container.GetComponent<WaterResource>());
             textPanel.SetActive(true);
         }
+        if(container.layer == LayerMask.NameToLayer("FireSources")) {
+            selectedContainer = container;
+            fireSourcePanel.GetComponent<FireSourceInventory>()?.loadItems(container.GetComponent<FireSource>());
+            textPanel.SetActive(true);
+        }
     }
 
     public void UnSetContainer(GameObject container) {
@@ -129,6 +138,12 @@ public class GameHandler : MonoBehaviour
             selectedContainer = null;
             textPanel.SetActive(false);
             CloseWaterFillerPanel();
+        }
+        if(container.layer == LayerMask.NameToLayer("FireSources")) {
+            fireSourcePanel.GetComponent<FireSourceInventory>()?.storeItems(container.GetComponent<FireSource>());
+            selectedContainer = null;
+            textPanel.SetActive(false);
+            CloseFireSourcePanel();
         }
     }
 
@@ -180,6 +195,9 @@ public class GameHandler : MonoBehaviour
                 }
                 if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("WaterFillers")) {
                     OpenWaterFillerPanel();
+                }
+                if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("FireSources")) {
+                    OpenFireSourcePanel();
                 }
             }
         }
@@ -271,4 +289,12 @@ public class GameHandler : MonoBehaviour
         waterFillerPanel.SetActive(false);
     }
 
+    public void OpenFireSourcePanel() {
+        fireSourcePanel.GetComponent<FireSourceInventory>()?.AutoSetTitle();
+        fireSourcePanel.SetActive(true);
+    }
+
+    public void CloseFireSourcePanel() {
+        fireSourcePanel.SetActive(false);
+    }
 }

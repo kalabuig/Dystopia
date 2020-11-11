@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 0cc985356b748bb4c9c4eb11edbe698f
   itemName: Toxic Water Bottle
   icon: {fileID: 21300000, guid: 09ea5b61c082ae94abe7ccd454021af7, type: 3}
-  MaximumStacks: 5
+  MaximumStacks: 4
   isMultiUsable: 1
   maxMultiUses: 4
   IsConsumable: 1

@@ -12,6 +12,7 @@ public class InventoryEquipmentManager : MonoBehaviour
     [SerializeField] CraftingPanel craftingPanel;
     [SerializeField] CraftingBookPanel craftingBookPanel;
     [SerializeField] WaterFillerInventory waterFillerInventory;
+    [SerializeField] FireSourceInventory fireSourceInventory;
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
     Character character;
@@ -26,6 +27,7 @@ public class InventoryEquipmentManager : MonoBehaviour
         craftingPanel.OnRightClickEvent += CraftingPanelRightClick;
         scavengingInventory.OnRightClickEvent += ScavengingPanelRightClick;
         waterFillerInventory.OnRightClickEvent += WaterFillerPanelRightClick;
+        fireSourceInventory.OnRightClickEvent += FireSourcePanelRightClick;
         //Tooltip (Show / Hide)
         inventory.OnPointerEnterEvent += ShowToolTip;
         inventory.OnPointerExitEvent += HideToolTip;
@@ -39,6 +41,8 @@ public class InventoryEquipmentManager : MonoBehaviour
         craftingBookPanel.OnPointerExitEvent += HideToolTip;
         waterFillerInventory.OnPointerEnterEvent += ShowToolTip;
         waterFillerInventory.OnPointerExitEvent += HideToolTip;
+        fireSourceInventory.OnPointerEnterEvent += ShowToolTip;
+        fireSourceInventory.OnPointerExitEvent += HideToolTip;
         //Drag & Drop
         inventory.OnBeginDragEvent += BeginDrag;
         inventory.OnEndDragEvent += EndDrag;
@@ -60,6 +64,10 @@ public class InventoryEquipmentManager : MonoBehaviour
         waterFillerInventory.OnEndDragEvent += EndDrag;
         waterFillerInventory.OnDragEvent += Drag;
         waterFillerInventory.OnDropEvent += Drop;
+        fireSourceInventory.OnBeginDragEvent += BeginDrag;
+        fireSourceInventory.OnEndDragEvent += EndDrag;
+        fireSourceInventory.OnDragEvent += Drag;
+        fireSourceInventory.OnDropEvent += Drop;
     }
 
     private void InventoryRightClick(ItemSlot itemSlot) {
@@ -108,6 +116,12 @@ public class InventoryEquipmentManager : MonoBehaviour
         }
     }
 
+    private void FireSourcePanelRightClick(ItemSlot itemSlot) {
+        if(itemSlot!=null) {
+            ItemFromFireSourceToInventory(itemSlot.item); //Send item to inventory
+        }
+    }
+
     private void ItemFromCraftingToInventory(Item item) {
         //if inventory is not full, remove the item from crafting panel
         if(inventory.IsFull() == false && craftingPanel.RemoveItem(item)) {
@@ -127,6 +141,17 @@ public class InventoryEquipmentManager : MonoBehaviour
         if(inventory.IsFull() == false) {
             for(int i = 0; i < item.maxMultiUses; i++) {
                 if(waterFillerInventory.RemoveItem(item)) { //remove item
+                    inventory.AddItem(item); //Add item to inventory
+                }
+            }
+        } 
+    }
+
+    private void ItemFromFireSourceToInventory(Item item) {
+        //if inventory is not full, remove the item from fire source panel
+        if(inventory.IsFull() == false) {
+            for(int i = 0; i < item.maxMultiUses; i++) {
+                if(fireSourceInventory.RemoveItem(item)) { //remove item
                     inventory.AddItem(item); //Add item to inventory
                 }
             }

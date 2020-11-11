@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\GameHandler\GameHandler.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoadingProgressBar.cs" />
      <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
+     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WaterFillerInventory.cs" />
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingBook.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
@@ -96,6 +97,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\GameHandler\PlayerProgressBarsHandler.cs" />
      <Compile Include="Assets\Scripts\Items\UsableItem.cs" />
+     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WorldInventory.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\ThirstItemEffect.cs" />
      <Compile Include="Assets\Scripts\Settings\VideoSettings.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
@@ -104,9 +106,9 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
-     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WaterFillerInventory.cs" />
-     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WorldInventory.cs" />
      <Compile Include="Assets\Scripts\WaterResources\WaterResource.cs" />
+     <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\FireSourceInventory.cs" />
+     <Compile Include="Assets\Scripts\FireSources\FireSource.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

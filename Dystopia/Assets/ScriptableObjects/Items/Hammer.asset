@@ -15,6 +15,6 @@ MonoBehaviour:
   id: c594b4fbb91ced74cbefc4f565fc73fd
   itemName: Hammer
   icon: {fileID: 21300000, guid: 299c3a3e20a12e441bb5951e675fd15e, type: 3}
-  MaximumStacks: 1
+  MaximumStacks: 100
   isMultiUsable: 1
   maxMultiUses: 100

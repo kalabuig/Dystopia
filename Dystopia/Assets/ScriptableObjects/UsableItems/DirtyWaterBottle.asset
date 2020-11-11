@@ -15,7 +15,7 @@ MonoBehaviour:
   id: d24602478b3267940972118626769dfb
   itemName: Dirty Water Bottle
   icon: {fileID: 21300000, guid: ea0fc6eb22b79ba4fac3ac6ddd9466d2, type: 3}
-  MaximumStacks: 5
+  MaximumStacks: 4
   isMultiUsable: 1
   maxMultiUses: 4
   IsConsumable: 1

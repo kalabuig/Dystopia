@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 48ffeea9c9258c94aa0ea638a3270fd3
   itemName: Pala
   icon: {fileID: 21300000, guid: df74920d14f11454f9efacdffa9df79b, type: 3}
-  MaximumStacks: 1
+  MaximumStacks: 100
   isMultiUsable: 1
   maxMultiUses: 100
