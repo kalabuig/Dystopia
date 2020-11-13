@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CraftingRecipeUI : MonoBehaviour
 {
@@ -12,8 +13,20 @@ public class CraftingRecipeUI : MonoBehaviour
     [SerializeField] RecipeSlot[] recipeSlots; //slots of the recipe row
 
     [Space]
+    [Header("Progress bar")]
+    [SerializeField] private Image progressImage;
+
+    [Space]
     [Header("Autopopulated fields")]
     public Inventory inventory; //player inventory (crafted items destination)
+
+    //Management of the time for do an action
+    protected int actionTick;
+    protected int actionTickMax;
+    protected bool isDoingAction;
+
+    private Character _character; //To get speeds
+    public Character character { get => _character;}
 
     private CraftingRecipe _craftingRecipe;
     public CraftingRecipe craftingRecipe {
@@ -23,6 +36,8 @@ public class CraftingRecipeUI : MonoBehaviour
 
     private void Awake() {
         recipeSlots = GetComponentsInChildren<RecipeSlot>(includeInactive: true);
+        _character = GameObject.Find("Player")?.GetComponent<Character>();
+        isDoingAction = false;
     }
 
     private void Start() {
@@ -37,7 +52,7 @@ public class CraftingRecipeUI : MonoBehaviour
         if(craftingRecipe != null && inventory != null) { //if we have a recipe and an inventory
             if(craftingRecipe.CanCraft(inventory)) { //if there are enough materials in inventory
                 if(inventory.IsFull() == false) { //if inventory is not full
-                    craftingRecipe.Craft(inventory);
+                    DoAction(character.craftSpeed);
                 } else { //Inventory is full
                     //Show message (TODO)
                     Debug.Log("Inventory Full");
@@ -85,4 +100,43 @@ public class CraftingRecipeUI : MonoBehaviour
         }
         return slotIndex;
     }
+
+    private void ResetProgress() {
+        progressImage.fillAmount = 0;
+    }
+
+    private void TimeTickSystem_OnTick(object sender, TimeTickSystem.OnTickEventArgs e) {
+        if(isDoingAction) {
+            actionTick += 1;
+            if(actionTick>=actionTickMax) { //Scavenging finished
+                isDoingAction = false;
+                UnSuscribe(); //unsubscribe from the tick system
+                actionTick = 0;
+                ResetProgress();
+                craftingRecipe.Craft(inventory);
+            }
+            //show progress
+            progressImage.fillAmount = actionTick * 1f / actionTickMax;
+        }
+    }
+
+    public void DoAction(float secondsToFinishAction) {
+        if(isDoingAction==false) {
+            actionTickMax = (int)(secondsToFinishAction * TimeTickSystem.GetTicksPerSecond());
+            actionTick = 0;
+            isDoingAction = true;
+            UnSuscribe(); 
+            ResetProgress();
+            TimeTickSystem.OnTick += TimeTickSystem_OnTick;  //Suscribe to time tick system
+        }
+    }
+
+    private void UnSuscribe() {
+         TimeTickSystem.OnTick -= TimeTickSystem_OnTick;
+    }
+
+    private void OnDestroy() {
+        UnSuscribe();
+    }
+
 }

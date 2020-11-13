@@ -26,29 +26,49 @@ public class Character : MonoBehaviour
     public int maxHungry = 100;
     public int maxThirst = 100;
     public int maxVigor = 100;
+    public int attack = 1;
+    public int defense = 0;
+    
+    public float attackSpeed = 1f; //seconds
+    public float moveSpeed = 60f;
+    
+    public float craftSpeed = 5f; //seconds
+    public float investigationSpeed = 5f; //seconds
+    public float scavengingSpeed = 5f; //seconds
+    public float fillWaterSpeed = 3f; //seconds
+    public float useFireSpeed = 10f; //seconds
 
+    public float healthRate = 4f; //seconds
+    public float thirstRate = 4f; //seconds
+    public float hungryRate = 8f; //seconds
+    public float vigorRate = 30f; //seconds
+
+    //Note: Timer is set to 5 ticks per second
     private int healthTick;
-    private const int healthTickRate = 20; //At this rate we decrease the health by 1% (if we are at 0% hungry or thirst)
+    private int healthTickRate; //At this rate we decrease the health by 1% (if we are at 0% hungry or thirst)
     private int hungryTick;
-    private const int hungryTickRate = 25; //At this rate we decrease the hungry by 1%
+    private int hungryTickRate; //At this rate we decrease the hungry by 1%
     private int thirstTick;
-    private const int thirstTickRate = 20; //At this rate we decrease the thirst by 1%
+    private int thirstTickRate; //At this rate we decrease the thirst by 1%
     private int vigorTick;
-    private const int vigorTickRate = 200; //At this rate we decrease the fatigue by 1%
-
-
+    private int vigorTickRate; //At this rate we decrease the fatigue by 1%
 
     private void Awake() {
         healthTick = 0;
         hungryTick = 0;
         thirstTick = 0;
         vigorTick = 0;
+        healthTickRate = (int) (healthRate * TimeTickSystem.GetTicksPerSecond());
+        hungryTickRate = (int) (hungryRate * TimeTickSystem.GetTicksPerSecond());
+        thirstTickRate = (int) (thirstRate * TimeTickSystem.GetTicksPerSecond());
+        vigorTickRate = (int) (vigorRate * TimeTickSystem.GetTicksPerSecond());
     }
 
     private void Start() {
         TimeTickSystem.OnTick += TimeTickSystem_OnTick;  //Suscribe to time tick system (5 ticks per second)
     }
 
+    //Timer
     private void TimeTickSystem_OnTick(object sender, TimeTickSystem.OnTickEventArgs e) {
         healthTick++;
         if(healthTick>=healthTickRate) {

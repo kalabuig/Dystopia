@@ -12,6 +12,14 @@ public static class TimeTickSystem
 
     private const float TICK_TIMER_MAX = .2f; //5 ticks per second
 
+    public static float GetSecondsPerTick() {
+        return TICK_TIMER_MAX;
+    }
+
+    public static float GetTicksPerSecond() {
+        return 1f / TICK_TIMER_MAX;
+    }
+
     //Create the tick system gameobject
     public static void Create() {
         if(timeTickSystemGO == null) {

@@ -12,8 +12,8 @@ public class ScavengingInventory : WorldInventory
         //}
     }
 
-    public void Scavenge(int ticksToScavenge) {
-        DoAction(ticksToScavenge);
+    public void Scavenge() {
+        DoAction(character.scavengingSpeed);
     }
 
     public void StopScavenge() {

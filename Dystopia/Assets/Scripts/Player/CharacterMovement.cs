@@ -9,13 +9,18 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D characterRigidbody2D;
     private Camera cam;
     private FieldOfView fieldOfView;
-    private float speed = 60f; //character speed
+    private Character character;
+
+    private float speed; //character speed
     private Vector3 mousePos; //mouse position
     private Vector3 moveDir; //move direction
+    
     private CharacterControlType characterControlType = CharacterControlType.Independent;
 
     private void Awake()
     {
+        character = gameObject.GetComponent<Character>();
+        speed = character.moveSpeed;
         characterAnimator = gameObject.GetComponent<CharacterAnimator>();
         characterRigidbody2D = GetComponent<Rigidbody2D>();
         cam = Camera.main;
@@ -83,7 +88,6 @@ public class CharacterMovement : MonoBehaviour
                     //Vector3 targetPosition = transform.position + (moveDir * speed * Time.deltaTime);
                     //if(checkCollision(moveDir)==false) //if no collision
                     //    transform.position = targetPosition; //Move
-                    
                     //transform.position += moveDir * speed * Time.deltaTime;
                     break;
                 case CharacterControlType.LookingMouse: //same as default

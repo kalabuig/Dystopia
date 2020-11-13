@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InvestigateRecipe : MonoBehaviour
 {
     [SerializeField] private CraftingBookPanel craftingBookPanel;
+
+    [SerializeField] private Image progressImage;
+
+    //Management of the time for do an action
+    protected int actionTick;
+    protected int actionTickMax;
+    protected bool isDoingAction;
+
+    private Character _character; //To get speeds
+    public Character character { get => _character;}
 
     private ComponentSlot[] componentSlots;
     private List<CraftingRecipe> allCraftingRecipes;
@@ -12,9 +23,46 @@ public class InvestigateRecipe : MonoBehaviour
     private void Awake() {
         componentSlots = GetComponent<CraftingPanel>()?.componentSlots;
         allCraftingRecipes = GameObject.Find("RecipeAssets")?.GetComponent<RecipeAssets>()?.GetCraftingRecipesList();
+        _character = GameObject.Find("Player")?.GetComponent<Character>();
+        isDoingAction = false;
     }
 
-    public void TryRecipe() {
+    public void TryInvestigation() {
+        if(ComponentSlotsEmpty() == true) return;
+        DoAction(character.investigationSpeed);
+    }
+
+    private void TimeTickSystem_OnTick(object sender, TimeTickSystem.OnTickEventArgs e) {
+        if(isDoingAction) {
+            actionTick += 1;
+            if(actionTick>=actionTickMax) { //Scavenging finished
+                isDoingAction = false;
+                UnSuscribe(); //unsubscribe from the tick system
+                actionTick = 0;
+                ResetProgress();
+                TryRecipe();
+            }
+            //show progress
+            progressImage.fillAmount = actionTick * 1f / actionTickMax;
+        }
+    }
+
+    private void ResetProgress() {
+        progressImage.fillAmount = 0;
+    }
+
+    public void DoAction(float secondsToFinishAction) {
+        if(isDoingAction==false) {
+            actionTickMax = (int)(secondsToFinishAction * TimeTickSystem.GetTicksPerSecond());
+            actionTick = 0;
+            isDoingAction = true;
+            UnSuscribe(); 
+            ResetProgress();
+            TimeTickSystem.OnTick += TimeTickSystem_OnTick;  //Suscribe to time tick system
+        }
+    }
+
+    private void TryRecipe() {
         //If there are no components don't do anything
         if(ComponentSlotsEmpty() == true) return;
         //Check all crafting recipes
@@ -107,6 +155,14 @@ public class InvestigateRecipe : MonoBehaviour
             if(itemAmount.item.ID == item.ID) return true; // the material is in the recipe
         }
         return false;
+    }
+
+    private void UnSuscribe() {
+         TimeTickSystem.OnTick -= TimeTickSystem_OnTick;
+    }
+
+    private void OnDestroy() {
+        UnSuscribe();
     }
 
 }

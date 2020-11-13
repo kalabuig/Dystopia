@@ -9,9 +9,9 @@ public class WaterFillerInventory : WorldInventory
         }
     }
 
-    public void FillWithWater(int ticksToFinish) {
+    public void FillWithWater() {
         if(itemSlots==null || itemSlots[0]==null || itemSlots[0].item==null) return;
-        DoAction(ticksToFinish);
+        DoAction(character.fillWaterSpeed);
     }
 
     public void StopFillWithWater() {

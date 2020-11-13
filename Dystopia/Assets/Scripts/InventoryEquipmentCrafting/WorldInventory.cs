@@ -15,13 +15,20 @@ public class WorldInventory : Inventory
     [SerializeField] Text progressText;
     [Space]
 
+    private Character _character; //To get speeds
+    public Character character { get => _character;}
+
     //Management of the time for do an action
     protected int actionTick;
     protected int actionTickMax;
     protected bool isDoingAction;
 
-    public void DoAction(int ticksToFinishAction) {
-        actionTickMax = ticksToFinishAction;
+    private void Awake() {
+        _character = GameObject.Find("Player")?.GetComponent<Character>();
+    }
+
+    public void DoAction(float secondsToFinishAction) {
+        actionTickMax = (int)(secondsToFinishAction * TimeTickSystem.GetTicksPerSecond());
         actionTick = 0;
         isDoingAction = true;
         ResetProgress();

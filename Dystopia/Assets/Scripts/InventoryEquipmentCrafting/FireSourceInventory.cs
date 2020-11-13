@@ -11,11 +11,9 @@ public class FireSourceInventory : WorldInventory
         }
     }
 
-    public void UseFire(int ticksToFinish) {
-        Debug.Log(itemSlots[0].item);
+    public void UseFire() {
         if(itemSlots==null || itemSlots[0]==null || itemSlots[0].item==null) return;
-        
-        DoAction(ticksToFinish);
+        DoAction(character.useFireSpeed);
     }
 
     public void StopUsingFire() {
