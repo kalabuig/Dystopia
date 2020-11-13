@@ -3,11 +3,9 @@
 public class RoofTrigger : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private GameObject fog;
 
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        fog = GameObject.Find("Fog");
     }
  
     // Inside the building
@@ -27,6 +25,8 @@ public class RoofTrigger : MonoBehaviour
 
     private void ShowObjects(bool b) {
         spriteRenderer.enabled = b; // Show/Hide roof
-        fog.SetActive(b); // Show/Hide fog
+        if(WeatherHandler.Instance.weather == WeatherHandler.WeatherType.Fog) {
+            WeatherHandler.Instance.ActivateFog(b);
+        }
     }
 }

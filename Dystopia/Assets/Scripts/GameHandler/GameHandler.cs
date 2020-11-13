@@ -29,7 +29,7 @@ public class GameHandler : MonoBehaviour
     private float zoom=100f; //Zoom level
     private float zoomSpeed = 150f; //Zoom in and out speed
     private float minZoom = 40f; //More close zoom
-    private float maxZoom = 200f; //More far zoom
+    private float maxZoom = 100f; //More far zoom
     private float zoomWheelSensibility = 10f;
     
     //Pause control
@@ -62,6 +62,7 @@ public class GameHandler : MonoBehaviour
     }
     void Start()
     {
+        GetComponent<WeatherHandler>().SetWeather(WeatherHandler.WeatherType.None); //No weather effects
         SuscribeToCharacterEvents();
         TimeTickSystem.Create(); //Create the TimeTickSystem game object
         cameraBehavior.setFocus(() => playerTransform.position); //Camera will follow the player
