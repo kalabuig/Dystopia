@@ -8,6 +8,10 @@ public class Container : MonoBehaviour
     public struct ContainerItem {
         public Item item;
         public int amount;
+
+        public static ContainerItem Empty() {
+            return new ContainerItem { item = null, amount = 0};
+        }
     }
 
     [SerializeField] private string containerName = "Container";

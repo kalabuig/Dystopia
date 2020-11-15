@@ -163,3 +163,21 @@ MonoBehaviour:
   - waterType: 2
     sourceItem: {fileID: 11400000, guid: 697fd42b4aa2b974db6d2bd90e54bc81, type: 2}
     resultItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+  - waterType: 0
+    sourceItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
+    resultItem: {fileID: 11400000, guid: e62c3ee5c489e9647bc6e9969c57677c, type: 2}
+  - waterType: 1
+    sourceItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
+    resultItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
+  - waterType: 2
+    sourceItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
+    resultItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+  - waterType: 0
+    sourceItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+    resultItem: {fileID: 11400000, guid: e62c3ee5c489e9647bc6e9969c57677c, type: 2}
+  - waterType: 1
+    sourceItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+    resultItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
+  - waterType: 2
+    sourceItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+    resultItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}

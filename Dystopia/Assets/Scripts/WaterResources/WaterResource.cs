@@ -11,6 +11,16 @@ public class WaterResource : MonoBehaviour
         public Item resultItem;
     }
 
+    [Serializable]
+    public struct ContainerItem {
+        public Item item;
+        public int amount;
+
+        public static ContainerItem Empty() {
+            return new ContainerItem { item = null, amount = 0};
+        }
+    }
+
     public enum WaterType {
         Pure, //0
         Dirty, //1
@@ -23,7 +33,7 @@ public class WaterResource : MonoBehaviour
     [SerializeField] List<ItemPair> itemAssets;
 
     private WaterType waterType;
-    private Item item; //Item in the water resource
+    private ContainerItem myItem; //Item in the water resource
 
     private void Awake() {
         SetRandomWaterType();
@@ -42,24 +52,23 @@ public class WaterResource : MonoBehaviour
         return waterResourceName + " of " + waterType.ToString() + " Water";
     }
 
-    public Item ReplaceItem() {
-        if(item==null) return null;
-        ItemPair itemPair = itemAssets.FindAll(x => x.waterType == waterType).Find( x => x.sourceItem.ID == item.ID);
+    public ContainerItem ReplaceItem() {
+        if(myItem.item==null) return ContainerItem.Empty();
+        ItemPair itemPair = itemAssets.FindAll(x => x.waterType == waterType).Find( x => x.sourceItem.ID == myItem.item.ID);
         if(itemPair!=null && itemPair.resultItem != null) {
-            item = null;
-            item = itemPair.resultItem;
-            return item;
+            myItem.item = null;
+            myItem.item = itemPair.resultItem;
+            return myItem;
         } else {
-            return null;
+            return ContainerItem.Empty();
         }
     }
 
-    public Item GetItem() {
-        return item;
+    public ContainerItem GetItem() {
+        return myItem;
     }
 
-    public void SetItem(Item newItem) {
-        item = null;
-        item = newItem.GetCopy();
+    public void SetItem(ContainerItem newItem) {
+        myItem = new ContainerItem { item = newItem.item, amount = newItem.amount};
     }
 }

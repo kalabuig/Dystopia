@@ -10,35 +10,44 @@ public class FireSource : MonoBehaviour
         public Item resultItem;
     }
 
+    [Serializable]
+    public struct ContainerItem {
+        public Item item;
+        public int amount;
+
+        public static ContainerItem Empty() {
+            return new ContainerItem { item = null, amount = 0};
+        }
+    }
+
     [SerializeField] private string fireSourceName = "Fire Source";
     [Space]
     [Header("Item sources and results")]
     [SerializeField] List<ItemPair> itemAssets;
 
-    private Item item; //Item in the fire source
+    private ContainerItem myItem; //Item in the fire source
 
     public string GetFireSourceName() {
         return fireSourceName;
     }
 
-    public Item ReplaceItem() {
-        if(item==null) return null;
-        ItemPair itemPair = itemAssets.Find( x => x.sourceItem.ID == item.ID);
+    public ContainerItem ReplaceItem() {
+        if(myItem.item==null) return ContainerItem.Empty();
+        ItemPair itemPair = itemAssets.Find( x => x.sourceItem.ID == myItem.item.ID);
         if(itemPair!=null && itemPair.resultItem != null) {
-            item = null;
-            item = itemPair.resultItem;
-            return item;
+            myItem.item = null;
+            myItem.item = itemPair.resultItem;
+            return myItem;
         } else {
-            return null;
+            return ContainerItem.Empty();
         }
     }
 
-    public Item GetItem() {
-        return item;
+    public ContainerItem GetItem() {
+        return myItem;
     }
 
-    public void SetItem(Item newItem) {
-        item = null;
-        item = newItem.GetCopy();
+    public void SetItem(ContainerItem newItem) {
+        myItem = new ContainerItem { item = newItem.item, amount = newItem.amount};
     }
 }
