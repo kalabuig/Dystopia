@@ -20,7 +20,7 @@ public static class Loader
     private static AsyncOperation loadingAsyncOperation;
 
     public static void Load(Scene scene) {
-        //Configurin the call back to load the scene
+        //Configuring the call back to load the scene
         onLoaderCallBack = () => { //When callback ...
             GameObject loadingGO = new GameObject("LoadingGO");
             loadingGO.AddComponent<LoadingMonoBehaviour>().StartCoroutine(LoadSceneAsync(scene)); //Load the scene

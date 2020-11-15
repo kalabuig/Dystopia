@@ -6,10 +6,17 @@ public class VideoSettings : MonoBehaviour
 {
     public Toggle fullScreenToggle;
     public Dropdown resolutionDropDown;
+    public Dropdown frameRateDropDown;
 
     private Resolution[] resolutions;
 
     private void Awake() {
+        FillResolutionDropDown();
+        FillFrameRateDropDown();
+    }
+
+    private void FillResolutionDropDown() {
+        //Fill the drop down with all the possible resolutions, select the used one
         resolutions = Screen.resolutions;
         resolutionDropDown.ClearOptions();
         List<string> resOptions = new List<string>();
@@ -26,6 +33,28 @@ public class VideoSettings : MonoBehaviour
         resolutionDropDown.RefreshShownValue();
     }
 
+    private void FillFrameRateDropDown() {
+        frameRateDropDown.ClearOptions();
+        List<string> frOptions = new List<string>();
+        frOptions.Add("30"); //0
+        frOptions.Add("60"); //1
+        frameRateDropDown.AddOptions(frOptions);
+        Debug.Log(Application.targetFrameRate + " frame rate");
+        switch(Application.targetFrameRate) {
+            case 60:
+                frameRateDropDown.value = 1;
+                break;
+            case 30:
+            default:
+                frameRateDropDown.value = 0;
+                break;
+        }
+    }
+
+    public int GetSelectedFrameRate() {
+        return frameRateDropDown.value == 1? 60 : 30;
+    }
+
     public void SetFullScreen(bool isFullScreen) {
         Screen.fullScreen = isFullScreen;
     }
@@ -37,5 +66,9 @@ public class VideoSettings : MonoBehaviour
 
     public void SetResolution(Resolution res) {
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+    }
+
+    public void SetFrameRate() {
+        Application.targetFrameRate = GetSelectedFrameRate();
     }
 }

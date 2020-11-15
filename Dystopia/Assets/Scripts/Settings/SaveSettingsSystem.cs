@@ -8,10 +8,16 @@ public static class SaveSettingsSystem
     private static string videoPath = Application.persistentDataPath + "videosettings.sav";
     private static string audioPath = Application.persistentDataPath + "audiosettings.sav";
 
+    private const int defaultFrameRate = 30;
+
     public static void SaveVideoSettings() {
+        SaveVideoSettings(defaultFrameRate);
+    }
+
+    public static void SaveVideoSettings(int myFrameRate) {
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(videoPath, FileMode.Create);
-        VideoData data = new VideoData();
+        VideoData data = new VideoData(myFrameRate);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -28,10 +34,10 @@ public static class SaveSettingsSystem
         }
     }
 
-    public static void SaveAudioSettings(float masterVolume) {
+    public static void SaveAudioSettings(float myMasterVolume) {
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(audioPath, FileMode.Create);
-        AudioData data = new AudioData(masterVolume);
+        AudioData data = new AudioData(myMasterVolume);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -52,10 +58,12 @@ public static class SaveSettingsSystem
     public class VideoData {
         public bool fullScreen;
         public int[] resolution;
+        public int frameRate;
 
-        public VideoData() {
+        public VideoData(int newFrameRate) {
             fullScreen = Screen.fullScreen;
             resolution = new int[2] {Screen.currentResolution.width, Screen.currentResolution.height};
+            frameRate = newFrameRate;
         }
     }
 

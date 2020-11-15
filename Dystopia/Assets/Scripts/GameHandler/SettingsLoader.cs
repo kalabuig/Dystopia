@@ -16,6 +16,7 @@ public class SettingsLoader : MonoBehaviour
     public void LoadVideoSettings() {
         SaveSettingsSystem.VideoData data = SaveSettingsSystem.LoadVideoSettings();
         Screen.SetResolution(data.resolution[0], data.resolution[1], data.fullScreen);
+        Application.targetFrameRate = data.frameRate;
     }
 
     public void LoadAudioSettings () {

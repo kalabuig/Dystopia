@@ -9,23 +9,31 @@ public class SettingsPanel : MonoBehaviour
     public VideoSettings videoSettings; 
 
     private void Start() {
-        //Load audio settings
-        SaveSettingsSystem.AudioData audio = SaveSettingsSystem.LoadAudioSettings();
-        audioSettings.masterAudioSlider.value = audio.masterSoundLevel;
-        //Load video settings
-        SaveSettingsSystem.VideoData video = SaveSettingsSystem.LoadVideoSettings();
-        videoSettings.fullScreenToggle.isOn = video.fullScreen;
-        Resolution res = Screen.currentResolution;
-        res.width = video.resolution[0];
-        res.height = video.resolution[1];
-        videoSettings.SetResolution(res);
-        Debug.Log(video.fullScreen + " " + video.resolution[0] + " " + video.resolution[1]); 
+        LoadAudioSettings();
+        LoadVideoSettings();
     }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.S)) {
             ExitWindow();
         }
+    }
+
+    private void LoadAudioSettings() {
+        //Load audio settings
+        SaveSettingsSystem.AudioData audio = SaveSettingsSystem.LoadAudioSettings();
+        audioSettings.masterAudioSlider.value = audio.masterSoundLevel;
+    }
+
+    private void LoadVideoSettings() {
+        //Load video settings
+        SaveSettingsSystem.VideoData video = SaveSettingsSystem.LoadVideoSettings();
+        videoSettings.fullScreenToggle.isOn = video.fullScreen; //full screen
+        Resolution res = Screen.currentResolution;
+        res.width = video.resolution[0];
+        res.height = video.resolution[1];
+        videoSettings.SetResolution(res); //resolution
+        videoSettings.SetFrameRate(); //framerate
     }
 
     public void ExitWindow() {
@@ -37,15 +45,13 @@ public class SettingsPanel : MonoBehaviour
 
     public void SaveVideoSettings() {
         //Save the video settings to a file
-        SaveSettingsSystem.SaveVideoSettings();
-        Debug.Log("Video Settings saved");
+        SaveSettingsSystem.SaveVideoSettings(Application.targetFrameRate);
     }
     
     public void SaveAudioSettings() {
         //Save the audio settings to a file
         if(audioSettings.mainAudioMixer.GetFloat("MasterVolume", out float volume)) {
             SaveSettingsSystem.SaveAudioSettings(volume);
-            Debug.Log("Audio Settings saved");
         }
     }
 
