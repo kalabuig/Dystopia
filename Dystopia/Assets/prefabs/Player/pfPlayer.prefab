@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &853954250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853954251}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853954251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853954250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3868298503565952387}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3868298501921837345
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +325,7 @@ GameObject:
   - component: {fileID: 3166381202252303753}
   - component: {fileID: 3868298502415412913}
   - component: {fileID: 3868298502415412914}
+  - component: {fileID: 487269463}
   m_Layer: 0
   m_Name: pfPlayer
   m_TagString: Player
@@ -316,6 +347,7 @@ Transform:
   - {fileID: 3868298503200052967}
   - {fileID: 3868298501921837344}
   - {fileID: 3868298502476667889}
+  - {fileID: 853954251}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -507,3 +539,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50ef1981cc226e4db1fa544d9f8cfd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &487269463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868298503565952389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fcc9b15f75a89d4ab3daadfa980deec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 853954251}
+  attackRange: 0.5
+  hittableLayers:
+    serializedVersion: 2
+    m_Bits: 0

@@ -11,6 +11,8 @@ public static class SoundManager
         Drink,
         ItemFound,
         ItemNotFound,
+        WoodenItemHitted,
+        MetalItemHitted,
     }
 
     //Static attributes no use just one instance (performance)

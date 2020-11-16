@@ -79,6 +79,8 @@ GameObject:
   - component: {fileID: -2161408788246812549}
   - component: {fileID: 5211521061862676799}
   - component: {fileID: 3066539391274375519}
+  - component: {fileID: 866705344376404150}
+  - component: {fileID: 1660228}
   m_Layer: 10
   m_Name: pfBox
   m_TagString: Untagged
@@ -246,3 +248,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAmount: 1
   maxAmount: 5
+--- !u!114 &866705344376404150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729428583084971122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d906daa15787c468682169c973ddc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTakeDamage: 1
+  maxHealth: 100
+--- !u!114 &1660228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729428583084971122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6060e48a1c161d4f90cad8e8ef02eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

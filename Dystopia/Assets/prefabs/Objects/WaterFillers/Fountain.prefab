@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2130150885855809499}
   - component: {fileID: 2130150885855809497}
   - component: {fileID: 2130150885855809502}
+  - component: {fileID: 1595519702}
+  - component: {fileID: 8254998959841831405}
   m_Layer: 11
   m_Name: Fountain
   m_TagString: Untagged
@@ -181,3 +183,29 @@ MonoBehaviour:
   - waterType: 2
     sourceItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
     resultItem: {fileID: 11400000, guid: 0cc985356b748bb4c9c4eb11edbe698f, type: 2}
+--- !u!114 &1595519702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130150885855809508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d906daa15787c468682169c973ddc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTakeDamage: 0
+  maxHealth: 100
+--- !u!114 &8254998959841831405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130150885855809508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6060e48a1c161d4f90cad8e8ef02eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

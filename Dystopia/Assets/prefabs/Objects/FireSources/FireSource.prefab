@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2130150885855809499}
   - component: {fileID: 2130150885855809497}
   - component: {fileID: -377174527262881268}
+  - component: {fileID: 7104148221423462555}
   m_Layer: 12
   m_Name: FireSource
   m_TagString: Untagged
@@ -159,6 +160,18 @@ MonoBehaviour:
     resultItem: {fileID: 11400000, guid: 1aa4c6d973cd2584084615374a7a4ef1, type: 2}
   - sourceItem: {fileID: 11400000, guid: d24602478b3267940972118626769dfb, type: 2}
     resultItem: {fileID: 11400000, guid: e62c3ee5c489e9647bc6e9969c57677c, type: 2}
+--- !u!114 &7104148221423462555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130150885855809508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6060e48a1c161d4f90cad8e8ef02eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8473364327073402237
 GameObject:
   m_ObjectHideFlags: 0

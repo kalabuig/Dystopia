@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameHandler : MonoBehaviour
 {
@@ -22,8 +21,12 @@ public class GameHandler : MonoBehaviour
     private GameObject waterFillerPanel;
     private GameObject fireSourcePanel;
     public GameObject textPanel;
+    public WorldObjectTooltip worldObjectTooltip;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
+
+    //Weapon
+    [SerializeField] private EquipmentSlot weaponSlot; 
 
     //Zoom
     private float zoom=100f; //Zoom level
@@ -96,8 +99,16 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public static bool IsMouseOverUI() {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
     private void SuscribeToCharacterEvents() {
         playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
+    }
+
+    public EquippableItem GetWeapon() {
+        return weaponSlot.item!=null? weaponSlot.item as EquippableItem : null;
     }
 
     private void Character_OnHealthZero(object sender, EventArgs e) {
