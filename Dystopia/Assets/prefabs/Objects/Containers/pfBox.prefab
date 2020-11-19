@@ -64,6 +64,18 @@ MonoBehaviour:
     weightChance: 2
   - item: {fileID: 11400000, guid: 1dd177e6be805504db22d5177194fc0a, type: 2}
     weightChance: 2
+  - item: {fileID: 11400000, guid: 9046ab8aa506a434ea8a297a6f2be1a0, type: 2}
+    weightChance: 1
+  - item: {fileID: 11400000, guid: 9ae97439fb6adfc4a8c913d4caa6bada, type: 2}
+    weightChance: 1
+  - item: {fileID: 11400000, guid: 52ef307ccdb009147a7e048d387976f9, type: 2}
+    weightChance: 2
+  - item: {fileID: 11400000, guid: 146fa2d0acc6c9244839871fcd6b4dff, type: 2}
+    weightChance: 2
+  - item: {fileID: 11400000, guid: 887fe7c78c5d0d44b8a189d0dd63c2eb, type: 2}
+    weightChance: 2
+  - item: {fileID: 11400000, guid: 8664847b7e6e8be41921cc38f1030f4c, type: 2}
+    weightChance: 2
 --- !u!1 &7729428583084971122
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Containers
   - WaterFillers
   - FireSources
-  - 
-  - 
+  - Enemies
+  - Player
   - 
   - 
   - 
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 1715433847
+    locked: 0
+  - name: Enemies
+    uniqueID: 2105813171
     locked: 0
   - name: Player
     uniqueID: 1120183309

@@ -200,16 +200,19 @@ public class GameHandler : MonoBehaviour
         }
         //Interact
         if(Input.GetKeyDown(KeyCode.E)) {
-            if(selectedContainer!=null) {
+            if(selectedContainer!=null) { //Open the interactive panel (it dependts of the type of object which player is interacting)
                 textPanel.SetActive(false);
                 if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("Containers")) {
-                    OpenScavengingPanel();
+                    if(scavengingPanel.activeSelf) CloseScavengingPanel();
+                    else OpenScavengingPanel();
                 }
                 if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("WaterFillers")) {
-                    OpenWaterFillerPanel();
+                    if(waterFillerPanel.activeSelf) CloseWaterFillerPanel();
+                    else OpenWaterFillerPanel();
                 }
                 if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("FireSources")) {
-                    OpenFireSourcePanel();
+                    if(fireSourcePanel.activeSelf) CloseFireSourcePanel();
+                    else OpenFireSourcePanel();
                 }
             }
         }

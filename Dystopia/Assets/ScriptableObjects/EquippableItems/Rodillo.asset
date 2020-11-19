@@ -16,10 +16,9 @@ MonoBehaviour:
   itemName: Rodillo
   icon: {fileID: 21300000, guid: 311080fcaad04f344a73c0449b5fda8d, type: 3}
   MaximumStacks: 1
-  isTool: 1
-  maxToolUses: 100
-  remainUses: 100
+  isMultiUsable: 0
+  maxMultiUses: 0
   warm: 0
   protection: 0
-  damage: 2
+  damage: 5
   equipmentType: 7

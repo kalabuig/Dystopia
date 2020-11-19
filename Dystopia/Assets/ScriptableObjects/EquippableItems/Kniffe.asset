@@ -15,10 +15,10 @@ MonoBehaviour:
   id: d2db8fdf4543b0b4fb2b5d58fa35588a
   itemName: Kniffe
   icon: {fileID: 21300000, guid: 1cc0a49ddc1eeda409442c7600a7eea3, type: 3}
-  MaximumStacks: 100
+  MaximumStacks: 1
   isMultiUsable: 1
   maxMultiUses: 100
   warm: 0
   protection: 0
-  damage: 5
+  damage: 10
   equipmentType: 7

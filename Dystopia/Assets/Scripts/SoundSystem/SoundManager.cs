@@ -13,6 +13,7 @@ public static class SoundManager
         ItemNotFound,
         WoodenItemHitted,
         MetalItemHitted,
+        AttackMele,
     }
 
     //Static attributes no use just one instance (performance)
