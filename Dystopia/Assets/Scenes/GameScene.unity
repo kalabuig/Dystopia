@@ -25304,6 +25304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 466729972633154217, guid: b3f8596bfed6c7445aca1dfcf949bffe, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3f8596bfed6c7445aca1dfcf949bffe, type: 3}
 --- !u!1001 &2130150886014407034
@@ -25370,6 +25374,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 487269463, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
+      propertyPath: hittableLayers.m_Bits
+      value: 11264
+      objectReference: {fileID: 0}
     - target: {fileID: 3868298503565952387, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.95

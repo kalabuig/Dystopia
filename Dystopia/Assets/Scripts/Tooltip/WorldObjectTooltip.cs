@@ -23,14 +23,18 @@ public class WorldObjectTooltip : MonoBehaviour
 
     public string GetName(GameObject go) {
         string nameToReturn = "";
+        //Container
         nameToReturn = go.GetComponent<Container>()?.GetContainerName();
-        if(nameToReturn!=null) return nameToReturn;
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
+        //Water Resource
         nameToReturn = go.GetComponent<WaterResource>()?.GetWaterResourceName();
-        Debug.Log(nameToReturn);
-        if(nameToReturn!=null) return nameToReturn;
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
+        //Fire Source
         nameToReturn = go.GetComponent<FireSource>()?.GetFireSourceName();
-        Debug.Log(nameToReturn);
-        if(nameToReturn!=null) return nameToReturn;
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
+        //Enemy
+        nameToReturn = go.GetComponent<Enemy>()?.GetEnemyName();
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
         return "unknown";
     }
 }

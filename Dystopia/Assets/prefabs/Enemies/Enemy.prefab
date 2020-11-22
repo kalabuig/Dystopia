@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 466729972418307485}
   - component: {fileID: 466729972418307482}
   - component: {fileID: 466729972418307484}
+  - component: {fileID: 1196333862}
+  - component: {fileID: 2541905465976159471}
+  - component: {fileID: 3276259074533921013}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -154,6 +157,54 @@ MonoBehaviour:
   speed: 40
   secondsSearching: 3
   amountOfSearchingsToDo: 3
+  damage: 1
+  attackDelayInSeconds: 0.5
+  timeBetweenAttacks: 1
+--- !u!114 &1196333862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466729972418307481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6060e48a1c161d4f90cad8e8ef02eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2541905465976159471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466729972418307481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2edf5772f83eeb49b25384cd3f11698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyType: 0
+  _enemyName: Enemy
+  _health: 100
+  _damage: 10
+  _attackDelay: 0.5
+  _timeBetweenAttacks: 1
+--- !u!114 &3276259074533921013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466729972418307481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d906daa15787c468682169c973ddc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTakeDamage: 1
+  maxHealth: 50
+  hitSound: 6
 --- !u!1 &466729972633154215
 GameObject:
   m_ObjectHideFlags: 0

@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canTakeDamage: 1
   maxHealth: 100
+  hitSound: 6
 --- !u!114 &1660228
 MonoBehaviour:
   m_ObjectHideFlags: 0

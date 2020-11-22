@@ -6,6 +6,9 @@ public class Hittable : MonoBehaviour
     [SerializeField] private bool canTakeDamage = true;
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
+    
+    [Space]
+    [SerializeField] private SoundManager.Sound hitSound;
 
     //private Material matWhite;
     //private Material matDefault;
@@ -22,8 +25,8 @@ public class Hittable : MonoBehaviour
     }
 
     public void TakeDamage(int damage) {
+        SoundManager.PlaySound(hitSound);
         if(canTakeDamage) {
-            SoundManager.PlaySound(SoundManager.Sound.WoodenItemHitted);
             currentHealth -= damage;
             //spriteRenderer.material = matWhite;
             spriteRenderer.color = colorWhite;
@@ -33,8 +36,6 @@ public class Hittable : MonoBehaviour
             }
             //Invoke("ResetMaterial", .1f);
             Invoke("ResetColor", .1f);
-        } else {
-            SoundManager.PlaySound(SoundManager.Sound.MetalItemHitted);
         }
     }
 
