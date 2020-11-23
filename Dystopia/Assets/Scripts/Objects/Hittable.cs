@@ -24,9 +24,10 @@ public class Hittable : MonoBehaviour
         colorDefault = spriteRenderer.color;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage, bool isCriticalHit) {
         SoundManager.PlaySound(hitSound);
         if(canTakeDamage) {
+            DamagePopup.Create(transform.position, damage, isCriticalHit);
             currentHealth -= damage;
             //spriteRenderer.material = matWhite;
             spriteRenderer.color = colorWhite;

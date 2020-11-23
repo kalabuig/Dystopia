@@ -11,7 +11,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] protected Image itemImage;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
-    public event Action<ItemSlot> OnPointerExitEvent;
+    public event Action OnPointerExitEvent;
     public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
     public event Action<ItemSlot> OnEndDragEvent;
@@ -93,7 +93,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         //itemTooltip.HideTooltip();
         if(OnPointerExitEvent != null)
-            OnPointerExitEvent(this); //Throw event OnPointerExitEvent
+            OnPointerExitEvent(); //Throw event OnPointerExitEvent
     }
 
     public void OnBeginDrag(PointerEventData eventData)

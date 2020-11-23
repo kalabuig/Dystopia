@@ -30,6 +30,8 @@ public class Character : MonoBehaviour
     public int defense = 0;
     
     public float attackSpeed = 1f; //seconds
+    [Range(0,100)]
+    public int criticalChance = 15;
     public float moveSpeed = 60f;
     
     public float craftSpeed = 5f; //seconds

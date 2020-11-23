@@ -28,6 +28,7 @@ public class StatsPanel : MonoBehaviour
         stats = new List<StatData>();
         if(character==null) return;
         stats.Add(new StatData { statName = "Moving Speed", statValue = (int)character.moveSpeed });
+        stats.Add(new StatData { statName = @"Critical Chance (%)", statValue = character.criticalChance });
         stats.Add(new StatData { statName = "Scavenging Time", statValue = (int)character.scavengingSpeed });
         stats.Add(new StatData { statName = "Investigation Time", statValue = (int)character.investigationSpeed });
         stats.Add(new StatData { statName = "Crafting Time", statValue = (int)character.craftSpeed });

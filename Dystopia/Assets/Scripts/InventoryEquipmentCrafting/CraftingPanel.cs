@@ -10,7 +10,7 @@ public class CraftingPanel : MonoBehaviour
     //[SerializeField] ResultSlot resultSlot; //Result slot (UI)
 
     public event Action<ItemSlot> OnPointerEnterEvent;
-    public event Action<ItemSlot> OnPointerExitEvent;
+    public event Action OnPointerExitEvent;
     public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
     public event Action<ItemSlot> OnEndDragEvent;

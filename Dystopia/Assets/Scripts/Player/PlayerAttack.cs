@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private GameHandler gameHandler;
+    private Character character;
 
     public Transform attackPoint;
     [SerializeField] private float attackRange = 5f;
@@ -20,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake() {
         gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
+        character = GetComponent<Character>();
     }
 
     private void Update() {
@@ -63,7 +65,9 @@ public class PlayerAttack : MonoBehaviour
         Collider2D[] hittedObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRange * scale, hittableLayers);
         foreach(Collider2D obj in hittedObjects) {
             if(obj.isTrigger) continue; //We don't want to hit trigger colliders
-            obj.GetComponent<Hittable>()?.TakeDamage(GetDamageAmount());
+            bool isCriticalHit = UnityEngine.Random.Range(0,100) < character.criticalChance;
+            int damage = isCriticalHit ? GetDamageAmount() * 2 : GetDamageAmount();
+            obj.GetComponent<Hittable>()?.TakeDamage(damage, isCriticalHit);
         }
         ScaleAttackTrail(scale);
         StartCoroutine("ShowAttackTrail"); 

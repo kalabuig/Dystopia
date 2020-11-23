@@ -20,6 +20,7 @@ public class BaseEnemyAI : MonoBehaviour
     [SerializeField] private float fovAngle = 60f; //Field Of View Angle
     [Space]
     [SerializeField] private float speed = 20f;
+    [SerializeField] private float rotationSpeed = 90f;
     [Space]
     [SerializeField] private float secondsSearching = 3f; //Seconds searching the player after we lost sight of it
     [SerializeField] private int amountOfSearchingsToDo = 3;
@@ -162,8 +163,9 @@ public class BaseEnemyAI : MonoBehaviour
 
     private void SearchPlayer() {
         if(Time.time < timePlayerHasBeenLost + (secondsSearching * searchingCounter) ) {
-            moveDir = myDirection();
-            myRigidbody2D?.MovePosition(transform.position + moveDir * speed * Time.deltaTime);
+            transform.Rotate ( new Vector3(0,0,1) * ( rotationSpeed * Time.deltaTime ) );
+            //moveDir = myDirection();
+            //myRigidbody2D?.MovePosition(transform.position + moveDir * speed * Time.deltaTime);
         } else {
             float randAngle = Random.Range(0, 360); //random angle in degrees
             transform.eulerAngles = new Vector3(0,0, randAngle); //Set a random direction

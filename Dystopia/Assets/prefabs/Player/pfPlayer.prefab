@@ -600,6 +600,7 @@ MonoBehaviour:
   attack: 1
   defense: 0
   attackSpeed: 1
+  criticalChance: 15
   moveSpeed: 60
   craftSpeed: 5
   investigationSpeed: 5
@@ -638,5 +639,5 @@ MonoBehaviour:
   attackRange: 5
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 7168
+    m_Bits: 11264
   srAttackTrail: {fileID: 1856394950}

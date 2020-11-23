@@ -6,7 +6,7 @@ using System;
 public class CraftingBookPanel : MonoBehaviour
 {
     public event Action<RecipeSlot> OnPointerEnterEvent;
-    public event Action<RecipeSlot> OnPointerExitEvent;
+    public event Action OnPointerExitEvent;
 
     [SerializeField] CraftingRecipeUI pfRecipeUI; //prefab of the recipe row
     [SerializeField] RectTransform recipeUIParent; //content object of the scroll view

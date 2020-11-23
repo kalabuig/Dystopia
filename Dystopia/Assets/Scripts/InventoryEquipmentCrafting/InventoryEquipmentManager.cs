@@ -184,7 +184,7 @@ public class InventoryEquipmentManager : MonoBehaviour
         }
     }
 
-    private void HideToolTip(ItemSlot itemSlot) {
+    private void HideToolTip() {
             itemTooltip.HideTooltip();
     }
 
@@ -192,10 +192,6 @@ public class InventoryEquipmentManager : MonoBehaviour
         if(recipeSlot != null) {
             itemTooltip.ShowTooltip(recipeSlot.item);
         }
-    }
-
-    private void HideToolTip(RecipeSlot recipeSlot) {
-            itemTooltip.HideTooltip();
     }
 
     private void BeginDrag(ItemSlot itemSlot) {

@@ -10,7 +10,11 @@ public class WOTooltipCalls : MonoBehaviour
     }
 
     private void OnMouseEnter() {
-        gameHandler.worldObjectTooltip.ShowTooltip(this.gameObject);
+        if(GameHandler.IsMouseOverUI() == false) {
+            gameHandler.worldObjectTooltip.ShowTooltip(this.gameObject);
+        } else {
+            gameHandler.worldObjectTooltip.HideTooltip();
+        }
     }
 
     void OnMouseExit()
