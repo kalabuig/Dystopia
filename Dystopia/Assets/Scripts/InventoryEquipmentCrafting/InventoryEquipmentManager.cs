@@ -15,12 +15,15 @@ public class InventoryEquipmentManager : MonoBehaviour
     [SerializeField] FireSourceInventory fireSourceInventory;
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
+    [SerializeField] StatsPanel statsPanel;
+    GameObject player;
     Character character;
 
     private ItemSlot draggedSlot; //what slot we started with to drag
 
     private void Awake() {
-        character = GameObject.Find("Player")?.GetComponent<Character>(); //Get Character script from the player
+        player = GameObject.Find("Player");
+        character = player?.GetComponent<Character>(); //Get Character script from the player
         //Right Click (Equip / Unequip)
         inventory.OnRightClickEvent += InventoryRightClick;
         equipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
@@ -68,6 +71,13 @@ public class InventoryEquipmentManager : MonoBehaviour
         fireSourceInventory.OnEndDragEvent += EndDrag;
         fireSourceInventory.OnDragEvent += Drag;
         fireSourceInventory.OnDropEvent += Drop;
+        //Equipment Item Change
+        equipmentPanel.OnItemChanged += EquipmentChange;
+    }
+
+    private void EquipmentChange() {
+        statsPanel.RefreshStats();
+        player.GetComponent<CharacterMovement>()?.RefreshSpeedValue();
     }
 
     private void InventoryRightClick(ItemSlot itemSlot) {

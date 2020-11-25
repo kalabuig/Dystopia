@@ -17,9 +17,14 @@ public class ItemTooltip : MonoBehaviour
         if(item is EquippableItem) { //if it is an equippable item
             EquippableItem equippableItem = (EquippableItem)item;
             writeEquipmentType(equippableItem);
-            if(equippableItem.warm != 0) writeAttribute("Warm", equippableItem.warm);
-            if(equippableItem.protection != 0) writeAttribute("Protection", equippableItem.protection);
-            if(equippableItem.damage != 0) writeAttribute("Damage", equippableItem.damage);
+            //Foreach modifier
+            foreach (StatsModifiers.Modifier modifier in Enum.GetValues(typeof(StatsModifiers.Modifier))) {
+                object obj = StatsModifiers.GetFieldValue(equippableItem, StatsModifiers.EnumToString(modifier));
+                int intValue = 0;
+                if(Int32.TryParse(obj.ToString(), out intValue)) {
+                    if(intValue!=0) writeAttribute(EnumNameToNiceName(StatsModifiers.EnumToString(modifier)), intValue);
+                }
+            }
         }
         if(item is UsableItem) { //if it is a usable item
             writeEffects(item);
@@ -34,6 +39,33 @@ public class ItemTooltip : MonoBehaviour
             "</color>",
             "\n\n"
         );
+    }
+
+    private string EnumNameToNiceName(string enumName) {
+        switch(enumName) {
+            case("damage"):
+                return "Damage";
+            case("criticalChance"):
+                return "Critical Chance";
+            case("moveSpeed"):
+                return "Movement Speed";
+            case("protection"):
+                return "Defense";
+            case("craftSpeed"):
+                return "Crafting Speed";
+            case("investigationSpeed"):
+                return "Investigation Speed";
+            case("scavengingSpeed"):
+                return "Scavenging Speed";
+            case("fillWaterSpeed"):
+                return "Water Filling Speed";
+            case("useFireSpeed"):
+                return "Fire Use Speed";
+            case("warm"):
+                return "Warm";
+            default:
+                return enumName;
+        }
     }
 
     private void writeAttribute(string attributeName, int attributeValue) {

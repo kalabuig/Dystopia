@@ -13,7 +13,8 @@ public class ScavengingInventory : WorldInventory
     }
 
     public void Scavenge() {
-        DoAction(character.scavengingSpeed);
+        float scavengingSpeed = character.scavengingSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.scavengingSpeed);
+        DoAction(scavengingSpeed);
     }
 
     public void StopScavenge() {

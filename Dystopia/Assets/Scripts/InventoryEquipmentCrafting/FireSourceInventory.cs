@@ -13,7 +13,8 @@ public class FireSourceInventory : WorldInventory
 
     public void UseFire() {
         if(itemSlots==null || itemSlots[0]==null || itemSlots[0].item==null) return;
-        DoAction(character.useFireSpeed);
+        float useFireSpeed = character.useFireSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.useFireSpeed);
+        DoAction(useFireSpeed);
     }
 
     public void StopUsingFire() {

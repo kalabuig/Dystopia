@@ -15,6 +15,7 @@ public class EquipmentPanel : MonoBehaviour
     public event Action<ItemSlot> OnEndDragEvent;
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
+    public event Action OnItemChanged;
 
     private void OnValidate() { //Only works in editor mode
         if(equipmentSlotsParent!=null)
@@ -30,6 +31,7 @@ public class EquipmentPanel : MonoBehaviour
             equipmentSlots[i].OnEndDragEvent += OnEndDragEvent; //Subscribe to event (listening event)
             equipmentSlots[i].OnDragEvent += OnDragEvent; //Subscribe to event (listening event)
             equipmentSlots[i].OnDropEvent += OnDropEvent; //Subscribe to event (listening event)
+            equipmentSlots[i].OnItemChanged += OnItemChanged;
         }
     }
 
@@ -53,5 +55,15 @@ public class EquipmentPanel : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public List<EquippableItem> GetEquippedItems() {
+        List<EquippableItem> itemsList = new List<EquippableItem>();
+        foreach(EquipmentSlot slot in equipmentSlots) {
+            if(slot != null && slot.item != null) {
+                itemsList.Add((EquippableItem)slot.item);
+            }
+        }
+        return itemsList;
     }
 }

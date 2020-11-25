@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private Camera cam;
     private FieldOfView fieldOfView;
     private Character character;
+    private StatsModifiers statsModifiers;
 
     private float speed; //character speed
     private Vector3 mousePos; //mouse position
@@ -19,14 +20,19 @@ public class CharacterMovement : MonoBehaviour
 
     private void Awake()
     {
-        character = gameObject.GetComponent<Character>();
-        speed = character.moveSpeed;
-        characterAnimator = gameObject.GetComponent<CharacterAnimator>();
+        character = GetComponent<Character>();
+        statsModifiers = GetComponent<StatsModifiers>();
+        RefreshSpeedValue();
+        characterAnimator = GetComponent<CharacterAnimator>();
         characterRigidbody2D = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         GameObject go_fieldOfView = GameObject.Find("FieldOfView");
         if(go_fieldOfView!=null)
             fieldOfView = go_fieldOfView.GetComponent<FieldOfView>();
+    }
+
+    public void RefreshSpeedValue() {
+        speed = character.moveSpeed + statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.moveSpeed);
     }
 
     private void Update()

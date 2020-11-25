@@ -17,6 +17,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public event Action<ItemSlot> OnEndDragEvent;
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
+    public event Action OnItemChanged;
 
     private Color alpha1 = Color.white;
     private Color alpha0 = new Color(1,1,1,0);
@@ -32,6 +33,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 itemImage.sprite = _item.icon;
                 itemImage.color = alpha1;
             }
+            if(OnItemChanged!=null) OnItemChanged(); //tell suscribers about the item change in the slot
         }
     }
 

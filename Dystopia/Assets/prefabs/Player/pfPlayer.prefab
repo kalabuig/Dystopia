@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 3868298502415412913}
   - component: {fileID: 3868298502415412914}
   - component: {fileID: 487269463}
+  - component: {fileID: 1292308816}
   m_Layer: 14
   m_Name: pfPlayer
   m_TagString: Player
@@ -593,12 +594,12 @@ MonoBehaviour:
   _hungry: 100
   _thirst: 100
   _vigor: 100
-  maxHealth: 100
-  maxHungry: 100
-  maxThirst: 100
-  maxVigor: 100
-  attack: 1
-  defense: 0
+  _maxHealth: 100
+  _maxHungry: 100
+  _maxThirst: 100
+  _maxVigor: 100
+  _attack: 1
+  _defense: 0
   attackSpeed: 1
   criticalChance: 15
   moveSpeed: 60
@@ -641,3 +642,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 11264
   srAttackTrail: {fileID: 1856394950}
+--- !u!114 &1292308816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868298503565952389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add46a5ee42a9d44db1d1d8ae203b102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

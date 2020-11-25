@@ -11,7 +11,8 @@ public class WaterFillerInventory : WorldInventory
 
     public void FillWithWater() {
         if(itemSlots==null || itemSlots[0]==null || itemSlots[0].item==null) return;
-        DoAction(character.fillWaterSpeed);
+        float fillWaterSpeed = character.fillWaterSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.fillWaterSpeed);
+        DoAction(fillWaterSpeed);
     }
 
     public void StopFillWithWater() {

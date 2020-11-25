@@ -28,6 +28,9 @@ public class CraftingRecipeUI : MonoBehaviour
     private Character _character; //To get speeds
     public Character character { get => _character;}
 
+    private StatsModifiers _statsModifiers; //To get speed modifiers
+    public StatsModifiers statsModifiers { get => _statsModifiers;}
+
     private CraftingRecipe _craftingRecipe;
     public CraftingRecipe craftingRecipe {
         get { return _craftingRecipe; }
@@ -36,7 +39,9 @@ public class CraftingRecipeUI : MonoBehaviour
 
     private void Awake() {
         recipeSlots = GetComponentsInChildren<RecipeSlot>(includeInactive: true);
-        _character = GameObject.Find("Player")?.GetComponent<Character>();
+        GameObject player = GameObject.Find("Player");
+        _character = player?.GetComponent<Character>();
+        _statsModifiers = player?.GetComponent<StatsModifiers>();
         isDoingAction = false;
     }
 
@@ -52,7 +57,8 @@ public class CraftingRecipeUI : MonoBehaviour
         if(craftingRecipe != null && inventory != null) { //if we have a recipe and an inventory
             if(craftingRecipe.CanCraft(inventory)) { //if there are enough materials in inventory
                 if(inventory.IsFull() == false) { //if inventory is not full
-                    DoAction(character.craftSpeed);
+                    float craftingTime = character.craftSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.craftSpeed);
+                    DoAction(craftingTime);
                 } else { //Inventory is full
                     //Show message (TODO)
                     Debug.Log("Inventory Full");

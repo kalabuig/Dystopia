@@ -17,19 +17,25 @@ public class InvestigateRecipe : MonoBehaviour
     private Character _character; //To get speeds
     public Character character { get => _character;}
 
+    private StatsModifiers _statsModifiers; //To get speed modifiers
+    public StatsModifiers statsModifiers { get => _statsModifiers;}
+
     private ComponentSlot[] componentSlots;
     private List<CraftingRecipe> allCraftingRecipes;
 
     private void Awake() {
         componentSlots = GetComponent<CraftingPanel>()?.componentSlots;
         allCraftingRecipes = GameObject.Find("RecipeAssets")?.GetComponent<RecipeAssets>()?.GetCraftingRecipesList();
-        _character = GameObject.Find("Player")?.GetComponent<Character>();
+        GameObject player = GameObject.Find("Player");
+        _character = player?.GetComponent<Character>();
+        _statsModifiers = player?.GetComponent<StatsModifiers>();
         isDoingAction = false;
     }
 
     public void TryInvestigation() {
         if(ComponentSlotsEmpty() == true) return;
-        DoAction(character.investigationSpeed);
+        float investigationTime = character.investigationSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.moveSpeed);
+        DoAction(investigationTime);
     }
 
     private void TimeTickSystem_OnTick(object sender, TimeTickSystem.OnTickEventArgs e) {

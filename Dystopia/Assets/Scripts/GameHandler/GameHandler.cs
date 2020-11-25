@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class GameHandler : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameHandler : MonoBehaviour
 
     //Panels
     private GameObject characterPanel;
+    private EquipmentPanel equipmentPanel;
     private GameObject craftingPanel;
     private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
@@ -48,6 +50,8 @@ public class GameHandler : MonoBehaviour
         playerTransform = GameObject.Find("Player").transform;
         //CharacterPanel
         characterPanel = GameObject.Find("CharacterPanel");
+        //EquipmentPanel
+        equipmentPanel = GameObject.Find("EquipmentPanel")?.GetComponent<EquipmentPanel>();
         //Crafting Panel
         craftingPanel = GameObject.Find("CraftingPanel");
         //Craftin Book Panel
@@ -109,6 +113,10 @@ public class GameHandler : MonoBehaviour
 
     public EquippableItem GetWeapon() {
         return weaponSlot.item!=null? weaponSlot.item as EquippableItem : null;
+    }
+
+    public List<EquippableItem> GetEquippedItems() {
+        return equipmentPanel.GetEquippedItems();
     }
 
     private void Character_OnHealthZero(object sender, EventArgs e) {

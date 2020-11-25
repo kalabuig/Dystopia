@@ -18,13 +18,18 @@ public class WorldInventory : Inventory
     private Character _character; //To get speeds
     public Character character { get => _character;}
 
+    private StatsModifiers _statsModifiers; //To get speed modifiers
+    public StatsModifiers statsModifiers { get => _statsModifiers;}
+
     //Management of the time for do an action
     protected int actionTick;
     protected int actionTickMax;
     protected bool isDoingAction;
 
     private void Awake() {
-        _character = GameObject.Find("Player")?.GetComponent<Character>();
+        GameObject player = GameObject.Find("Player");
+        _character = player?.GetComponent<Character>();
+        _statsModifiers = player?.GetComponent<StatsModifiers>();
     }
 
     public void DoAction(float secondsToFinishAction) {

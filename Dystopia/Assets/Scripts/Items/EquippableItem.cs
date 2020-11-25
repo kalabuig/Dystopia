@@ -24,6 +24,13 @@ public class EquippableItem : Item
     [Header("Modifiers")]
     public int warm; //How many increases your warm
     public int protection; //How many increases your protection to physical damage
+    public int moveSpeed; //How fast increase / decrease your movement
+    public int criticalChance; //Increase or decrease what chance of criticla hit do you have
+    public float craftSpeed; //seconds increased or decreased when crafting
+    public float investigationSpeed; //seconds increased or decreased when doing and investigation
+    public float scavengingSpeed; //seconds increased or decreased when scavenging
+    public float fillWaterSpeed; //seconds increased or decreased when filling water
+    public float useFireSpeed; //seconds increased or decreased when using fire
     [Space]
     [Header("Equipment Type")]
     public EquipmentType equipmentType;

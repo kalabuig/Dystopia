@@ -89,10 +89,12 @@
      <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\RandomExistance.cs" />
      <Compile Include="Assets\Scripts\Settings\SaveSettingsSystem.cs" />
+     <Compile Include="Assets\Scripts\Texts\DamagePopup.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\FireSourceInventory.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundAssets.cs" />
      <Compile Include="Assets\Scripts\Objects\Hittable.cs" />
+     <Compile Include="Assets\Scripts\Texts\TextAssets.cs" />
      <Compile Include="Assets\Scripts\TimeTickSystem\TimeTickSystem.cs" />
      <Compile Include="Assets\Scripts\Enemies\BaseEnemyAI.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\UsableItemEffect.cs" />
@@ -117,8 +119,7 @@
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\Texts\DamagePopup.cs" />
-     <Compile Include="Assets\Scripts\Texts\TextAssets.cs" />
+     <Compile Include="Assets\Scripts\Player\StatsModifiers.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

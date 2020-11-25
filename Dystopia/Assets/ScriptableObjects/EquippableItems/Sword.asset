@@ -20,6 +20,13 @@ MonoBehaviour:
   maxMultiUses: 100
   warm: 0
   protection: 0
+  moveSpeed: 0
+  criticalChance: 10
+  craftSpeed: 0
+  investigationSpeed: 0
+  scavengingSpeed: 0
+  fillWaterSpeed: 0
+  useFireSpeed: 0
   equipmentType: 7
   damage: 30
   attackRange: 1
