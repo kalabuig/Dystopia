@@ -49,7 +49,6 @@ public class Hittable : MonoBehaviour
     }
 
     private void DestroyObject(){
-        Debug.Log("Destroy object " + this.name);
         //TODO: Destroy object and leave destroyed parts on the ground
         Destroy(this.gameObject);
     }

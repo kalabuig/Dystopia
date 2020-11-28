@@ -28,7 +28,10 @@ public class BaseEnemyAI : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackDelayInSeconds = 0.5f;
     [SerializeField] private float timeBetweenAttacks = 1f;
+    [Space]
+    [SerializeField] private int experience = 25;
 
+    private GameHandler gameHandler;
     private Transform player;
     private Vector3 lastPlayerPosition;
     private State myState; //State machine of the enemy
@@ -41,7 +44,8 @@ public class BaseEnemyAI : MonoBehaviour
     private float distanceToAttackPoint;
 
     private void Awake() {
-        player = GameObject.Find("Player")?.transform;
+        gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
+        player = gameHandler.playerTransform;
         myRigidbody2D = GetComponent<Rigidbody2D>();
         distanceToAttackPoint = 2f * Vector3.Distance(attackPoint.position,transform.position); //Distance calculated from the center, so we need to multiply by 2
     }
@@ -184,5 +188,9 @@ public class BaseEnemyAI : MonoBehaviour
             myState = State.Chasing;
             Debug.Log("Chasing");
         }
+    }
+
+    private void OnDestroy() {
+        gameHandler.levelSystem.AddExperience(experience);
     }
 }

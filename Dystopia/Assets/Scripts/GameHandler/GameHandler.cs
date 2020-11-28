@@ -9,7 +9,8 @@ public class GameHandler : MonoBehaviour
     private CameraBehavior cameraBehavior;
     
     //Player
-    private Transform playerTransform;
+    private Transform _playerTransform;
+    public Transform playerTransform { get => _playerTransform;}
     
     //Container
     private static GameObject selectedContainer;
@@ -30,6 +31,11 @@ public class GameHandler : MonoBehaviour
     //Weapon
     [SerializeField] private EquipmentSlot weaponSlot; 
 
+    //Player Level and experience (UI)
+    [SerializeField] private ExperienceProgressBar experienceProgressBar;
+    private LevelSystem _levelSystem;
+    public LevelSystem levelSystem { get => _levelSystem;}
+
     //Zoom
     private float zoom=100f; //Zoom level
     private float zoomSpeed = 150f; //Zoom in and out speed
@@ -47,7 +53,7 @@ public class GameHandler : MonoBehaviour
         //Camera
         cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
         //Player transform
-        playerTransform = GameObject.Find("Player").transform;
+        _playerTransform = GameObject.Find("Player").transform;
         //CharacterPanel
         characterPanel = GameObject.Find("CharacterPanel");
         //EquipmentPanel
@@ -66,13 +72,16 @@ public class GameHandler : MonoBehaviour
         pausePanel = GameObject.Find("PausePanel");
         //GameOverPanel
         gameOverPanel = GameObject.Find("GameOverPanel");
+        //LevelSystem
+        CreateLevelSystem();
     }
+
     void Start()
     {
         GetComponent<WeatherHandler>().SetWeather(WeatherHandler.WeatherType.None); //No weather effects
         SuscribeToCharacterEvents();
         TimeTickSystem.Create(); //Create the TimeTickSystem game object
-        cameraBehavior.setFocus(() => playerTransform.position); //Camera will follow the player
+        cameraBehavior.setFocus(() => _playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
         CloseInventoryPanel();
         CloseCraftingPanel();
@@ -108,7 +117,7 @@ public class GameHandler : MonoBehaviour
     }
 
     private void SuscribeToCharacterEvents() {
-        playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
+        _playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
     }
 
     public EquippableItem GetWeapon() {
@@ -319,5 +328,26 @@ public class GameHandler : MonoBehaviour
 
     public void CloseFireSourcePanel() {
         fireSourcePanel.SetActive(false);
+    }
+
+    private void CreateLevelSystem() {
+        _levelSystem = new LevelSystem(); //Create level system
+        experienceProgressBar.SetLevelSystem(_levelSystem); //Set level system to the experience progress bar
+        levelSystem.OnExperienceChanged += LevelSystem_OnExperienceChanged; //suscribe to event
+        levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged; //suscribe to event
+    }
+
+    //Experience changed
+    private void LevelSystem_OnExperienceChanged(object sender, LevelSystem.AmountEventArgs e)
+    {
+        //TODO: Show XP popup gain
+        Debug.Log("+" + e.amount + " XP  -- player position " + playerTransform.position.ToString());
+        XPPopup.Create(playerTransform.position, e.amount);
+    }
+
+    //Level changed
+    private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
+    {
+        //TODO: Pause Game and show passive skills selection panel
     }
 }

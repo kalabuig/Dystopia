@@ -31,6 +31,7 @@ public class FireSourceInventory : WorldInventory
                 itemSlots[0].item = newItem.item.GetCopy();
                 itemSlots[0].amount = newItem.amount; //rule: if we have half raw meal, we get half cooked meal
                 SoundManager.PlaySound(SoundManager.Sound.ItemFound);
+                gameHandler.levelSystem.AddExperience(10);
             } else {
                 SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
             }

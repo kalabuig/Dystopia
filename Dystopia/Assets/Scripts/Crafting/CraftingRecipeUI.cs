@@ -28,6 +28,8 @@ public class CraftingRecipeUI : MonoBehaviour
     private Character _character; //To get speeds
     public Character character { get => _character;}
 
+    private GameHandler gameHandler;
+
     private StatsModifiers _statsModifiers; //To get speed modifiers
     public StatsModifiers statsModifiers { get => _statsModifiers;}
 
@@ -38,6 +40,7 @@ public class CraftingRecipeUI : MonoBehaviour
     }
 
     private void Awake() {
+        gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
         recipeSlots = GetComponentsInChildren<RecipeSlot>(includeInactive: true);
         GameObject player = GameObject.Find("Player");
         _character = player?.GetComponent<Character>();
@@ -120,6 +123,7 @@ public class CraftingRecipeUI : MonoBehaviour
                 UnSuscribe(); //unsubscribe from the tick system
                 ResetProgress();
                 craftingRecipe.Craft(inventory);
+                gameHandler.levelSystem.AddExperience(10);
             }
             //show progress
             progressImage.fillAmount = actionTick * 1f / actionTickMax;

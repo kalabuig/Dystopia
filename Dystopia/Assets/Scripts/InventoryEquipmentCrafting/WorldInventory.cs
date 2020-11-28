@@ -21,12 +21,16 @@ public class WorldInventory : Inventory
     private StatsModifiers _statsModifiers; //To get speed modifiers
     public StatsModifiers statsModifiers { get => _statsModifiers;}
 
+    private GameHandler _gameHandler; //To get Level System
+    public GameHandler gameHandler { get => _gameHandler;}
+
     //Management of the time for do an action
     protected int actionTick;
     protected int actionTickMax;
     protected bool isDoingAction;
 
     private void Awake() {
+        _gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
         GameObject player = GameObject.Find("Player");
         _character = player?.GetComponent<Character>();
         _statsModifiers = player?.GetComponent<StatsModifiers>();

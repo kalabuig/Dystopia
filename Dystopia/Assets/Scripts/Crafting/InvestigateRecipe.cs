@@ -9,6 +9,8 @@ public class InvestigateRecipe : MonoBehaviour
 
     [SerializeField] private Image progressImage;
 
+    private GameHandler gameHandler;
+
     //Management of the time for do an action
     protected int actionTick;
     protected int actionTickMax;
@@ -24,6 +26,7 @@ public class InvestigateRecipe : MonoBehaviour
     private List<CraftingRecipe> allCraftingRecipes;
 
     private void Awake() {
+        gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
         componentSlots = GetComponent<CraftingPanel>()?.componentSlots;
         allCraftingRecipes = GameObject.Find("RecipeAssets")?.GetComponent<RecipeAssets>()?.GetCraftingRecipesList();
         GameObject player = GameObject.Find("Player");
@@ -79,6 +82,7 @@ public class InvestigateRecipe : MonoBehaviour
                 if(CheckAllMaterials(cr)) {
                     if(AddRecipeToKnownRecipes(cr)) { //Add this recipe to the known recipes
                         //TODO: Message new recipe discovered
+                        gameHandler.levelSystem.AddExperience(20);
                         Debug.Log("Recipe discovered: " + cr.name);
                     } else {
                         //TODO: Message already known recipe

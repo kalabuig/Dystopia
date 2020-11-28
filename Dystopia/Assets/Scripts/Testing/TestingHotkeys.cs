@@ -42,6 +42,7 @@ public class TestingHotkeys : MonoBehaviour
         //    mousePos.z = 0;
         //    bool isCriticalHit = UnityEngine.Random.Range(0,100) < 30; //30% chance of crit
         //    DamagePopup.Create(mousePos, 100, isCriticalHit);
+        //XPPopup.Create(character.transform.position, 100);
         //}
     }
 }

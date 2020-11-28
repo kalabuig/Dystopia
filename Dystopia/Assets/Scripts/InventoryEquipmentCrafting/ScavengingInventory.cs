@@ -26,6 +26,7 @@ public class ScavengingInventory : WorldInventory
         if(scavengedItem!=null) {
             AddItem(scavengedItem); //Add item to the scavenging inventory/panel
             SoundManager.PlaySound(SoundManager.Sound.ItemFound);
+            gameHandler.levelSystem.AddExperience(5);
         } else {
             SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
         }
