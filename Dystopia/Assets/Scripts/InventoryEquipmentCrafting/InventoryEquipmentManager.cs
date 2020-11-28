@@ -110,62 +110,89 @@ public class InventoryEquipmentManager : MonoBehaviour
 
     private void CraftingPanelRightClick(ItemSlot itemSlot) {
         if(itemSlot!=null) {
-            ItemFromCraftingToInventory(itemSlot.item); //Return item
+            ItemFromCraftingToInventory(itemSlot.item, itemSlot.amount); //Return item
         }
     }
 
     private void ScavengingPanelRightClick(ItemSlot itemSlot) {
         if(itemSlot!=null) {
-            ItemFromScavengingToInventory(itemSlot.item); //Send item to inventory
+            ItemFromScavengingToInventory(itemSlot.item, itemSlot.amount); //Send item to inventory
         }
     }
 
     private void WaterFillerPanelRightClick(ItemSlot itemSlot) {
         if(itemSlot!=null) {
-            ItemFromWaterFillerToInventory(itemSlot.item); //Send item to inventory
+            ItemFromWaterFillerToInventory(itemSlot.item, itemSlot.amount); //Send item to inventory
         }
     }
 
     private void FireSourcePanelRightClick(ItemSlot itemSlot) {
         if(itemSlot!=null) {
-            ItemFromFireSourceToInventory(itemSlot.item); //Send item to inventory
+            ItemFromFireSourceToInventory(itemSlot.item, itemSlot.amount); //Send item to inventory
         }
     }
 
-    private void ItemFromCraftingToInventory(Item item) {
+    private void ItemFromCraftingToInventory(Item item, int amount = 1) {
         //if inventory is not full, remove the item from crafting panel
+        if(inventory.IsFull() == false) {
+            if(inventory.AddItem(item, amount)) { //Add item to inventory
+                craftingPanel.RemoveItem(item, amount); //remove item
+            }
+        }
+        /*
         if(inventory.IsFull() == false && craftingPanel.RemoveItem(item)) {
             inventory.AddItem(item); //Add item to inventory
         }
+        */
     }
 
-    private void ItemFromScavengingToInventory(Item item) {
+    private void ItemFromScavengingToInventory(Item item, int amount = 1) {
         //if inventory is not full, remove the item from scavenging panel
-        if(inventory.IsFull() == false && scavengingInventory.RemoveItem(item)) {
+        if(inventory.IsFull() == false) {
+            if(inventory.AddItem(item, amount)) { //Add item to inventory
+                scavengingInventory.RemoveItem(item, amount); //remove item
+            }
+        }
+        /*if(inventory.IsFull() == false && scavengingInventory.RemoveItem(item)) {
             inventory.AddItem(item); //Add item to inventory
         }
+        */
     }
 
-    private void ItemFromWaterFillerToInventory(Item item) {
+    private void ItemFromWaterFillerToInventory(Item item, int amount = 1) {
         //if inventory is not full, remove the item from water filler panel
+        if(inventory.IsFull() == false) {
+            if(inventory.AddItem(item, amount)) { //Add item to inventory
+                waterFillerInventory.RemoveItem(item, amount); //remove item
+            }
+        }
+        /*
         if(inventory.IsFull() == false) {
             for(int i = 0; i < item.maxMultiUses; i++) {
                 if(waterFillerInventory.RemoveItem(item)) { //remove item
                     inventory.AddItem(item); //Add item to inventory
                 }
             }
-        } 
+        }
+        */
     }
 
-    private void ItemFromFireSourceToInventory(Item item) {
+    private void ItemFromFireSourceToInventory(Item item, int amount = 1) {
         //if inventory is not full, remove the item from fire source panel
+        if(inventory.IsFull() == false) {
+            if(inventory.AddItem(item, amount)) { //Add item to inventory
+                fireSourceInventory.RemoveItem(item, amount); //remove item
+            }
+        }
+        /*
         if(inventory.IsFull() == false) {
             for(int i = 0; i < item.maxMultiUses; i++) {
                 if(fireSourceInventory.RemoveItem(item)) { //remove item
                     inventory.AddItem(item); //Add item to inventory
                 }
             }
-        } 
+        }
+        */
     }
 
     public void Equip(EquippableItem item) {

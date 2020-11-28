@@ -53,37 +53,47 @@ public class Inventory : MonoBehaviour, IItemsContainer
         }
     }
 
-    public bool AddItem(Item item) {
+    public bool AddItem(Item item, int amount = 1) {
         if(item!=null) {
-            for(int i = 0; i < itemSlots.Length; i++) {
-                // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable)
-                if(itemSlots[i].item == null || (itemSlots[i].item.ID == item.ID && itemSlots[i].amount < item.MaximumStacks) ) {
-                    itemSlots[i].item = item; //set item in the slot
-                    itemSlots[i].amount++; //increase amount
-                    return true;
+            if(item.isMultiUsable) { //can not be stackable and the amount is the % of its integrity
+                for(int i = 0; i < itemSlots.Length; i++) {
+                    if(itemSlots[i].item == null) {
+                        itemSlots[i].item = item; //set item in the slot
+                        itemSlots[i].amount = amount; //set amount
+                        return true;
+                    }
+                }
+            } else { //is not multiusable
+                for(int i = 0; i < itemSlots.Length; i++) {
+                    // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable and is not multiusable)
+                    if(itemSlots[i].item == null) { // || (itemSlots[i].item.ID == item.ID && itemSlots[i].amount < item.MaximumStacks) ) {
+                        itemSlots[i].item = item; //set item in the slot
+                        itemSlots[i].amount = amount; //increase amount
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
 
-    public bool RemoveItem(Item item) {
+    public bool RemoveItem(Item item, int amount = 1) {
         for(int i = 0; i < itemSlots.Length; i++) {
             if(itemSlots[i].item == item) {
-                itemSlots[i].amount--; //decrease amount
+                itemSlots[i].amount -= amount; //decrease amount
                 return true;
             }
         }
         return false;
     }
 
-    public Item RemoveItem(string itemID)
+    public Item RemoveItem(string itemID, int amount = 1)
     {
         Item item = null;
         for(int i = 0; i < itemSlots.Length; i++) {
             item = itemSlots[i].item;
             if(item != null && item.ID == itemID) {
-                itemSlots[i].amount--; //decrease amount
+                itemSlots[i].amount -= amount; //decrease amount
                 return item;
             }
         }

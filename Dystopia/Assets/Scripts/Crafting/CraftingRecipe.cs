@@ -39,7 +39,7 @@ public class CraftingRecipe : ScriptableObject
                         }
                     } else { //if it is not a tool
                     */
-                        Item oldItem = inventory.RemoveItem(itemAmount.item.ID); //remove or decrease item amount
+                        Item oldItem = inventory.RemoveItem(itemAmount.item.ID, itemAmount.amount); //remove or decrease item amount
                         oldItem.Destroy();
                     /*
                     }
@@ -48,9 +48,9 @@ public class CraftingRecipe : ScriptableObject
             }
             //Add to the inventory every result from the craft
             foreach(ItemAmount itemAmount in results) {
-                for(int i = 0; i < itemAmount.amount; i++) {
-                    inventory.AddItem(itemAmount.item.GetCopy());
-                }
+                //for(int i = 0; i < itemAmount.amount; i++) {
+                    inventory.AddItem(itemAmount.item.GetCopy(), itemAmount.amount);
+                //}
             }
         }
     }

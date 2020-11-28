@@ -34,7 +34,7 @@ public class InvestigateRecipe : MonoBehaviour
 
     public void TryInvestigation() {
         if(ComponentSlotsEmpty() == true) return;
-        float investigationTime = character.investigationSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.moveSpeed);
+        float investigationTime = character.investigationSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.investigationSpeed);
         DoAction(investigationTime);
     }
 

@@ -109,6 +109,7 @@ public class CraftingRecipeUI : MonoBehaviour
 
     private void ResetProgress() {
         progressImage.fillAmount = 0;
+        actionTick = 0;
     }
 
     private void TimeTickSystem_OnTick(object sender, TimeTickSystem.OnTickEventArgs e) {
@@ -117,7 +118,6 @@ public class CraftingRecipeUI : MonoBehaviour
             if(actionTick>=actionTickMax) { //Scavenging finished
                 isDoingAction = false;
                 UnSuscribe(); //unsubscribe from the tick system
-                actionTick = 0;
                 ResetProgress();
                 craftingRecipe.Craft(inventory);
             }
@@ -129,7 +129,6 @@ public class CraftingRecipeUI : MonoBehaviour
     public void DoAction(float secondsToFinishAction) {
         if(isDoingAction==false) {
             actionTickMax = (int)(secondsToFinishAction * TimeTickSystem.GetTicksPerSecond());
-            actionTick = 0;
             isDoingAction = true;
             UnSuscribe(); 
             ResetProgress();

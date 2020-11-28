@@ -7,7 +7,7 @@ public class CraftingBook : MonoBehaviour, IItemsContainer
     [SerializeField] Transform itemsParent; //GridLayout (UI)
     [SerializeField] protected ItemSlot[] itemSlots; //Item Slots (UI)
 
-        public bool AddItem(Item item) {
+        public bool AddItem(Item item, int amount = 1) {
         if(item!=null) {
             for(int i = 0; i < itemSlots.Length; i++) {
                 // Check if (the slot is empty) or (it is the same ID and the amount in the slot is lower than the maximum stackable)
@@ -21,23 +21,23 @@ public class CraftingBook : MonoBehaviour, IItemsContainer
         return false;
     }
 
-    public bool RemoveItem(Item item) {
+    public bool RemoveItem(Item item, int amount = 1) {
         for(int i = 0; i < itemSlots.Length; i++) {
             if(itemSlots[i].item == item) {
-                itemSlots[i].amount--; //decrease amount
+                itemSlots[i].amount -= amount; //decrease amount
                 return true;
             }
         }
         return false;
     }
 
-    public Item RemoveItem(string itemID)
+    public Item RemoveItem(string itemID, int amount = 1)
     {
         Item item = null;
         for(int i = 0; i < itemSlots.Length; i++) {
             item = itemSlots[i].item;
             if(item != null && item.ID == itemID) {
-                itemSlots[i].amount--; //decrease amount
+                itemSlots[i].amount -= amount; //decrease amount
                 return item;
             }
         }
