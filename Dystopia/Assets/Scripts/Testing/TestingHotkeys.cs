@@ -7,10 +7,12 @@ public class TestingHotkeys : MonoBehaviour
     private Character character;
     private WeatherHandler weatherHandler;
     private Camera cam;
+    private GameHandler gameHandler;
 
     private void Awake() {
         character = GetComponent<Character>();
         cam = Camera.main;
+        gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
     }
 
     private void Update() {
@@ -44,5 +46,10 @@ public class TestingHotkeys : MonoBehaviour
         //    DamagePopup.Create(mousePos, 100, isCriticalHit);
         //XPPopup.Create(character.transform.position, 100);
         //}
+
+        //Level System
+        if(Input.GetKeyDown(KeyCode.Alpha0)){ //normal weather
+            gameHandler.levelSystem.AddExperience(25);
+        }
     }
 }

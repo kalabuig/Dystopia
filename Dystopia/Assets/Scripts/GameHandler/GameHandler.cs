@@ -12,7 +12,7 @@ public class GameHandler : MonoBehaviour
     private Transform _playerTransform;
     public Transform playerTransform { get => _playerTransform;}
     
-    //Container
+    //Selected Container
     private static GameObject selectedContainer;
 
     //Panels
@@ -25,6 +25,7 @@ public class GameHandler : MonoBehaviour
     private GameObject fireSourcePanel;
     public GameObject textPanel;
     public WorldObjectTooltip worldObjectTooltip;
+    private GameObject skillSelectionPanel;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
 
@@ -68,29 +69,37 @@ public class GameHandler : MonoBehaviour
         waterFillerPanel = GameObject.Find("WaterFillerPanel");
         //Fire Source Panel
         fireSourcePanel = GameObject.Find("FireSourcePanel");
-        //PausePanel
+        //Skill Selection Panel
+        skillSelectionPanel = GameObject.Find("SkillSelectionPanel");
+        //Pause Panel
         pausePanel = GameObject.Find("PausePanel");
-        //GameOverPanel
+        //Game Over Panel
         gameOverPanel = GameObject.Find("GameOverPanel");
-        //LevelSystem
+        //Level System
         CreateLevelSystem();
+        //Time Tick System
+        TimeTickSystem.Create();
     }
 
     void Start()
     {
         GetComponent<WeatherHandler>().SetWeather(WeatherHandler.WeatherType.None); //No weather effects
         SuscribeToCharacterEvents();
-        TimeTickSystem.Create(); //Create the TimeTickSystem game object
         cameraBehavior.setFocus(() => _playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
+        //Deactivate Panels
         CloseInventoryPanel();
         CloseCraftingPanel();
         CloseCraftingBookPanel();
         CloseScavengingPanel();
         CloseWaterFillerPanel();
         CloseFireSourcePanel();
+        skillSelectionPanel.SetActive(false);
         gameOverPanel.SetActive(false);
-        ResumeGame(); //inside it is --> pausePanel.SetActive(false);
+        pausePanel.SetActive(false);
+        //Resume Game (needed in case we are createig a new game)
+        ResumeGame(); 
+        //Unselect any container
         selectedContainer = null;
     }
 
@@ -242,22 +251,22 @@ public class GameHandler : MonoBehaviour
     public void PauseResumeGame() {
         if(_gameIsPaused == false) {
             PauseGame();
+            pausePanel.SetActive(true);
         } else {
             ResumeGame();
+            pausePanel.SetActive(false);
         }
     }
 
     private void PauseGame() {
         Time.timeScale = 0f;
         AudioListener.pause = true;
-        pausePanel.SetActive(true);
         _gameIsPaused = true;
     }
 
     private void ResumeGame() {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        pausePanel.SetActive(false);
         _gameIsPaused = false;
     }
 
@@ -340,14 +349,19 @@ public class GameHandler : MonoBehaviour
     //Experience changed
     private void LevelSystem_OnExperienceChanged(object sender, LevelSystem.AmountEventArgs e)
     {
-        //TODO: Show XP popup gain
-        Debug.Log("+" + e.amount + " XP  -- player position " + playerTransform.position.ToString());
         XPPopup.Create(playerTransform.position, e.amount);
     }
 
     //Level changed
     private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
     {
-        //TODO: Pause Game and show passive skills selection panel
+        PauseGame();
+        skillSelectionPanel.SetActive(true);
+        skillSelectionPanel?.GetComponent<SkillSelectionPanel>()?.SetRandomSkills();
+    }
+
+    public void AddSkillToPlayer(PassiveSkill newSkill) {
+        //TODO:...
+        Debug.Log("Adding skill: " + newSkill.skillName);
     }
 }
