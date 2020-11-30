@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2e293f9c257d845839ff634a0992da, type: 3}
   m_Name: DesertExplorer
   m_EditorClassIdentifier: 
-  _skillSprite: {fileID: 0}
+  _skillSprite: {fileID: 21300000, guid: 77f515ebe23351b44937ac35553bc527, type: 3}
   _skillName: Desert Explorer
   _skillDescription: From the desert you learned to save water and food
   skillLevel: 0
-  valuesPerLevel: 050000000a0000000f00000014000000190000001e00000023000000
+  valuesPerLevel: fbfffffff6fffffff1ffffffecffffffe7ffffffe2ffffffddffffff
   skillModifierType: 2
   statModifiers: 
   characterModifiers: 0100000002000000

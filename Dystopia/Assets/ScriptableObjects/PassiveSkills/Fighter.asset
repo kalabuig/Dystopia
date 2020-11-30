@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2e293f9c257d845839ff634a0992da, type: 3}
   m_Name: Fighter
   m_EditorClassIdentifier: 
-  _skillSprite: {fileID: 0}
+  _skillSprite: {fileID: 21300000, guid: 0c5c2779178dac940834416dde77c5cb, type: 3}
   _skillName: Fighter
   _skillDescription: Your fighting skills improve
   skillLevel: 0

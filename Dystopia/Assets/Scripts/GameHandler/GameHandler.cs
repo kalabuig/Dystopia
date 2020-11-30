@@ -18,6 +18,7 @@ public class GameHandler : MonoBehaviour
     //Panels
     private GameObject characterPanel;
     private EquipmentPanel equipmentPanel;
+    private SkillsPanel skillsPanel;
     private GameObject craftingPanel;
     private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
@@ -59,6 +60,8 @@ public class GameHandler : MonoBehaviour
         characterPanel = GameObject.Find("CharacterPanel");
         //EquipmentPanel
         equipmentPanel = GameObject.Find("EquipmentPanel")?.GetComponent<EquipmentPanel>();
+        //Skills Panel
+        skillsPanel = GameObject.Find("SkillsPanel")?.GetComponent<SkillsPanel>();
         //Crafting Panel
         craftingPanel = GameObject.Find("CraftingPanel");
         //Craftin Book Panel
@@ -94,7 +97,7 @@ public class GameHandler : MonoBehaviour
         CloseScavengingPanel();
         CloseWaterFillerPanel();
         CloseFireSourcePanel();
-        skillSelectionPanel.SetActive(false);
+        CloseSkillSelectionPanel();
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
         //Resume Game (needed in case we are createig a new game)
@@ -264,7 +267,7 @@ public class GameHandler : MonoBehaviour
         _gameIsPaused = true;
     }
 
-    private void ResumeGame() {
+    public void ResumeGame() {
         Time.timeScale = 1f;
         AudioListener.pause = false;
         _gameIsPaused = false;
@@ -339,6 +342,19 @@ public class GameHandler : MonoBehaviour
         fireSourcePanel.SetActive(false);
     }
 
+    public void OpenSkillSelectionPanel() {
+        if(skillSelectionPanel!=null) {
+            skillSelectionPanel.SetActive(true);
+        }
+    }
+
+    public void CloseSkillSelectionPanel() {
+        if(skillSelectionPanel!=null) {
+            skillSelectionPanel.SetActive(false);
+            skillsPanel.RefreshSkillsList();
+        }
+    }
+
     private void CreateLevelSystem() {
         _levelSystem = new LevelSystem(); //Create level system
         experienceProgressBar.SetLevelSystem(_levelSystem); //Set level system to the experience progress bar
@@ -356,12 +372,7 @@ public class GameHandler : MonoBehaviour
     private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
     {
         PauseGame();
-        skillSelectionPanel.SetActive(true);
+        OpenSkillSelectionPanel();
         skillSelectionPanel?.GetComponent<SkillSelectionPanel>()?.SetRandomSkills();
-    }
-
-    public void AddSkillToPlayer(PassiveSkill newSkill) {
-        //TODO:...
-        Debug.Log("Adding skill: " + newSkill.skillName);
     }
 }

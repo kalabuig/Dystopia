@@ -4,18 +4,6 @@ using TMPro;
 
 public class SkillOption : MonoBehaviour
 {
-    public struct PassiveSkillData {
-        public Sprite skillSprite;
-        public string skillName;
-        public string skillDescription;
-        public SkillLevel skillLevel;
-        public int valueAtThisLevel;
-        public SkillModifierType skillModifierType;
-        public StatsModifiers.Modifier[] statModifiers;
-        public CharacterModifier[] characterModifiers;
-        public SpecialModifier[] specialModifiers;
-    }
-
     [SerializeField] Image skillSprite;
     [SerializeField] TextMeshProUGUI skillTitle;
     [SerializeField] TextMeshProUGUI skillDescription;
@@ -24,19 +12,17 @@ public class SkillOption : MonoBehaviour
     public PassiveSkillData passiveSkillData { get => _passiveSkillData; }
 
     public void SetPassiveSkill(PassiveSkill newPassiveSkill) {
+        _passiveSkillData = new PassiveSkillData();
         _passiveSkillData.skillSprite = newPassiveSkill.skillSprite;
         _passiveSkillData.skillName = newPassiveSkill.skillName;
         _passiveSkillData.skillDescription = newPassiveSkill.skillDescription;
         _passiveSkillData.skillLevel = newPassiveSkill.skillLevel;
         _passiveSkillData.valueAtThisLevel = newPassiveSkill.valuesPerLevel[(int)newPassiveSkill.skillLevel];
         _passiveSkillData.skillModifierType = newPassiveSkill.skillModifierType;
-        //CopyStatsModifiers(newPassiveSkill);
-        //CopyCharacterModifiers(newPassiveSkill);
-        //CopySpecialModifiers(newPassiveSkill);
-
-
+        CopyStatsModifiers(newPassiveSkill);
+        CopyCharacterModifiers(newPassiveSkill);
+        CopySpecialModifiers(newPassiveSkill);
         RefreshSkillOptionUI();
-        Debug.Log("Skill " + _passiveSkillData.skillName + " defined");
     }
 
     private void CopyStatsModifiers(PassiveSkill newPassiveSkill) {
@@ -66,9 +52,55 @@ public class SkillOption : MonoBehaviour
         }
     }
 
+    public void UpdateSkillLevel(SkillLevel newSkillLevel, int newValue) {
+        _passiveSkillData.skillLevel = newSkillLevel;
+        _passiveSkillData.valueAtThisLevel = newValue;
+    }
+
     public void RefreshSkillOptionUI() {
         skillSprite.sprite = _passiveSkillData.skillSprite;
-        skillTitle.text = _passiveSkillData.skillName;
+        skillTitle.text = GetTitleColor(_passiveSkillData.skillLevel) + _passiveSkillData.skillName + " - " + PassiveSkill.EnumToString(_passiveSkillData.skillLevel) + "</color>";
         skillDescription.text = _passiveSkillData.skillDescription;
+        string percentilText = _passiveSkillData.skillModifierType == SkillModifierType.StatPercentage ? "% " : " ";
+        string positiveText = _passiveSkillData.valueAtThisLevel >= 0 ? "+" : "";
+        //Stats Modifiers
+        if(_passiveSkillData.statModifiers.Length>0) {
+            skillDescription.text += "\n";
+            foreach(StatsModifiers.Modifier statModifier in _passiveSkillData.statModifiers) {
+                skillDescription.text += "\n" + positiveText +  _passiveSkillData.valueAtThisLevel.ToString() + percentilText + statModifier.ToString();
+            }
+        }
+        //Character Modifiers
+        if(_passiveSkillData.characterModifiers.Length>0) {
+            skillDescription.text += "\n";
+            foreach(CharacterModifier characterModifier in _passiveSkillData.characterModifiers) {
+                    skillDescription.text += "\n" + positiveText +  _passiveSkillData.valueAtThisLevel.ToString() + percentilText + characterModifier.ToString();
+            }
+        }
+        //Special Modifiers
+        if(_passiveSkillData.specialModifiers.Length>0) {
+            skillDescription.text += "\n";
+            foreach(SpecialModifier specialModifier in _passiveSkillData.specialModifiers) {
+                skillDescription.text += "\n" + positiveText +  _passiveSkillData.valueAtThisLevel.ToString() + percentilText + specialModifier.ToString();
+            }
+        }
+    }
+
+    private string GetTitleColor(SkillLevel skillLevel) {
+        switch(skillLevel) {
+            default:
+            case SkillLevel.Basic:
+                return "<color=#000000>"; //black
+            case SkillLevel.Good:
+                return "<color=#60A917>"; //green
+            case SkillLevel.Great:
+                return "<color=#E3C800>"; //Yellow
+            case SkillLevel.Expert:
+                return "<color=#FA6800>"; //Orange
+            case SkillLevel.GreatExpert:
+                return "<color=#E51400>"; //Red
+            case SkillLevel.Professional:
+                return "<color=#AA00FF>"; //Purple
+        }
     }
 }

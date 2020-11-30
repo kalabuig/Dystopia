@@ -64,6 +64,14 @@ public class PassiveSkill : ScriptableObject
         return System.Enum.GetName(typeof(SkillModifierType), smt);
     }
 
+    public static string EnumToString(CharacterModifier cm) {
+        return System.Enum.GetName(typeof(SkillModifierType), cm);
+    }
+
+        public static string EnumToString(SpecialModifier sm) {
+        return System.Enum.GetName(typeof(SkillModifierType), sm);
+    }
+
     public static object GetPropValue(object src, string propName) {
         return src.GetType().GetProperty(propName).GetValue(src, null);
     }
@@ -71,6 +79,5 @@ public class PassiveSkill : ScriptableObject
     public static object GetFieldValue(object src, string propName) {
         return src.GetType().GetField(propName).GetValue(src);
     }
-
 
 }

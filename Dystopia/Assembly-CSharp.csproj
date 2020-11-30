@@ -36,7 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Skills\SkillOption.cs" />
      <Compile Include="Assets\Scripts\UIHandler\FlashPanel.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillSelectionPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ResultSlot.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BuildingSpamer.cs" />
      <Compile Include="Assets\Scripts\Items\ItemAssets.cs" />
@@ -107,6 +109,7 @@
      <Compile Include="Assets\Scripts\Objects\Containers\Container.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\IslandSpamer.cs" />
      <Compile Include="Assets\Scripts\Texts\XPPopup.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillAssets.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\GameHandler\PlayerProgressBarsHandler.cs" />
      <Compile Include="Assets\Scripts\Items\UsableItem.cs" />
@@ -122,11 +125,11 @@
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
-     <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillSelectionPanel.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillAssets.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillOption.cs" />
+     <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillsPanel.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillDisplay.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

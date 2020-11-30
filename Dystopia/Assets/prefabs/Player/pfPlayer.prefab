@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 3868298502415412914}
   - component: {fileID: 487269463}
   - component: {fileID: 1292308816}
+  - component: {fileID: 1038060169}
   m_Layer: 14
   m_Name: pfPlayer
   m_TagString: Player
@@ -600,7 +601,6 @@ MonoBehaviour:
   _maxVigor: 100
   _attack: 1
   _defense: 0
-  attackSpeed: 1
   criticalChance: 15
   moveSpeed: 60
   craftSpeed: 5
@@ -652,5 +652,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: add46a5ee42a9d44db1d1d8ae203b102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1038060169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868298503565952389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a55874acd2c7841a060caf97eb9441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
