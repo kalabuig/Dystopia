@@ -24,6 +24,26 @@ public class Skills : MonoBehaviour
         return false;
     }
 
+    //List data of all the skills with a special modifier
+    public List<PassiveSkillData> IsTheSpecialModifieerThere(SpecialModifier specialModifier) {
+        if(specialModifier == SpecialModifier.None) return null;
+        List<PassiveSkillData> result = new List<PassiveSkillData>();
+        foreach(PassiveSkillData skillData in skills) { //foreach skill of the player...
+            if(skillData.specialModifiers.Length>0) {
+                bool speacilaModifierFound = false;
+                foreach(SpecialModifier sm in skillData.specialModifiers) {
+                    if(sm == specialModifier) {
+                        speacilaModifierFound = true;
+                    }
+                }
+                if(speacilaModifierFound) { //if we found a special modifier match in the skill
+                    result.Add(skillData); //Add the skill data to the result
+                }
+            }
+        }
+        return result;
+    }
+
     //Add skill to the list
     public void AddSkill(PassiveSkillData newSkill) {
         int skillIndex = -1;

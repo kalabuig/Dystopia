@@ -8015,6 +8015,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 63881fc671b9f7c40a0f551682bdfe40, type: 2}
   - {fileID: 11400000, guid: acac4cc79af41a3479842252f8e4601a, type: 2}
   - {fileID: 11400000, guid: ab917b8fedf4f4043bd7d76dd2524728, type: 2}
+  - {fileID: 11400000, guid: c5cd1e9bd0f896f4e8d6f3c278bdbcb2, type: 2}
+  - {fileID: 11400000, guid: ca7014489e9e08b4caccbb08d96358f8, type: 2}
 --- !u!1001 &787645392
 PrefabInstance:
   m_ObjectHideFlags: 0

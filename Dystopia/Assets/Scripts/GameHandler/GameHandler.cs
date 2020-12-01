@@ -206,10 +206,11 @@ public class GameHandler : MonoBehaviour
     }
 
     public void SaveGame() {
-
+        //TODO
     }
 
     public void LoadGame() {
+        //TODO
     }
 
     public void ExitGame() {

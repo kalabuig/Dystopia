@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class Character : MonoBehaviour
 {
@@ -60,6 +61,9 @@ public class Character : MonoBehaviour
     private int vigorTick;
     private int vigorTickRate; //At this rate we decrease the fatigue by 1%
 
+    //Player Components
+    private Skills skills;
+
     private void Awake() {
         healthTick = 0;
         hungryTick = 0;
@@ -69,6 +73,8 @@ public class Character : MonoBehaviour
         hungryTickRate = (int) (hungryRate * TimeTickSystem.GetTicksPerSecond());
         thirstTickRate = (int) (thirstRate * TimeTickSystem.GetTicksPerSecond());
         vigorTickRate = (int) (vigorRate * TimeTickSystem.GetTicksPerSecond());
+        //Components
+        skills = GetComponent<Skills>();
     }
 
     private void Start() {
@@ -102,11 +108,14 @@ public class Character : MonoBehaviour
     }
 
     public void ModifyHealth(int amount) {
+        if(amount>0) {
+            amount = ApplyHealthSpecialModifiers(amount);
+        }
         _health += amount; //amount can be negative
         if(_health<0) _health = 0;
         if(_health>_maxHealth) _health = _maxHealth;
-        if(OnHealthChange != null) { //if there are subscribers
-            OnHealthChange(this, new AmountEventArgs { amount = amount }); //Launch event to subscribers
+        if(OnHealthChange != null) { //if there are suscribers
+            OnHealthChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
         }
         if(amount<0) {
             SoundManager.PlaySound(SoundManager.Sound.PlayerDamage);
@@ -120,8 +129,8 @@ public class Character : MonoBehaviour
         _hungry += amount; //amount can be negative
         if(_hungry<0) _hungry = 0;
         if(_hungry>_maxHungry) _hungry = _maxHungry;
-        if(OnHungryChange != null) { //if there are subscribers
-            OnHungryChange(this, new AmountEventArgs { amount = amount }); //Launch event to subscribers
+        if(OnHungryChange != null) { //if there are suscribers
+            OnHungryChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
         }
     }
 
@@ -129,8 +138,8 @@ public class Character : MonoBehaviour
         _thirst += amount; //amount can be negative
         if(_thirst<0) _thirst = 0;
         if(_thirst>_maxThirst) _thirst = _maxThirst;
-        if(OnThirstChange != null) { //if there are subscribers
-            OnThirstChange(this, new AmountEventArgs { amount = amount }); //Launch event to subscribers
+        if(OnThirstChange != null) { //if there are suscribers
+            OnThirstChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
         }
     }
 
@@ -138,9 +147,20 @@ public class Character : MonoBehaviour
         _vigor += amount; //amount can be negative
         if(_vigor<0) _vigor = 0;
         if(_vigor>_maxVigor) _vigor = _maxVigor;
-        if(OnVigorChange != null) { //if there are subscribers
-            OnVigorChange(this, new AmountEventArgs { amount = amount }); //Launch event to subscribers
+        if(OnVigorChange != null) { //if there are suscribers
+            OnVigorChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
         }
+    }
+
+    private int ApplyHealthSpecialModifiers(int amount) {
+        List<PassiveSkillData> results = skills.IsTheSpecialModifieerThere(SpecialModifier.Healing);
+        float multiplyFactor = 1f;
+        if(results!=null) {
+            foreach(PassiveSkillData r in results) {
+                multiplyFactor += r.valueAtThisLevel / 100f;
+            }
+        }
+        return (int)(1f * amount * multiplyFactor);
     }
 
     private void UnSuscribeTimeTickSystem() {
