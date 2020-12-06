@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2e293f9c257d845839ff634a0992da, type: 3}
+  m_Name: Precision
+  m_EditorClassIdentifier: 
+  _skillSprite: {fileID: 0}
+  _skillName: Precision
+  _skillDescription: Your better precision increase your critical chance
+  skillLevel: 0
+  valuesPerLevel: 020000000400000006000000080000000a0000000c000000
+  skillModifierType: 1
+  statModifiers: 01000000
+  characterModifiers: 
+  specialModifiers: 

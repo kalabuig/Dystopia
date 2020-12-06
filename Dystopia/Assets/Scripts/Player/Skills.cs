@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//Skills modifiers
 public class Skills : MonoBehaviour
 {
     private List<PassiveSkillData> skills;
@@ -25,7 +26,7 @@ public class Skills : MonoBehaviour
     }
 
     //List data of all the skills with a special modifier
-    public List<PassiveSkillData> IsTheSpecialModifieerThere(SpecialModifier specialModifier) {
+    public List<PassiveSkillData> GetSkillsWithSpecialModifier(SpecialModifier specialModifier) {
         if(specialModifier == SpecialModifier.None) return null;
         List<PassiveSkillData> result = new List<PassiveSkillData>();
         foreach(PassiveSkillData skillData in skills) { //foreach skill of the player...
@@ -42,6 +43,55 @@ public class Skills : MonoBehaviour
             }
         }
         return result;
+    }
+
+    //List data of all the skills with a stat modifier
+    public List<PassiveSkillData> GetSkillsWithStatModifier(StatsModifiers.Modifier statModifier) {
+        List<PassiveSkillData> result = new List<PassiveSkillData>();
+        foreach(PassiveSkillData skillData in skills) { //foreach skill of the player...
+            if(skillData.statModifiers.Length>0) {
+                bool statModifierFound = false;
+                foreach(StatsModifiers.Modifier m in skillData.statModifiers) {
+                    if(m == statModifier) {
+                        statModifierFound = true;
+                    }
+                }
+                if(statModifierFound) { //if we found a stat modifier match in the skill
+                    result.Add(skillData); //Add the skill data to the result
+                }
+            }
+        }
+        return result;
+    }
+
+    //List data of all the skills with a character modifier
+    public List<PassiveSkillData> GetSkillsWithCharacterModifier(CharacterModifier characterModifier) {
+        List<PassiveSkillData> result = new List<PassiveSkillData>();
+        foreach(PassiveSkillData skillData in skills) { //foreach skill of the player...
+            if(skillData.characterModifiers.Length>0) {
+                bool characterModifierFound = false;
+                foreach(CharacterModifier cm in skillData.statModifiers) {
+                    if(cm == characterModifier) {
+                        characterModifierFound = true;
+                    }
+                }
+                if(characterModifierFound) { //if we found a character modifier match in the skill
+                    result.Add(skillData); //Add the skill data to the result
+                }
+            }
+        }
+        return result;
+    }
+
+    public int GetStatSkillModifiersAmount(StatsModifiers.Modifier statModifier) {
+        List<PassiveSkillData> results = GetSkillsWithStatModifier(statModifier);
+        int amount = 0;
+        if(results!=null) {
+            foreach(PassiveSkillData r in results) {
+                amount += r.valueAtThisLevel;
+            }
+        }
+        return amount;
     }
 
     //Add skill to the list

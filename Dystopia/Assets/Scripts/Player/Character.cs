@@ -62,7 +62,8 @@ public class Character : MonoBehaviour
     private int vigorTickRate; //At this rate we decrease the fatigue by 1%
 
     //Player Components
-    private Skills skills;
+    private Skills _skills;
+    public Skills skills { get => _skills; }
 
     private void Awake() {
         healthTick = 0;
@@ -74,7 +75,7 @@ public class Character : MonoBehaviour
         thirstTickRate = (int) (thirstRate * TimeTickSystem.GetTicksPerSecond());
         vigorTickRate = (int) (vigorRate * TimeTickSystem.GetTicksPerSecond());
         //Components
-        skills = GetComponent<Skills>();
+        _skills = GetComponent<Skills>();
     }
 
     private void Start() {
@@ -153,7 +154,7 @@ public class Character : MonoBehaviour
     }
 
     private int ApplyHealthSpecialModifiers(int amount) {
-        List<PassiveSkillData> results = skills.IsTheSpecialModifieerThere(SpecialModifier.Healing);
+        List<PassiveSkillData> results = _skills.GetSkillsWithSpecialModifier(SpecialModifier.Healing);
         float multiplyFactor = 1f;
         if(results!=null) {
             foreach(PassiveSkillData r in results) {

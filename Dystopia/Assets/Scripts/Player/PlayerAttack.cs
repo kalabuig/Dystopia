@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour
 {
     private GameHandler gameHandler;
     private Character character;
+    private StatsModifiers statsModifiers;
+    private Skills skills;
 
     public Transform attackPoint;
     [SerializeField] private float attackRange = 5f;
@@ -22,6 +24,8 @@ public class PlayerAttack : MonoBehaviour
     private void Awake() {
         gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
         character = GetComponent<Character>();
+        statsModifiers = GetComponent<StatsModifiers>();
+        skills = GetComponent<Skills>();
     }
 
     private void Update() {
@@ -31,9 +35,10 @@ public class PlayerAttack : MonoBehaviour
     }
 
     //Check the weapon to set the damage amount
-    private int GetDamageAmount() {
+    public int GetDamageAmount() {
         EquippableItem weapon = gameHandler.GetWeapon();
-        return weapon==null ? attackBaseDamage : weapon.damage;
+        int baseDamage = weapon==null ? attackBaseDamage : weapon.damage;
+        return baseDamage + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.damage);
     }
 
     private AttackRange GetWeaponRange() {
@@ -54,7 +59,8 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void ScaleAttackTrail(float scale) {
+    private void SetScaleAttackTrail(float scale) {
+        scale = ApplyAttackRangeSpecialModifiers(scale);
         srAttackTrail.gameObject.transform.localScale = new Vector3(scale, scale, 1f);
     }
 
@@ -62,14 +68,17 @@ public class PlayerAttack : MonoBehaviour
         if(canAttack==false) return;
         canAttack = false;
         float scale = AttackRangeToScale(GetWeaponRange());
-        Collider2D[] hittedObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRange * scale, hittableLayers);
+        Collider2D[] hittedObjects = Physics2D.OverlapCircleAll(attackPoint.position, ApplyAttackRangeSpecialModifiers(attackRange * scale), hittableLayers);
         foreach(Collider2D obj in hittedObjects) {
             if(obj.isTrigger) continue; //We don't want to hit trigger colliders
-            bool isCriticalHit = UnityEngine.Random.Range(0,100) < character.criticalChance;
+            bool isCriticalHit = UnityEngine.Random.Range(0,100) < character.criticalChance 
+                                                                    + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.criticalChance) 
+                                                                    + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.criticalChance);
             int damage = isCriticalHit ? GetDamageAmount() * 2 : GetDamageAmount();
+            Debug.Log("Damage: " + damage);
             obj.GetComponent<Hittable>()?.TakeDamage(damage, isCriticalHit);
         }
-        ScaleAttackTrail(scale);
+        SetScaleAttackTrail(scale);
         StartCoroutine("ShowAttackTrail"); 
     }
 
@@ -86,4 +95,16 @@ public class PlayerAttack : MonoBehaviour
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
     }
+
+    private float ApplyAttackRangeSpecialModifiers(float range) {
+        List<PassiveSkillData> results = skills.GetSkillsWithSpecialModifier(SpecialModifier.AttackRange);
+        float multiplyFactor = 1f;
+        if(results!=null) {
+            foreach(PassiveSkillData r in results) {
+                multiplyFactor += r.valueAtThisLevel / 100f;
+            }
+        }
+        return range * multiplyFactor;
+    }
+
 }

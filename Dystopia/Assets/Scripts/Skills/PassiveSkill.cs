@@ -30,6 +30,7 @@ public enum CharacterModifier {
 public enum SpecialModifier {
     None,
     Healing,
+    AttackRange,
 }
 
 [CreateAssetMenu(menuName = "Passive Skill")]

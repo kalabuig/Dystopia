@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Equipment Modifiers
 public class StatsModifiers : MonoBehaviour
 {
+    private Character character;
+
     public enum Modifier {
         damage,
         criticalChance,
@@ -34,6 +37,7 @@ public class StatsModifiers : MonoBehaviour
 
     private void Awake() {
         gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
+        character = GetComponent<Character>();
     }
 
     private void Start() {
@@ -78,6 +82,7 @@ public class StatsModifiers : MonoBehaviour
         if(equippedItems==null) return;
         if(attributeName=="") return;
         foreach(EquippableItem item in equippedItems) {
+            
             result += (int) GetFieldValue(item, attributeName);
         }
     }
@@ -93,8 +98,5 @@ public class StatsModifiers : MonoBehaviour
             }
         }
     }
-
-    //// Passive Modifiers ////
-    
 
 }

@@ -19,6 +19,7 @@ public class GameHandler : MonoBehaviour
     private GameObject characterPanel;
     private EquipmentPanel equipmentPanel;
     private SkillsPanel skillsPanel;
+    private StatsPanel statsPanel;
     private GameObject craftingPanel;
     private GameObject craftingBookPanel;
     private GameObject scavengingPanel;
@@ -62,6 +63,8 @@ public class GameHandler : MonoBehaviour
         equipmentPanel = GameObject.Find("EquipmentPanel")?.GetComponent<EquipmentPanel>();
         //Skills Panel
         skillsPanel = GameObject.Find("SkillsPanel")?.GetComponent<SkillsPanel>();
+        //Stats Panel
+        statsPanel = GameObject.Find("StatsPanel")?.GetComponent<StatsPanel>();
         //Crafting Panel
         craftingPanel = GameObject.Find("CraftingPanel");
         //Craftin Book Panel
@@ -353,6 +356,7 @@ public class GameHandler : MonoBehaviour
         if(skillSelectionPanel!=null) {
             skillSelectionPanel.SetActive(false);
             skillsPanel.RefreshSkillsList();
+            statsPanel.RefreshStats();
         }
     }
 

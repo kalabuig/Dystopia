@@ -14,11 +14,15 @@ public class StatsPanel : MonoBehaviour
     private List<StatData> stats;
     private Character character;
     private StatsModifiers statsModifiers;
+    private Skills skills;
+    private PlayerAttack playerAttack;
 
     private void Awake() {
         GameObject player = GameObject.Find("Player");
         character = player?.GetComponent<Character>(); //Get Character script from the player
         statsModifiers = player?.GetComponent<StatsModifiers>(); //Get StatsModifiers script from the player
+        skills = player?.GetComponent<Skills>(); //Get Skills script from the player
+        playerAttack = player?.GetComponent<PlayerAttack>(); //Get PlayerAttack script from the player
     }
 
     private void Start() {
@@ -35,15 +39,22 @@ public class StatsPanel : MonoBehaviour
         stats = new List<StatData>();
         if(character==null) return;
         statsModifiers.GetEquippedItems();
-        stats.Add(new StatData { statName = "Moving Speed", statValue = System.Int32.Parse( (character.moveSpeed + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.moveSpeed)).ToString() )});
-        stats.Add(new StatData { statName = @"Defense", statValue = character.defense + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.protection) });
-        stats.Add(new StatData { statName = @"Critical Chance (%)", statValue = character.criticalChance + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.criticalChance) });
-        stats.Add(new StatData { statName = "Scavenging Time", statValue = (int)(character.scavengingSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.scavengingSpeed)) });
-        stats.Add(new StatData { statName = "Investigation Time", statValue = (int)(character.investigationSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.investigationSpeed))});
-        stats.Add(new StatData { statName = "Crafting Time", statValue = (int)(character.craftSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.craftSpeed)) });
-        stats.Add(new StatData { statName = "Thirst Rate", statValue = (int)character.thirstRate });
-        stats.Add(new StatData { statName = "Hungry Rate", statValue = (int)character.hungryRate });
-        stats.Add(new StatData { statName = "Vigor Loss Rate", statValue = (int)character.vigorRate });
+        stats.Add(new StatData { statName = "Moving Speed", statValue = 
+            System.Int32.Parse( (character.moveSpeed + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.moveSpeed) + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.moveSpeed) ).ToString() )});
+        stats.Add(new StatData { statName = @"Damage", statValue = playerAttack.GetDamageAmount() });
+        stats.Add(new StatData { statName = @"Defense", statValue = 
+            character.defense + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.protection) + + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.protection) });
+        stats.Add(new StatData { statName = @"Critical Chance (%)", statValue = 
+            character.criticalChance + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.criticalChance) + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.criticalChance) });
+        stats.Add(new StatData { statName = "Scavenging Time", statValue 
+            = (int)(character.scavengingSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.scavengingSpeed) - skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.scavengingSpeed)) });
+        stats.Add(new StatData { statName = "Investigation Time", statValue =
+             (int)(character.investigationSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.investigationSpeed) - skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.investigationSpeed)) });
+        stats.Add(new StatData { statName = "Crafting Time", statValue = 
+            (int)(character.craftSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.craftSpeed) - skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.craftSpeed)) });
+        //stats.Add(new StatData { statName = "Thirst Rate", statValue = (int)character.thirstRate });
+        //stats.Add(new StatData { statName = "Hungry Rate", statValue = (int)character.hungryRate });
+        //stats.Add(new StatData { statName = "Vigor Loss Rate", statValue = (int)character.vigorRate });
     }
 
     private void RefreshUIStats() {
