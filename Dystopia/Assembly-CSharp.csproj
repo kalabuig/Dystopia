@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentPanel.cs" />
      <Compile Include="Assets\Scripts\Player\Character.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillDisplay.cs" />
      <Compile Include="Assets\Scripts\Objects\Containers\ContainerStartingItems.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ItemSlot.cs" />
@@ -90,6 +92,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\CraftingPanel.cs" />
      <Compile Include="Assets\Scripts\Tooltip\WOTooltipCalls.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ScavengingInventory.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillsPanel.cs" />
      <Compile Include="Assets\Scripts\Testing\TestingHotkeys.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\RandomExistance.cs" />
      <Compile Include="Assets\Scripts\Settings\SaveSettingsSystem.cs" />
@@ -127,9 +130,8 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\Player\Skills.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillsPanel.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillDisplay.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\GameDateTimeHandler.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\DateTimeDisplay.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />
