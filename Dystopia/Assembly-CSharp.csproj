@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Settings\SettingsPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BoxSpamer.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\Map\MapWithoutSectorsHandler.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\MainMenuHandler.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterAnimator.cs" />
@@ -132,7 +133,8 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\Map\MapWithoutSectorsHandler.cs" />
+     <Compile Include="Assets\Scripts\DayNightCycle\DayNightCycle.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\MessagePanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

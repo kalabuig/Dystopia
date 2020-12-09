@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
     private GameObject skillSelectionPanel;
     private GameObject pausePanel;
     private GameObject gameOverPanel;
+    private MessagePanel messagePanel;
 
     //Weapon
     [SerializeField] private EquipmentSlot weaponSlot; 
@@ -81,6 +82,8 @@ public class GameHandler : MonoBehaviour
         pausePanel = GameObject.Find("PausePanel");
         //Game Over Panel
         gameOverPanel = GameObject.Find("GameOverPanel");
+        //Message Panel
+        messagePanel = GameObject.Find("MessagePanel")?.GetComponent<MessagePanel>();
         //Level System
         CreateLevelSystem();
         //Time Tick System
@@ -103,6 +106,7 @@ public class GameHandler : MonoBehaviour
         CloseSkillSelectionPanel();
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
+        messagePanel.gameObject.SetActive(false);
         //Resume Game (needed in case we are createig a new game)
         ResumeGame(); 
         //Unselect any container
@@ -379,5 +383,10 @@ public class GameHandler : MonoBehaviour
         PauseGame();
         OpenSkillSelectionPanel();
         skillSelectionPanel?.GetComponent<SkillSelectionPanel>()?.SetRandomSkills();
+    }
+
+    public void ShowMessage(string textToShow, MessagePanel.MessageIcon messageIcon = MessagePanel.MessageIcon.None, SoundManager.Sound messageSound = SoundManager.Sound.ItemFound, float showTime = 1.5f, float fadeTime = 2f) {
+        messagePanel.gameObject.SetActive(true);
+        messagePanel.ShowPanel(textToShow, messageIcon, messageSound, showTime, fadeTime);
     }
 }

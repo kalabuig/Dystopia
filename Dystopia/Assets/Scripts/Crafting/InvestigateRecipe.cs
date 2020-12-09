@@ -83,17 +83,20 @@ public class InvestigateRecipe : MonoBehaviour
                     if(AddRecipeToKnownRecipes(cr)) { //Add this recipe to the known recipes
                         //TODO: Message new recipe discovered
                         gameHandler.levelSystem.AddExperience(20);
-                        Debug.Log("Recipe discovered: " + cr.name);
+                        //Debug.Log("Recipe discovered: " + cr.name);
+                        gameHandler.ShowMessage("Recipe discovered: " + cr.name, MessagePanel.MessageIcon.Celebration, SoundManager.Sound.ItemFound);
                     } else {
                         //TODO: Message already known recipe
-                        Debug.Log("Recipe already known: " + cr.name);
+                        //Debug.Log("Recipe already known: " + cr.name);
+                        gameHandler.ShowMessage("Recipe already known: " + cr.name, MessagePanel.MessageIcon.IDontKnow, SoundManager.Sound.ItemNotFound);
                     }
                     return;
                 }
             }
         }
         //TODO: Message no recipe discovered
-        Debug.Log("No recipe found");
+        //Debug.Log("No recipe found");
+        gameHandler.ShowMessage("No recipe found", MessagePanel.MessageIcon.Fail, SoundManager.Sound.ItemNotFound);
     }
 
     private bool RecipeInKnownRecipesList(CraftingRecipe cr) {

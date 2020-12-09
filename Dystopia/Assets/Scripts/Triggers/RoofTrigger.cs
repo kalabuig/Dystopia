@@ -13,6 +13,7 @@ public class RoofTrigger : MonoBehaviour
         //if the player is inside the building
         if (other.gameObject.name == "Player" && spriteRenderer!=null) {
             ShowObjects(false); // Hide roof
+            DayNightCycle.Instance.SetInsideBuilding(true);
         }
     }
  
@@ -20,6 +21,7 @@ public class RoofTrigger : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if(spriteRenderer!=null) {
             ShowObjects(true); // Show roof
+            DayNightCycle.Instance.SetInsideBuilding(false);
         }
     }
 
