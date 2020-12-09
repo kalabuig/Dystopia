@@ -43,7 +43,7 @@
      <Compile Include="Assets\Scripts\GameHandler\Map\BuildingSpamer.cs" />
      <Compile Include="Assets\Scripts\Items\ItemAssets.cs" />
      <Compile Include="Assets\Scripts\Crafting\RecipeAssets.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Settings\SettingsPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BoxSpamer.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
@@ -87,7 +87,7 @@
      <Compile Include="Assets\Scripts\UIHandler\TabGroup.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentSlot.cs" />
      <Compile Include="Assets\Scripts\Player\FieldOfView.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\MapHandler.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\Map\MapHandler.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingRecipeUI.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\CraftingPanel.cs" />
      <Compile Include="Assets\Scripts\Tooltip\WOTooltipCalls.cs" />
@@ -99,6 +99,7 @@
      <Compile Include="Assets\Scripts\Texts\DamagePopup.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\FireSourceInventory.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\DateTimeDisplay.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundAssets.cs" />
      <Compile Include="Assets\Scripts\Objects\Hittable.cs" />
      <Compile Include="Assets\Scripts\Texts\TextAssets.cs" />
@@ -119,6 +120,7 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WorldInventory.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\ThirstItemEffect.cs" />
      <Compile Include="Assets\Scripts\Player\StatsModifiers.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\GameDateTimeHandler.cs" />
      <Compile Include="Assets\Scripts\Settings\VideoSettings.cs" />
      <Compile Include="Assets\Scripts\Objects\FireSources\FireSource.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
@@ -130,8 +132,7 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\GameDateTimeHandler.cs" />
-     <Compile Include="Assets\Scripts\UIHandler\DateTimeDisplay.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\Map\MapWithoutSectorsHandler.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

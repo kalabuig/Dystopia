@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2235096424914003390}
   - component: {fileID: 2235096424914003363}
   m_Layer: 8
-  m_Name: wall_x10
+  m_Name: pfWall_x10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -652937927
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2ec500925d1a8a649ab687b33c19477f, type: 3}
   m_Color: {r: 0.23584908, g: 0.22138664, b: 0.22138664, a: 1}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2235096424914003391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
   m_Name: 
