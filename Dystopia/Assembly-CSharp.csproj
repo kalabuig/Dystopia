@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\Player\TriggersHandler.cs" />
      <Compile Include="Assets\Scripts\Crafting\IItemsContainer.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\HealItemEffect.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\MessagePanel.cs" />
      <Compile Include="Assets\Scripts\Tooltip\ItemTooltip.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabGroup.cs" />
@@ -129,12 +130,12 @@
      <Compile Include="Assets\Scripts\Crafting\InvestigateRecipe.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabButton.cs" />
+     <Compile Include="Assets\Scripts\DayNightCycle\DayNightCycle.cs" />
      <Compile Include="Assets\Scripts\Utils\Button_UI.cs" />
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\DayNightCycle\DayNightCycle.cs" />
-     <Compile Include="Assets\Scripts\UIHandler\MessagePanel.cs" />
+     <Compile Include="Assets\Scripts\SoundSystem\BackgroundSoundHandler.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />
