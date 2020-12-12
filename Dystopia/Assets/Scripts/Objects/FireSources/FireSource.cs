@@ -31,6 +31,14 @@ public class FireSource : MonoBehaviour
         return fireSourceName;
     }
 
+    public Sprite GetSprite() {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if(sr!=null) {
+            return sr.sprite;
+        }
+        return null;
+    }
+
     public ContainerItem ReplaceItem() {
         if(myItem.item==null) return ContainerItem.Empty();
         ItemPair itemPair = itemAssets.Find( x => x.sourceItem.ID == myItem.item.ID);

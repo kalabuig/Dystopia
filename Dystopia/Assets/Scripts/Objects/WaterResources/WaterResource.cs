@@ -52,6 +52,14 @@ public class WaterResource : MonoBehaviour
         return waterResourceName + " of " + waterType.ToString() + " Water";
     }
 
+    public Sprite GetSprite() {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if(sr!=null) {
+            return sr.sprite;
+        }
+        return null;
+    }
+
     public ContainerItem ReplaceItem() {
         if(myItem.item==null) return ContainerItem.Empty();
         ItemPair itemPair = itemAssets.FindAll(x => x.waterType == waterType).Find( x => x.sourceItem.ID == myItem.item.ID);

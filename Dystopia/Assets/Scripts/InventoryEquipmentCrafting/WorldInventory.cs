@@ -11,6 +11,7 @@ public class WorldInventory : Inventory
     [SerializeField] protected TextMeshProUGUI title;
     [Space]
     [Header("Progress Bar")]
+    [SerializeField] ProgressPanel progressPanel;
     [SerializeField] Slider progressSlider;
     [SerializeField] Text progressText;
     [Space]
@@ -43,11 +44,18 @@ public class WorldInventory : Inventory
         ResetProgress();
         UnSuscribe(); 
         TimeTickSystem.OnTick += TimeTickSystem_OnTick;  //Suscribe to time tick system
+        if(progressPanel!=null) {
+            progressPanel.gameObject.SetActive(true);
+            progressPanel.ShowPanel(title.text, GameHandler.GetSprite(GameHandler.GetSelectedContainer()));
+        }
     }
 
     public void StopAction() {
-        ResetProgress();
+        //ResetProgress();
         UnSuscribe(); //unsubscribe from the tick system
+        if(progressPanel!=null) {
+            progressPanel.HidePanel();
+        }
     }
 
     private void ResetProgress() {
@@ -61,6 +69,9 @@ public class WorldInventory : Inventory
             if(actionTick>=actionTickMax) { //Scavenging finished
                 isDoingAction = false;
                 UnSuscribe(); //unsubscribe from the tick system
+                if(progressPanel!=null) {
+                    progressPanel.HidePanel();
+                }
                 DoSomething();
             }
             progressText.text = (actionTick * 100f / actionTickMax).ToString() + "%";

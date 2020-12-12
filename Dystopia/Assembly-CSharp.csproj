@@ -124,6 +124,7 @@
      <Compile Include="Assets\Scripts\Player\StatsModifiers.cs" />
      <Compile Include="Assets\Scripts\GameHandler\GameDateTimeHandler.cs" />
      <Compile Include="Assets\Scripts\Settings\VideoSettings.cs" />
+     <Compile Include="Assets\Scripts\SoundSystem\BackgroundSoundHandler.cs" />
      <Compile Include="Assets\Scripts\Objects\FireSources\FireSource.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\VigorItemEffect.cs" />
@@ -135,7 +136,7 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\SoundSystem\BackgroundSoundHandler.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\ProgressPanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

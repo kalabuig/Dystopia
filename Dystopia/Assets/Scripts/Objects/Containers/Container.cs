@@ -38,6 +38,14 @@ public class Container : MonoBehaviour
         return containerName;
     }
 
+    public Sprite GetSprite() {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if(sr!=null) {
+            return sr.sprite;
+        }
+        return null;
+    }
+
     private void StartingSetting() {
         //Set the remaining scavengings (randomly generated)
         if(minAmountToScavenge>maxAmountToScavenge) {

@@ -11,7 +11,7 @@ public class ScavengingInventory : WorldInventory
             }
         //}
     }
-
+ 
     public void Scavenge() {
         float scavengingSpeed = character.scavengingSpeed - statsModifiers.GetFloatStatMod(StatsModifiers.Modifier.scavengingSpeed);
         DoAction(scavengingSpeed);

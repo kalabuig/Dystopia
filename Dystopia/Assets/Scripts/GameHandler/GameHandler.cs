@@ -31,6 +31,7 @@ public class GameHandler : MonoBehaviour
     private GameObject pausePanel;
     private GameObject gameOverPanel;
     private MessagePanel messagePanel;
+    private ProgressPanel progressPanel;
 
     //Weapon
     [SerializeField] private EquipmentSlot weaponSlot; 
@@ -84,6 +85,8 @@ public class GameHandler : MonoBehaviour
         gameOverPanel = GameObject.Find("GameOverPanel");
         //Message Panel
         messagePanel = GameObject.Find("MessagePanel")?.GetComponent<MessagePanel>();
+        //Progress Panel
+        progressPanel = GameObject.Find("ProgressPanel")?.GetComponent<ProgressPanel>();
         //Level System
         CreateLevelSystem();
         //Time Tick System
@@ -96,6 +99,7 @@ public class GameHandler : MonoBehaviour
         SuscribeToCharacterEvents();
         cameraBehavior.setFocus(() => _playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
+        
         //Deactivate Panels
         CloseInventoryPanel();
         CloseCraftingPanel();
@@ -107,10 +111,10 @@ public class GameHandler : MonoBehaviour
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
         messagePanel.gameObject.SetActive(false);
-        //Resume Game (needed in case we are createig a new game)
-        ResumeGame(); 
-        //Unselect any container
-        selectedContainer = null;
+        progressPanel.gameObject.SetActive(false);
+        
+        ResumeGame(); //Resume Game (needed in case we are createig a new game)
+        selectedContainer = null; //Unselect any container
     }
 
     private void Update() {
@@ -197,6 +201,17 @@ public class GameHandler : MonoBehaviour
 
     public static GameObject GetSelectedContainer() {
         return selectedContainer;
+    }
+
+    public static Sprite GetSprite(GameObject container) {
+        if(container==null) return null;
+        if(selectedContainer.layer == LayerMask.NameToLayer("Containers")) {
+            return selectedContainer.GetComponent<Container>().GetSprite();
+        } else if(selectedContainer.layer == LayerMask.NameToLayer("WaterFillers")) {
+            return selectedContainer.GetComponent<WaterResource>().GetSprite();
+        } else if(selectedContainer.layer == LayerMask.NameToLayer("FireSources")) {
+            return selectedContainer.GetComponent<FireSource>().GetSprite();
+        } else return null;
     }
 
     private void HandlePausedKeyboardInputs() {
