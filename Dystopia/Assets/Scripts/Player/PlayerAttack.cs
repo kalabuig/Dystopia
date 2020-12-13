@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public class AmountEventArgs : EventArgs {
+        public int amount;
+    }
+
+    public event EventHandler<AmountEventArgs> OnAttackHitSomething; //On Attack hit something 
+
     private GameHandler gameHandler;
     private Character character;
     private StatsModifiers statsModifiers;
@@ -46,7 +52,6 @@ public class PlayerAttack : MonoBehaviour
         return weapon==null ? AttackRange.Short : weapon.attackRange;
     }
 
-
     private float AttackRangeToScale(AttackRange attackRange) {
         switch(attackRange) {
             default:
@@ -75,11 +80,16 @@ public class PlayerAttack : MonoBehaviour
                                                                     + statsModifiers.GetIntStatMod(StatsModifiers.Modifier.criticalChance) 
                                                                     + skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.criticalChance);
             int damage = isCriticalHit ? GetDamageAmount() * 2 : GetDamageAmount();
-            Debug.Log("Damage: " + damage);
-            obj.GetComponent<Hittable>()?.TakeDamage(damage, isCriticalHit);
+            Hittable hittableObj = obj.GetComponent<Hittable>();
+            if(hittableObj != null)  {
+                hittableObj.TakeDamage(damage, isCriticalHit);
+                if(OnAttackHitSomething!=null) {
+                    OnAttackHitSomething(this, new AmountEventArgs { amount = 1}); //Send event to suscribers
+                }
+            }
         }
         SetScaleAttackTrail(scale);
-        StartCoroutine("ShowAttackTrail"); 
+        StartCoroutine("ShowAttackTrail");
     }
 
     IEnumerator ShowAttackTrail() {

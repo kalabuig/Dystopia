@@ -15,11 +15,18 @@ MonoBehaviour:
   id: 9046ab8aa506a434ea8a297a6f2be1a0
   itemName: Spear
   icon: {fileID: 21300000, guid: f5bc78ed9e74a574c92387b27a413c76, type: 3}
-  MaximumStacks: 1
-  isMultiUsable: 0
+  MaximumStacks: 100
+  isMultiUsable: 1
   maxMultiUses: 100
   warm: 0
   protection: 0
+  moveSpeed: 0
+  criticalChance: 0
+  craftSpeed: 0
+  investigationSpeed: 0
+  scavengingSpeed: 0
+  fillWaterSpeed: 0
+  useFireSpeed: 0
   equipmentType: 7
   damage: 20
   attackRange: 2

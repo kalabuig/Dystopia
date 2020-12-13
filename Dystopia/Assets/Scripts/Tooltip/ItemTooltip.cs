@@ -9,11 +9,14 @@ public class ItemTooltip : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemNameText;
     [SerializeField] TextMeshProUGUI itemAttributesText;
 
-    public void ShowTooltip(Item item) {
+    public void ShowTooltip(Item item, float usagePercentage = 0f) {
         if(item==null) return;
         itemImage.sprite = item.icon;
         itemNameText.text = item.itemName;
         itemAttributesText.text = "";
+        if(usagePercentage!=0f && item.isMultiUsable) {
+            writePercentageUsage(usagePercentage);
+        }
         if(item is EquippableItem) { //if it is an equippable item
             EquippableItem equippableItem = (EquippableItem)item;
             writeEquipmentType(equippableItem);
@@ -39,6 +42,18 @@ public class ItemTooltip : MonoBehaviour
             "</color>",
             "\n\n"
         );
+    }
+
+    private void writePercentageUsage(float usagePercentage) {
+        string c = "FFFFFF"; //white
+        if(usagePercentage<=50f) c = "FFE900"; //yellow
+        if(usagePercentage<=25f) c = "FF7900"; //orange
+        if(usagePercentage<=10f) c= "FF0000"; //red
+        itemNameText.text += string.Concat(
+            "\n<color=#" + c + ">",
+            String.Format("{0:0.##}", usagePercentage),
+            "%</color>"
+            );
     }
 
     private string EnumNameToNiceName(string enumName) {

@@ -78,11 +78,12 @@ public class InventoryEquipmentManager : MonoBehaviour
     private void EquipmentChange() {
         statsPanel.RefreshStats();
         player.GetComponent<CharacterMovement>()?.RefreshSpeedValue();
+        HideToolTip();
     }
 
     private void InventoryRightClick(ItemSlot itemSlot) {
         if(itemSlot.item is EquippableItem) {
-            Equip((EquippableItem)itemSlot.item); //Equip item
+            Equip((EquippableItem)itemSlot.item, itemSlot.amount); //Equip item
         }
         else if(itemSlot.item is UsableItem) {
             UsableItem usableItem = (UsableItem)itemSlot.item;
@@ -104,7 +105,7 @@ public class InventoryEquipmentManager : MonoBehaviour
 
     private void EquipmentPanelRightClick(ItemSlot itemSlot) {
         if(itemSlot.item is EquippableItem) {
-            Unequip((EquippableItem)itemSlot.item); //Unequip item
+            Unequip((EquippableItem)itemSlot.item, itemSlot.amount); //Unequip item
         }
     }
 
@@ -195,29 +196,34 @@ public class InventoryEquipmentManager : MonoBehaviour
         */
     }
 
-    public void Equip(EquippableItem item) {
-        if(inventory.RemoveItem(item)) { //Remove item from inventory
+    public void Equip(EquippableItem item, int amount) {
+        if(inventory.RemoveItem(item, amount)) { //Remove item from inventory
             EquippableItem previousItem;
-            if(equipmentPanel.AddItem(item, out previousItem)) { //Add item to equipment panel
-                if (previousItem != null) { //if it was something in that slot
-                    inventory.AddItem(previousItem); //add the previous item to the inventory
+            int previousItemAmount = 0;
+            if(equipmentPanel.AddItem(item, amount, out previousItem, out previousItemAmount)) { //Add item to equipment panel
+                if (previousItem != null && previousItemAmount>0) { //if it was something in that slot
+                    inventory.AddItem(previousItem, previousItemAmount); //add the previous item to the inventory
                 }
             } else { //if something goes wrong with addint the item to the equipment panel
-                inventory.AddItem(item); //add item again to the inventory
+                inventory.AddItem(item, amount); //add item again to the inventory
             }
         }
     }
 
-    public void Unequip(EquippableItem item) {
+    public void Unequip(EquippableItem item, int amount) {
         //if inventory is not full, remove the item from equipment panel
         if(inventory.IsFull() == false && equipmentPanel.RemoveItem(item)) {
-            inventory.AddItem(item); //Add item to inventory
+            inventory.AddItem(item, amount); //Add item to inventory
         }
     }
 
     private void ShowToolTip(ItemSlot itemSlot) {
-        if(itemSlot != null) {
-            itemTooltip.ShowTooltip(itemSlot.item);
+        if(itemSlot != null && itemSlot.item != null) {
+            if(itemSlot.item.isMultiUsable) {
+                itemTooltip.ShowTooltip(itemSlot.item, 100f * itemSlot.amount / itemSlot.item.MaximumStacks);
+            } else {
+                itemTooltip.ShowTooltip(itemSlot.item);
+            }
         }
     }
 
@@ -226,8 +232,12 @@ public class InventoryEquipmentManager : MonoBehaviour
     }
 
     private void ShowToolTip(RecipeSlot recipeSlot) {
-        if(recipeSlot != null) {
-            itemTooltip.ShowTooltip(recipeSlot.item);
+        if(recipeSlot != null && recipeSlot.item != null) {
+            if(recipeSlot.item.isMultiUsable) {
+                itemTooltip.ShowTooltip(recipeSlot.item, 100f * recipeSlot.amount / recipeSlot.item.MaximumStacks);
+            } else {
+                itemTooltip.ShowTooltip(recipeSlot.item);
+            }
         }
     }
 
@@ -287,12 +297,12 @@ public class InventoryEquipmentManager : MonoBehaviour
         }
         else { //at least one slot is an equipment slot
             if(draggedSlot is EquipmentSlot) { //If origin is an equipment slot
-                if(dragItem != null) Unequip(dragItem);
-                if(dropItem != null) Equip(dropItem);
+                if(dragItem != null) Unequip(dragItem, draggedSlot.amount);
+                if(dropItem != null) Equip(dropItem, dropItemSlot.amount);
             }
             if(dropItemSlot is EquipmentSlot) { //If destination is an equipment slot
-                if(dragItem != null) Equip(dragItem);
-                if(dropItem != null) Unequip(dropItem);
+                if(dragItem != null) Equip(dragItem, draggedSlot.amount);
+                if(dropItem != null) Unequip(dropItem, dropItemSlot.amount);
             }
         }
     }

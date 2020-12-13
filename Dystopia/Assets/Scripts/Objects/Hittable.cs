@@ -24,6 +24,11 @@ public class Hittable : MonoBehaviour
         colorDefault = spriteRenderer.color;
     }
 
+    public void SetHealth(int newCurrentHealth, int newMaxHealth) {
+        maxHealth = Mathf.Clamp(newMaxHealth, 0, newMaxHealth);
+        currentHealth = Mathf.Clamp(newCurrentHealth, 0, maxHealth);
+    }
+
     public void TakeDamage(int damage, bool isCriticalHit) {
         SoundManager.PlaySound(hitSound);
         if(canTakeDamage) {

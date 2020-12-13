@@ -96,7 +96,7 @@ public class GameHandler : MonoBehaviour
     void Start()
     {
         GetComponent<WeatherHandler>().SetWeather(WeatherHandler.WeatherType.None); //No weather effects
-        SuscribeToCharacterEvents();
+        SuscribeToPlayerEvents();
         cameraBehavior.setFocus(() => _playerTransform.position); //Camera will follow the player
         cameraBehavior.setZoom(() => zoom); //Set the zoom to its default value
         
@@ -139,8 +139,14 @@ public class GameHandler : MonoBehaviour
         return EventSystem.current.IsPointerOverGameObject();
     }
 
-    private void SuscribeToCharacterEvents() {
+    private void SuscribeToPlayerEvents() {
         _playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
+        _playerTransform.gameObject.GetComponent<PlayerAttack>().OnAttackHitSomething += Player_OnAttackHitSomething;
+    }
+
+    private void Player_OnAttackHitSomething(object sender, PlayerAttack.AmountEventArgs e)
+    {
+        weaponSlot.amount -= e.amount; //reduce the usage of the weapon
     }
 
     public EquippableItem GetWeapon() {

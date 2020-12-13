@@ -32,6 +32,9 @@ public class WorldObjectTooltip : MonoBehaviour
         //Fire Source
         nameToReturn = go.GetComponent<FireSource>()?.GetFireSourceName();
         if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
+        //Barrier
+        nameToReturn = go.GetComponent<Barrier>()?.GetBarrierName();
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
         //Enemy
         nameToReturn = go.GetComponent<Enemy>()?.GetEnemyName();
         if(nameToReturn!=null && nameToReturn!="") return nameToReturn;

@@ -35,15 +35,18 @@ public class EquipmentPanel : MonoBehaviour
         }
     }
 
-    public bool AddItem(EquippableItem item, out EquippableItem previousItem) {
+    public bool AddItem(EquippableItem item, int amount, out EquippableItem previousItem, out int previousItemAmount) {
         for(int i = 0; i < equipmentSlots.Length; i++) {
             if(equipmentSlots[i].equipmentType == item.equipmentType) {
                 previousItem = (EquippableItem)equipmentSlots[i].item;
+                previousItemAmount = equipmentSlots[i].amount;
                 equipmentSlots[i].item = item;
+                equipmentSlots[i].amount = amount;
                 return true;
             }
         }
         previousItem = null;
+        previousItemAmount = 0;
         return false;
     }
 

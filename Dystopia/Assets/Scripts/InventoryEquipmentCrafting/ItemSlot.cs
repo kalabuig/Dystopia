@@ -47,9 +47,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             amountText.enabled = ( _item != null ) && 
                 ( _amount > 1 || _item.isMultiUsable == true ); //quantity visible if it is bigger than 1 or if it is multi usable
             if(amountText.enabled) {
-                //if it is a multiusabel object (tools, bottles, food, etc)
+                //if it is a multiusable object (tools, bottles, food, etc)
                 if(_item.isMultiUsable) {
-                    amountText.text = Mathf.Floor(100f * _amount / _item.maxMultiUses).ToString() + "%";
+                    amountText.text = Mathf.Floor(100f * _amount / _item.MaximumStacks).ToString() + "%";
                 } else { //otherwise
                     amountText.text = _amount > 0 ? _amount.ToString() : string.Empty;
                 }

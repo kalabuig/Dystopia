@@ -15,10 +15,18 @@ MonoBehaviour:
   id: 127373f7e64e14142a6fa658b53af4eb
   itemName: Rodillo
   icon: {fileID: 21300000, guid: 311080fcaad04f344a73c0449b5fda8d, type: 3}
-  MaximumStacks: 1
-  isMultiUsable: 0
-  maxMultiUses: 0
+  MaximumStacks: 20
+  isMultiUsable: 1
+  maxMultiUses: 20
   warm: 0
   protection: 0
-  damage: 5
+  moveSpeed: 0
+  criticalChance: 0
+  craftSpeed: 0
+  investigationSpeed: 0
+  scavengingSpeed: 0
+  fillWaterSpeed: 0
+  useFireSpeed: 0
   equipmentType: 7
+  damage: 5
+  attackRange: 0
