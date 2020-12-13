@@ -18,6 +18,7 @@ MonoBehaviour:
   MaximumStacks: 1
   isMultiUsable: 0
   maxMultiUses: 0
+  color: {r: 0.49056602, g: 0.039337847, b: 0.039337847, a: 1}
   warm: 0
   protection: 0
   moveSpeed: 0

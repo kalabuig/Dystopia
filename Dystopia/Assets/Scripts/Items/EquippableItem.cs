@@ -7,7 +7,7 @@ public enum EquipmentType {
     Legs,
     Feet,
     Accessory,
-    Bag,
+    Back,
     Weapon,
 }
 
@@ -20,6 +20,9 @@ public enum AttackRange {
 [CreateAssetMenu(menuName = "Items / Equippable Item")]
 public class EquippableItem : Item
 {
+    [Space]
+    [Header("Color to show")]
+    public Color color = new Color(1,1,1,1); //Color to show in the player body when equipped
     [Space]
     [Header("Modifiers")]
     public int warm; //How many increases your warm

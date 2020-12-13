@@ -28,8 +28,8 @@ public class XPPopup : MonoBehaviour
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount) {
-        textMesh.SetText(damageAmount.ToString() + " XP");
+    public void Setup(int xpAmount) {
+        textMesh.SetText(xpAmount.ToString() + " XP");
         textMesh.fontSize = 36;
         textColor = Color.green;
         textMesh.color = textColor;

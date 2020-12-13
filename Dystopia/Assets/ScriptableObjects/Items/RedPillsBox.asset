@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfcfc14462b4d04c9292d68844afa06, type: 3}
+  m_Name: RedPillsBox
+  m_EditorClassIdentifier: 
+  id: 9aad674999b17e746bfabea6d3c7cb24
+  itemName: Red Pills Box
+  icon: {fileID: 21300000, guid: 41a6db262719d9b4b8b8483db3afc9e7, type: 3}
+  MaximumStacks: 5
+  isMultiUsable: 0
+  maxMultiUses: 0

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfcfc14462b4d04c9292d68844afa06, type: 3}
+  m_Name: BluePillsBox
+  m_EditorClassIdentifier: 
+  id: 00d32e65dfd88114ea411c5d3d9fa8fc
+  itemName: Blue  Pills Box
+  icon: {fileID: 21300000, guid: b51b287441547474ea9bc40156181319, type: 3}
+  MaximumStacks: 5
+  isMultiUsable: 0
+  maxMultiUses: 0

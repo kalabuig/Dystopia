@@ -70,6 +70,7 @@ public static class SoundManager
             }
             backgroundSoundAS.clip = backgroundSoundClip;
             backgroundSoundAS.loop = true;
+            backgroundSoundAS.ignoreListenerPause = true; //The background sound countinues playing while the game is paused
             backgroundSoundAS.Play();
             yield return new WaitForSeconds(backgroundSoundAS.clip.length);
         }

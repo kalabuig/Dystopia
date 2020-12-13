@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab0ff32a77ec4147b8ce3aa3084c15e, type: 3}
+  m_Name: BlueTShirt
+  m_EditorClassIdentifier: 
+  id: 86b7f6fafd5f76c429e31c9a04661152
+  itemName: Blue T-Shirt
+  icon: {fileID: 21300000, guid: abbca0baada8ce044ae24a28da5769f7, type: 3}
+  MaximumStacks: 1
+  isMultiUsable: 0
+  maxMultiUses: 0
+  color: {r: 0, g: 0.10618591, b: 1, a: 1}
+  warm: 2
+  protection: 1
+  moveSpeed: 0
+  criticalChance: 0
+  craftSpeed: 0
+  investigationSpeed: 0
+  scavengingSpeed: 0
+  fillWaterSpeed: 0
+  useFireSpeed: 0
+  equipmentType: 1
+  damage: 0
+  attackRange: 0

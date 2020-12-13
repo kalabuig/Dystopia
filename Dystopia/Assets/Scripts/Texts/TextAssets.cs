@@ -5,4 +5,5 @@ public class TextAssets : GenericSingletonClass<TextAssets>
 {
     public Transform pfDamagePopup;
     public Transform pfXPPopup;
+    public Transform pfTextPopup;
 }

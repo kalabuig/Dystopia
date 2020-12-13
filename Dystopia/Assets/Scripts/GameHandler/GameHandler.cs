@@ -140,8 +140,43 @@ public class GameHandler : MonoBehaviour
     }
 
     private void SuscribeToPlayerEvents() {
-        _playerTransform.gameObject.GetComponent<Character>().OnHealthZero += Character_OnHealthZero;
+        Character character = _playerTransform.gameObject.GetComponent<Character>();
+        if(character!=null) {
+            character.OnHealthZero += Character_OnHealthZero;
+            character.OnHealthChange += Character_OnHealthChange;
+            character.OnHungryChange += Character_OnHungryChange;
+            character.OnThirstChange += Character_OnThirstChange;
+            character.OnVigorChange += Character_OnVigorChange;
+        }
         _playerTransform.gameObject.GetComponent<PlayerAttack>().OnAttackHitSomething += Player_OnAttackHitSomething;
+    }
+
+    private void Character_OnHealthChange(object sender, Character.AmountEventArgs e) {
+        Vector3 pos = new Vector3(_playerTransform.position.x + 3, _playerTransform.position.y + 3, 0);
+        if(e.amount == 1 || e.amount == -1) return;
+        string sign = e.amount >= 0 ? "+" : "";
+        TextPopup.Create(pos, sign + e.amount.ToString() + " Health", new Color(1,1,1,1));
+    }
+
+    private void Character_OnHungryChange(object sender, Character.AmountEventArgs e) {
+        Vector3 pos = new Vector3(_playerTransform.position.x + 6, _playerTransform.position.y, 0);
+        if(e.amount == 1 || e.amount == -1) return;
+        string sign = e.amount >= 0 ? "+" : "";
+        TextPopup.Create(pos, sign + e.amount.ToString() + " Food", new Color(1,1,1,1));
+    }
+
+    private void Character_OnThirstChange(object sender, Character.AmountEventArgs e) {
+        Vector3 pos = new Vector3(_playerTransform.position.x - 3, _playerTransform.position.y + 3, 0);
+        if(e.amount == 1 || e.amount == -1) return;
+        string sign = e.amount >= 0 ? "+" : "";
+        TextPopup.Create(pos, sign + e.amount.ToString() + " Water", new Color(1,1,1,1));
+    }
+
+    private void Character_OnVigorChange(object sender, Character.AmountEventArgs e) {
+        Vector3 pos = new Vector3(_playerTransform.position.x - 6, _playerTransform.position.y, 0);
+        if(e.amount == 1 || e.amount == -1) return;
+        string sign = e.amount >= 0 ? "+" : "";
+        TextPopup.Create(pos, sign + e.amount.ToString() + " Vigor", new Color(1,1,1,1));
     }
 
     private void Player_OnAttackHitSomething(object sender, PlayerAttack.AmountEventArgs e)
