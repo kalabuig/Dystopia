@@ -19,7 +19,8 @@ public class Barrier : MonoBehaviour
     }
 
     [SerializeField] private BarrierData[] barrierTypes; //all the data of all types of barriers
-    private BarrierData barrierData; //the data of the current barrier
+    private BarrierData _barrierData; //the data of the current barrier
+    public BarrierData barrierData { get => _barrierData; }
  
     private void Awake() {
         RanndomizeBarrier();
@@ -28,27 +29,40 @@ public class Barrier : MonoBehaviour
 
     private void RanndomizeBarrier() {
         int intRand = UnityEngine.Random.Range(0, barrierTypes.Length);
-        barrierData.barrierName = barrierTypes[intRand].barrierName;
-        barrierData.barrierType = barrierTypes[intRand].barrierType;
-        barrierData.sprite = barrierTypes[intRand].sprite;
-        barrierData.color = barrierTypes[intRand].color;
-        barrierData.health = barrierTypes[intRand].health;
+        _barrierData.barrierName = barrierTypes[intRand].barrierName;
+        _barrierData.barrierType = barrierTypes[intRand].barrierType;
+        _barrierData.sprite = barrierTypes[intRand].sprite;
+        _barrierData.color = barrierTypes[intRand].color;
+        _barrierData.health = barrierTypes[intRand].health;
     }
 
     private void RefreshData() {
-        GetComponent<Hittable>()?.SetHealth(barrierData.health, barrierData.health);
+        GetComponent<Hittable>()?.SetHealth(_barrierData.health, _barrierData.health);
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if(sr!=null) {
-            sr.sprite = barrierData.sprite;
-            sr.color = barrierData.color;
+            sr.sprite = _barrierData.sprite;
+            sr.color = _barrierData.color;
         } 
     }
 
+    public void SetBarrierDataByType(BarrierType barrierType) {
+        foreach(BarrierData data in barrierTypes) {
+            if(data.barrierType == barrierType) {
+                _barrierData.barrierName = data.barrierName;
+                _barrierData.barrierType = data.barrierType;
+                _barrierData.sprite = data.sprite;
+                _barrierData.color = data.color;
+                _barrierData.health = data.health;
+                RefreshData();
+            }
+        }
+    }
+
     public string GetBarrierName() {
-        return barrierData.barrierName;
+        return _barrierData.barrierName;
     }
 
     public Sprite GetSprite() {
-        return barrierData.sprite;
+        return _barrierData.sprite;
     }
 }

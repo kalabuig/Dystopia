@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8510199301842973723}
   - component: {fileID: -2460443605183545091}
   - component: {fileID: 1957848385360640405}
-  m_Layer: 10
+  m_Layer: 15
   m_Name: pfBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5496224059607935159}
   - component: {fileID: 3918580653480012076}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ItemAssets
   m_TagString: Untagged
   m_Icon: {fileID: 0}

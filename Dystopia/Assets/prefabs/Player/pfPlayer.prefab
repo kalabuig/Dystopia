@@ -569,7 +569,7 @@ MonoBehaviour:
   attackRange: 5
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 11264
+    m_Bits: 44032
   srAttackTrail: {fileID: 1856394950}
 --- !u!114 &1292308816
 MonoBehaviour:

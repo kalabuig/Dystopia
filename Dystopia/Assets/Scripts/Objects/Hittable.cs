@@ -4,8 +4,10 @@ public class Hittable : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private bool canTakeDamage = true;
-    [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField] private int _maxHealth = 100;
+    public int maxHealth { get => _maxHealth; }
+    private int _currentHealth;
+    public int currentHealth { get => _currentHealth; }
     
     [Space]
     [SerializeField] private SoundManager.Sound hitSound;
@@ -17,7 +19,7 @@ public class Hittable : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     private void Awake() {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         //matWhite = Resources.Load("FlashMaterial", typeof(Material)) as Material;
         //matDefault = spriteRenderer.material;
@@ -25,19 +27,19 @@ public class Hittable : MonoBehaviour
     }
 
     public void SetHealth(int newCurrentHealth, int newMaxHealth) {
-        maxHealth = Mathf.Clamp(newMaxHealth, 0, newMaxHealth);
-        currentHealth = Mathf.Clamp(newCurrentHealth, 0, maxHealth);
+        _maxHealth = Mathf.Clamp(newMaxHealth, 0, newMaxHealth);
+        _currentHealth = Mathf.Clamp(newCurrentHealth, 0, _maxHealth);
     }
 
     public void TakeDamage(int damage, bool isCriticalHit) {
         SoundManager.PlaySound(hitSound);
         if(canTakeDamage) {
             DamagePopup.Create(transform.position, damage, isCriticalHit);
-            currentHealth -= damage;
+            _currentHealth -= damage;
             //spriteRenderer.material = matWhite;
             spriteRenderer.color = colorWhite;
-            if(currentHealth<=0) {
-                currentHealth = 0;
+            if(_currentHealth<=0) {
+                _currentHealth = 0;
                 DestroyObject();
             }
             //Invoke("ResetMaterial", .1f);
