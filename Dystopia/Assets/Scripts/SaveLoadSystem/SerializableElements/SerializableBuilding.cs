@@ -12,12 +12,17 @@ public class SerializableBuilding
     public List<SerializableTransform> cols;
     public List<SerializableBarrier> barriers;
     public List<SerializableContainer> containers;
+    public List<SerializableWaterFiller> waterFillers;
+    public List<SerializableFireSource> fireSources;
     
-    public SerializableBuilding() {
+    public SerializableBuilding(GameObject building) {
         walls = new List<SerializableTransform>();
         cols = new List<SerializableTransform>();
         barriers = new List<SerializableBarrier>();
         containers = new List<SerializableContainer>();
+        waterFillers = new List<SerializableWaterFiller>();
+        fireSources = new List<SerializableFireSource>();
+        DoSerialization(building);
     }
 
     public void DoSerialization(GameObject building) {
@@ -62,6 +67,22 @@ public class SerializableBuilding
                 foreach(Transform subchild in child.transform) {
                     if(subchild.gameObject.layer == LayerMask.NameToLayer("Containers")) {
                         containers.Add(new SerializableContainer(subchild.gameObject));
+                    }
+                }
+            }
+            //WaterFillers (Water Resources)
+            if (child.name=="WaterResources") {
+                foreach(Transform subchild in child.transform) {
+                    if(subchild.gameObject.layer == LayerMask.NameToLayer("WaterFillers")) {
+                        waterFillers.Add(new SerializableWaterFiller(subchild.gameObject));
+                    }
+                }
+            }
+            //FireSources
+            if (child.name=="FireSources") {
+                foreach(Transform subchild in child.transform) {
+                    if(subchild.gameObject.layer == LayerMask.NameToLayer("FireSources")) {
+                        fireSources.Add(new SerializableFireSource(subchild.gameObject));
                     }
                 }
             }

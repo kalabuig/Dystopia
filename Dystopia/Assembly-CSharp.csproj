@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Skills\SkillOption.cs" />
      <Compile Include="Assets\Scripts\UIHandler\FlashPanel.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector3.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSelectionPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ResultSlot.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BuildingSpamer.cs" />
@@ -58,6 +59,8 @@
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingBook.cs" />
      <Compile Include="Assets\Scripts\Guys\PlayerBody.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\testSaveLoad.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector4.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingBookPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\SettingsLoader.cs" />
@@ -75,10 +78,12 @@
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ItemSlot.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\HungryItemEffect.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadSystem.cs" />
      <Compile Include="Assets\Scripts\Utils\GenericSingletonClass.cs" />
      <Compile Include="Assets\Scripts\ProgressBar\ExperienceProgressBar.cs" />
      <Compile Include="Assets\Scripts\Player\LevelSystem.cs" />
      <Compile Include="Assets\Scripts\Stats\StatDisplay.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableBuilding.cs" />
      <Compile Include="Assets\Scripts\Settings\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\UIHandler\ProgressPanel.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoaderCallBack.cs" />
@@ -103,6 +108,7 @@
      <Compile Include="Assets\Scripts\Texts\DamagePopup.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\FireSourceInventory.cs" />
      <Compile Include="Assets\Scripts\Guys\Guy.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadBuilding.cs" />
      <Compile Include="Assets\Scripts\Objects\Barriers\Barrier.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
      <Compile Include="Assets\Scripts\UIHandler\DateTimeDisplay.cs" />
@@ -115,12 +121,14 @@
      <Compile Include="Assets\Scripts\Items\Effects\UsableItemEffect.cs" />
      <Compile Include="Assets\Scripts\Triggers\ContainerTrigger.cs" />
      <Compile Include="Assets\Scripts\Player\CameraBehavior.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableContainer.cs" />
      <Compile Include="Assets\Scripts\Crafting\RecipeSlot.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\Inventory.cs" />
      <Compile Include="Assets\Scripts\Objects\Containers\Container.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\IslandSpamer.cs" />
      <Compile Include="Assets\Scripts\Texts\XPPopup.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillAssets.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableBarrier.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\GameHandler\PlayerProgressBarsHandler.cs" />
      <Compile Include="Assets\Scripts\Items\UsableItem.cs" />
@@ -132,6 +140,7 @@
      <Compile Include="Assets\Scripts\SoundSystem\BackgroundSoundHandler.cs" />
      <Compile Include="Assets\Scripts\Objects\FireSources\FireSource.cs" />
      <Compile Include="Assets\Scripts\SoundSystem\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableTransform.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\VigorItemEffect.cs" />
      <Compile Include="Assets\Scripts\Crafting\InvestigateRecipe.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SettingsMenuHandler.cs" />
@@ -141,15 +150,12 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadSystem.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector3.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableTransform.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector4.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableBuilding.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\testSaveLoad.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableBarrier.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadBuilding.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableContainer.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableItem.cs" />
+     <Compile Include="Assets\Scripts\Items\GlobalItemAssets.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableWaterFiller.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableFireSource.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableIsland.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadIsland.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

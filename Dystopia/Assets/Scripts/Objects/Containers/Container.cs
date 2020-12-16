@@ -28,9 +28,10 @@ public class Container : MonoBehaviour
     [SerializeField] int maxAmountToScavenge = 5;
 
     private List<ContainerItem> items; //Items in the container
-    private int remainingScavengings;
+    public int remainingScavengings;
 
     private void Awake() {
+        items = new List<ContainerItem>();
         StartingSetting();
     }
 
@@ -90,5 +91,10 @@ public class Container : MonoBehaviour
             items = new List<ContainerItem>();
         }
         items.Add(new ContainerItem { item = newItem.item, amount = newItem.amount});
+    }
+
+    public void EmptyInvenoty() {
+        items = null;
+        items = new List<ContainerItem>();
     }
 }

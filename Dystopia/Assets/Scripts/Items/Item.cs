@@ -4,7 +4,7 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Items / Item")]
 public class Item : ScriptableObject
 {
-    [SerializeField] string id; //id of the item
+    [SerializeField] private string id; //id of the item
     public string ID { get { return id;} }  //Public property
     public string itemName; //name of the item
     public Sprite icon; //image of the item
@@ -13,8 +13,9 @@ public class Item : ScriptableObject
     [Space]
     [Header("Conditions")]
     public bool isMultiUsable; //When craftint don't desapear, only consumes one use
-    public int maxMultiUses;
+    public int maxMultiUses; //Not used now, should be deleted
 
+    //This method needs to be commented when compiling RunBuild.
     private void OnValidate() { //Only works on editor mode
         string path = AssetDatabase.GetAssetPath(this); 
         id = AssetDatabase.AssetPathToGUID(path); //Getting the unity UID created

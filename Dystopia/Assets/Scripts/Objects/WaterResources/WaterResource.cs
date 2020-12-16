@@ -48,6 +48,10 @@ public class WaterResource : MonoBehaviour
         return waterType;
     }
 
+    public string GetSimpleWaterResourceName() {
+        return waterResourceName;
+    }
+
     public string GetWaterResourceName() {
         return waterResourceName + " of " + waterType.ToString() + " Water";
     }
@@ -78,5 +82,9 @@ public class WaterResource : MonoBehaviour
 
     public void SetItem(ContainerItem newItem) {
         myItem = new ContainerItem { item = newItem.item, amount = newItem.amount};
+    }
+
+    public void EmptyInvenoty() {
+        myItem = ContainerItem.Empty();
     }
 }

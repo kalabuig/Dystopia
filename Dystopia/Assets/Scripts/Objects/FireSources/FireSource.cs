@@ -58,4 +58,8 @@ public class FireSource : MonoBehaviour
     public void SetItem(ContainerItem newItem) {
         myItem = new ContainerItem { item = newItem.item, amount = newItem.amount};
     }
+
+    public void EmptyInvenoty() {
+        myItem = ContainerItem.Empty();
+    }
 }

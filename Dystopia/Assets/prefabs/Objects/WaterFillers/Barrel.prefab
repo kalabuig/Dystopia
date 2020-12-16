@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480da73f2dc9e4f49854a749a62d2521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterResourceName: Fountain
+  waterResourceName: Barrel
   itemAssets:
   - waterType: 0
     sourceItem: {fileID: 11400000, guid: 697fd42b4aa2b974db6d2bd90e54bc81, type: 2}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTakeDamage: 1
-  maxHealth: 100
+  _maxHealth: 100
   hitSound: 6
 --- !u!114 &8017493467462981924
 MonoBehaviour:
