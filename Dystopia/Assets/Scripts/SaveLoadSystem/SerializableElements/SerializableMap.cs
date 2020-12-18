@@ -20,13 +20,6 @@ public class SerializableMap
         foreach (Transform child in map.transform) {
             //Islands
             islands.Add(new SerializableIsland(child.gameObject));
-            //if (child.name=="Islands") {
-                //foreach(Transform subchild in child.transform) {
-                    //if(subchild.gameObject.layer == LayerMask.NameToLayer("Islands")) {
-                    //islands.Add(new SerializableIsland(subchild.gameObject));
-                    //}
-                //}
-            //}
         }
     }
 }

@@ -65,17 +65,23 @@ public class Character : MonoBehaviour
     private Skills _skills;
     public Skills skills { get => _skills; }
 
-    private void Awake() {
+    private void Awake()
+    {
+        CalculateTickRates();
+        //Components
+        _skills = GetComponent<Skills>();
+    }
+
+    public void CalculateTickRates()
+    {
         healthTick = 0;
         hungryTick = 0;
         thirstTick = 0;
         vigorTick = 0;
-        healthTickRate = (int) (healthRate * TimeTickSystem.GetTicksPerSecond());
-        hungryTickRate = (int) (hungryRate * TimeTickSystem.GetTicksPerSecond());
-        thirstTickRate = (int) (thirstRate * TimeTickSystem.GetTicksPerSecond());
-        vigorTickRate = (int) (vigorRate * TimeTickSystem.GetTicksPerSecond());
-        //Components
-        _skills = GetComponent<Skills>();
+        healthTickRate = (int)(healthRate * TimeTickSystem.GetTicksPerSecond());
+        hungryTickRate = (int)(hungryRate * TimeTickSystem.GetTicksPerSecond());
+        thirstTickRate = (int)(thirstRate * TimeTickSystem.GetTicksPerSecond());
+        vigorTickRate = (int)(vigorRate * TimeTickSystem.GetTicksPerSecond());
     }
 
     private void Start() {
@@ -172,4 +178,40 @@ public class Character : MonoBehaviour
         UnSuscribeTimeTickSystem(); //unsubscribe from the time tick system
     }
 
+    public void LoadSerializedData(SerializableCharacter serCharacter) {
+        if(serCharacter!=null) {
+            _health = serCharacter.health;
+            _hungry = serCharacter.hungry;
+            _thirst = serCharacter.thirst;
+            _vigor = serCharacter.vigor;
+            _maxHealth = serCharacter.maxHealth;
+            _maxHungry = serCharacter.maxHungry;
+            _maxThirst = serCharacter.maxThirst;
+            _maxVigor = serCharacter.maxVigor;
+            _attack = serCharacter.attack;
+            _defense = serCharacter.defense;
+
+            criticalChance = serCharacter.criticalChance;
+            moveSpeed = serCharacter.moveSpeed;
+            craftSpeed = serCharacter.craftSpeed;
+            investigationSpeed = serCharacter.investigationSpeed;
+            scavengingSpeed = serCharacter.scavengingSpeed;
+            fillWaterSpeed = serCharacter.fillWaterSpeed;
+            useFireSpeed = serCharacter.useFireSpeed;
+
+            healthRate = serCharacter.healthRate;
+            thirstRate = serCharacter.thirstRate;
+            hungryRate = serCharacter.hungryRate;
+            vigorRate = serCharacter.vigorRate;
+
+            //Launch events
+            int amount = 0;
+            OnHealthChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            OnHungryChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            OnThirstChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            OnVigorChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+
+            CalculateTickRates(); //recalculate tick rates
+        }
+    }
 }

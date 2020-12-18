@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SaveLoadMap), typeof(SaveLoadIsland), typeof(SaveLoadBuilding))]
+[RequireComponent(typeof(SaveLoadMap), typeof(SaveLoadPlayer))]
 public class SaveLoadGame : MonoBehaviour
 {
     private SaveLoadMap saveLoadMap;
+    private SaveLoadPlayer saveLoadPlayer;
 
     private void Awake() {
         saveLoadMap = GetComponent<SaveLoadMap>();
+        saveLoadPlayer = GetComponent<SaveLoadPlayer>();
     }
 
     public void Save() {
@@ -21,6 +23,12 @@ public class SaveLoadGame : MonoBehaviour
         }
         //PLAYER
         //TODO: Save player stats, skills, inventory and equipped items
+        GameObject player = GameObject.Find("Player");
+        if(player!=null) {
+            saveLoadPlayer.Save(player); //save player
+        } else {
+            Debug.LogError("Player object not found.");
+        }
     }
 
     public void Load() {
@@ -30,5 +38,9 @@ public class SaveLoadGame : MonoBehaviour
         saveLoadMap.Load(); //load saved map
         //PLAYER
         //TODO: Load player stats, skills, inventory and equipped items
+        GameObject player = GameObject.Find("Player");
+        if(player!=null) {
+            saveLoadPlayer.Load();
+        }
     }
 }

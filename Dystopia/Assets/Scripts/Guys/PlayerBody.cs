@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerBody : MonoBehaviour
 {
-    [SerializeField] Guy guy;
-    [SerializeField] EquipmentPanel equipmentPanel;
-
+    [SerializeField] private Guy guy;
+    
+    private EquipmentPanel equipmentPanel;
     private GameHandler gameHandler;
 
     private List<EquippableItem> equippedItems;
 
     private void Awake() {
         gameHandler = GameObject.Find("GameHandler")?.GetComponent<GameHandler>();
+        equipmentPanel = GameObject.Find("EquipmentPanel")?.GetComponent<EquipmentPanel>();
         if(equipmentPanel!=null && guy!=null) {
             equipmentPanel.OnItemChanged += OnItemChangedFunc;
         }

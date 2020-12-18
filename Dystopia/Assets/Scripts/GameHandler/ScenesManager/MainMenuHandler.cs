@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject messagePanel;
+    [SerializeField] private GameObject creditsPanel;
+
     private void Update() {
         if(Input.GetKeyDown(KeyCode.N)) {
             NewGame();
@@ -23,11 +26,13 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void NewGame() {
+        PersistentData.instance.newGame = true;
         Loader.Load(Loader.Scene.GameScene);
     }
 
     public void LoadGame() {
-
+        PersistentData.instance.newGame = false;
+        Loader.Load(Loader.Scene.GameScene);
     }
 
     public void OpenSettings() {
@@ -35,7 +40,7 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void OpenCredits() {
-
+        creditsPanel.gameObject.SetActive(true);
     }
 
     public void QuitToDesktop() {

@@ -608,7 +608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guy: {fileID: 8402444056179596760}
-  equipmentPanel: {fileID: 0}
 --- !u!1001 &2420054251182334275
 PrefabInstance:
   m_ObjectHideFlags: 0

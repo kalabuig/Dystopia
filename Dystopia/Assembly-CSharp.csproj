@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\MainMenuHandler.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterAnimator.cs" />
      <Compile Include="Assets\Scripts\GameHandler\WeatherHandler.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableMap.cs" />
      <Compile Include="Assets\Scripts\GameHandler\GameHandler.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoadingProgressBar.cs" />
      <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
@@ -85,6 +86,7 @@
      <Compile Include="Assets\Scripts\Items\Effects\HungryItemEffect.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadSystem.cs" />
      <Compile Include="Assets\Scripts\Utils\GenericSingletonClass.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadMap.cs" />
      <Compile Include="Assets\Scripts\ProgressBar\ExperienceProgressBar.cs" />
      <Compile Include="Assets\Scripts\Player\LevelSystem.cs" />
      <Compile Include="Assets\Scripts\Stats\StatDisplay.cs" />
@@ -97,6 +99,7 @@
      <Compile Include="Assets\Scripts\Crafting\IItemsContainer.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\HealItemEffect.cs" />
      <Compile Include="Assets\Scripts\UIHandler\MessagePanel.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\OnGameStart.cs" />
      <Compile Include="Assets\Scripts\Tooltip\ItemTooltip.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\UIHandler\TabGroup.cs" />
@@ -138,6 +141,8 @@
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\InventoryEquipmentManager.cs" />
      <Compile Include="Assets\Scripts\GameHandler\PlayerProgressBarsHandler.cs" />
      <Compile Include="Assets\Scripts\Items\UsableItem.cs" />
+     <Compile Include="Assets\Scripts\Persistance\PersistentData.cs" />
+     <Compile Include="Assets\Scripts\UIHandler\CreditsPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WorldInventory.cs" />
      <Compile Include="Assets\Scripts\Items\Effects\ThirstItemEffect.cs" />
      <Compile Include="Assets\Scripts\Player\StatsModifiers.cs" />
@@ -156,9 +161,9 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadMap.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableMap.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableCharacter.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadPlayer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

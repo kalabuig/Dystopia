@@ -121,7 +121,7 @@ public class GameHandler : MonoBehaviour
         ResumeGame(); //Resume Game (needed in case we are createig a new game)
         selectedContainer = null; //Unselect any container
 
-        GameObject.Find("Map").GetComponent<MapWithoutSectorsHandler>().ActivateRefresh(); //Activate the auto refresh funcionality of the map to create the first island
+        GameObject.Find("Map")?.GetComponent<MapWithoutSectorsHandler>()?.ActivateRefresh(); //Activate the auto refresh funcionality of the map to create the first island
     }
 
     private void Update() {

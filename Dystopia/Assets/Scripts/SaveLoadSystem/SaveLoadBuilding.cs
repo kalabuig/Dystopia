@@ -195,7 +195,9 @@ public class SaveLoadBuilding : MonoBehaviour
 
     private Item GetItemByID(string ID) {
         //Search in the GlobalItemAssets the item (objectscript) by its ID.
-        return GlobalItemAssets.Instance.itemList.Find( x => x.ID == ID );
+        Item item = GlobalItemAssets.Instance.itemList?.Find( x => x.ID == ID );
+        if(item==null) Debug.Log("Item: " + ID);
+        return item;
     }
 
     private void loadWaterFiller(SerializableWaterFiller sw, GameObject parent) {
