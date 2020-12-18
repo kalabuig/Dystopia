@@ -41,7 +41,11 @@
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector3.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSelectionPanel.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ResultSlot.cs" />
+     <Compile Include="Assets\Scripts\Items\GlobalItemAssets.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadIsland.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Map\BuildingSpamer.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableItem.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableFireSource.cs" />
      <Compile Include="Assets\Scripts\Items\ItemAssets.cs" />
      <Compile Include="Assets\Scripts\Crafting\RecipeAssets.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\SceneLoader.cs" />
@@ -59,6 +63,7 @@
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
      <Compile Include="Assets\Scripts\Crafting\CraftingBook.cs" />
      <Compile Include="Assets\Scripts\Guys\PlayerBody.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableIsland.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\testSaveLoad.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector4.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ComponentSlot.cs" />
@@ -86,6 +91,7 @@
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableBuilding.cs" />
      <Compile Include="Assets\Scripts\Settings\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\UIHandler\ProgressPanel.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableWaterFiller.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoaderCallBack.cs" />
      <Compile Include="Assets\Scripts\Player\TriggersHandler.cs" />
      <Compile Include="Assets\Scripts\Crafting\IItemsContainer.cs" />
@@ -150,12 +156,9 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableItem.cs" />
-     <Compile Include="Assets\Scripts\Items\GlobalItemAssets.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableWaterFiller.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableFireSource.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableIsland.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadIsland.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadMap.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableMap.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Shaders\Mask.shader" />

@@ -4,49 +4,37 @@ using UnityEngine;
 
 public class testSaveLoad : MonoBehaviour
 {
-    [SerializeField] private GameObject building;
-    [SerializeField] private GameObject island;
+    private GameObject map;
 
-    SaveLoadBuilding saveLoadBuilding;
-    SaveLoadIsland saveLoadIsland;
+    private SaveLoadBuilding saveLoadBuilding;
+    private SaveLoadIsland saveLoadIsland;
+    private SaveLoadMap saveLoadMap;
 
     private void Awake() {
         saveLoadBuilding = GetComponent<SaveLoadBuilding>();
         saveLoadIsland = GetComponent<SaveLoadIsland>();
+        saveLoadMap = GetComponent<SaveLoadMap>();
     }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {
-            //SaveBuildingTest();
-            SaveIslandTest();
+            SaveMapTest();
         }
         if(Input.GetKeyDown(KeyCode.Z)) {
-            //LoadBuildingTest();
-            LoadIslandTest();
+            LoadMapTest();
         }
     }
 
-    private void SaveBuildingTest() {
-        if(building!=null && saveLoadBuilding!=null) {
-            //saveLoadBuilding.Save(building);
+    private void SaveMapTest() {
+        map = GameObject.Find("Map"); //Searching the map gameobject
+        if(map!=null && saveLoadMap!=null) {
+            saveLoadMap.Save(map);
         }
     }
 
-    private void LoadBuildingTest() {
-        if(saveLoadBuilding!=null) {
-            //saveLoadBuilding.Load();
-        }
-    }
-
-    private void SaveIslandTest() {
-        if(island!=null && saveLoadIsland!=null) {
-            saveLoadIsland.Save(island);
-        }
-    }
-
-    private void LoadIslandTest() {
-        if(saveLoadIsland!=null) {
-            saveLoadIsland.Load();
+    private void LoadMapTest() {
+        if(saveLoadMap!=null) {
+            saveLoadMap.Load();
         }
     }
 

@@ -48,13 +48,13 @@ public class MessagePanel : GenericSingletonClass<MessagePanel>
 
     private IEnumerator FadeOutPanel(float waitTime, float fadeTime) {
         //Show fase
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime); //WaitForSeconds(waitTime);
         //Fade fase
         float timeElapsed = 0f;
         SetAlpha(initialAlpha);
         while(timeElapsed < fadeTime ){
             SetAlpha(Mathf.Lerp(initialAlpha, 0f, timeElapsed / fadeTime));
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime; //Time.deltaTime;
             yield return null;
         }
         //Final fase

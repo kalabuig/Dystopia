@@ -85,7 +85,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8807687828045729635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3608828554845150566}
@@ -132,8 +132,8 @@ SpriteRenderer:
   m_SortingLayerID: 1715433847
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8bdafaa7c3a824442b27254ede15159c, type: 3}
-  m_Color: {r: 0.14351194, g: 0.4056604, b: 0.26349127, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ed0a34d6804dc9b4e93ede291a19f79c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,18 +156,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.92, y: 0.5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 25, y: 25}
+    oldSize: {x: 16.666666, y: 16.666666}
     newSize: {x: 50, y: 50}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.68, y: 16.4}
+  m_Size: {x: 15, y: 16}
   m_EdgeRadius: 0
 --- !u!61 &8807687828045729638
 BoxCollider2D:
@@ -186,7 +186,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 25, y: 25}
+    oldSize: {x: 16.666666, y: 16.666666}
     newSize: {x: 50, y: 50}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   itemAssets: {fileID: 4099928456192171660}
   minAmountToScavenge: 2
   maxAmountToScavenge: 6
+  remainingScavengings: 0
 --- !u!114 &4480071023192210293
 MonoBehaviour:
   m_ObjectHideFlags: 0

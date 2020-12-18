@@ -23,3 +23,4 @@ MonoBehaviour:
   listOfEffects:
   - {fileID: 11400000, guid: 63e9b5e5d60a02f48aff1b92d1cce93a, type: 2}
   - {fileID: 11400000, guid: 64e131e47e53e5640be5bba14df8cf88, type: 2}
+  soundToPlay: 4

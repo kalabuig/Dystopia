@@ -6,6 +6,7 @@ using System;
 public static class SoundManager
 {
     public enum Sound {
+        None,
         PlayerDamage,
         Search,
         Eat,
@@ -31,7 +32,7 @@ public static class SoundManager
     //2D Sound (One Shot Play)
     public static void PlaySound(Sound sound) {
         SoundAssets.SoundAudioClip soundAudioClip = GetSoundAudioClip(sound);
-        if(soundAudioClip.CanPlay()) {
+        if(soundAudioClip!=null && soundAudioClip.CanPlay()) {
             if(oneShotGO == null) {
                 oneShotGO = new GameObject("OneShotSound");
                 oneShotAS = oneShotGO.AddComponent<AudioSource>();

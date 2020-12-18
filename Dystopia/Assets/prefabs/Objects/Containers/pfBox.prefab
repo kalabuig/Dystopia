@@ -246,6 +246,7 @@ MonoBehaviour:
   itemAssets: {fileID: 4646542164021282931}
   minAmountToScavenge: 0
   maxAmountToScavenge: 2
+  remainingScavengings: 0
 --- !u!114 &3066539391274375519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTakeDamage: 1
-  maxHealth: 100
-  hitSound: 6
+  _maxHealth: 100
+  hitSound: 7
 --- !u!114 &1660228
 MonoBehaviour:
   m_ObjectHideFlags: 0

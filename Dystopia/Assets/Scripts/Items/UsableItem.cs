@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,15 +12,23 @@ public class UsableItem : Item
     [Space]
     [Header("Effects when used")]
     public List<UsableItemEffect> listOfEffects;
+    [Space]
+    [Header("Sound effect when using it")]
+    public SoundManager.Sound soundToPlay;
 
     public virtual void Use(Character character) {
         foreach(UsableItemEffect effect in listOfEffects) {
             effect.ExecuteEffect(this, character); //execute each effect
+        }
+        if(soundToPlay!=SoundManager.Sound.None) {
+            SoundManager.PlaySound(soundToPlay);
         }
     }
 
     public Item GetSubProduct() {
         return SubProduct;
     }
+
+    
 
 }

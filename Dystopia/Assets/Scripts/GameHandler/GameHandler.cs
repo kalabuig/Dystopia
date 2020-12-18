@@ -54,6 +54,9 @@ public class GameHandler : MonoBehaviour
         get => _gameIsPaused;
     }
 
+    //Save Load Game Handler
+    private SaveLoadGame saveLoadGame;
+
     private void Awake() {
         //Camera
         cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
@@ -87,6 +90,8 @@ public class GameHandler : MonoBehaviour
         messagePanel = GameObject.Find("MessagePanel")?.GetComponent<MessagePanel>();
         //Progress Panel
         progressPanel = GameObject.Find("ProgressPanel")?.GetComponent<ProgressPanel>();
+        //Save Load Game
+        saveLoadGame = GameObject.Find("SaveLoadGameHandler")?.GetComponent<SaveLoadGame>();
         //Level System
         CreateLevelSystem();
         //Time Tick System
@@ -115,6 +120,8 @@ public class GameHandler : MonoBehaviour
         
         ResumeGame(); //Resume Game (needed in case we are createig a new game)
         selectedContainer = null; //Unselect any container
+
+        GameObject.Find("Map").GetComponent<MapWithoutSectorsHandler>().ActivateRefresh(); //Activate the auto refresh funcionality of the map to create the first island
     }
 
     private void Update() {
@@ -269,11 +276,15 @@ public class GameHandler : MonoBehaviour
     }
 
     public void SaveGame() {
-        //TODO
+        saveLoadGame.Save();
+        messagePanel.gameObject.SetActive(true);
+        messagePanel.ShowPanel("Game Saved.", MessagePanel.MessageIcon.Celebration, SoundManager.Sound.ItemFound, 0.5f, 0.1f);
     }
 
     public void LoadGame() {
-        //TODO
+        saveLoadGame.Load();
+        ResumeGame();
+        pausePanel.SetActive(false);
     }
 
     public void ExitGame() {

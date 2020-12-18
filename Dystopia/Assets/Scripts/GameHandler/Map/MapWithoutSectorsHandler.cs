@@ -14,19 +14,21 @@ public class MapWithoutSectorsHandler : MonoBehaviour
     private const int DEACTIVATION_DISTANCE = DISTANCE_BETWEEN_ISLANDS + 250; //=1250
     private const float SECONDS_TO_NEXT_REFRESH = 0.1f; //5f;
 
+    private bool updateActive = false; //To control the RefreshSetActive method activity (set it to true after loading the map or at a new game)
+
     private void Awake() {
         islands = new Dictionary<Vector2Int, GameObject>();
         player = GameObject.Find("Player").transform;
-        startingIsland();
+        //startingIsland();
         }
 
     private void Start() {
-
         StartCoroutine(RefreshSetActive());
     }
 
-    //Create the starting sectors of the map
-    private void startingIsland() {
+    //THIS METHOD IS NOT NEEDED NOW, REFRESHSETACTIVE CREATES THE FIRST ISLAND
+    //Create the starting island of the map
+    public void startingIsland() {
         int halfSIZE = (int)(SIZE/2);
         for(int x = -halfSIZE; x <= halfSIZE; x++) {
             for(int y = -halfSIZE; y <= halfSIZE; y++) {
@@ -38,13 +40,21 @@ public class MapWithoutSectorsHandler : MonoBehaviour
             startingIsland.SetActive(true); //Activate the starting sector (0,0)
     }
 
+    //Method used to Load a map, it adds the Loaded island to the Islands Dictionary
+    public void AddIslandToDictionary(GameObject goIsland) {
+        int x = (int) (goIsland.transform.position.x / DISTANCE_BETWEEN_ISLANDS);
+        int y = (int) (goIsland.transform.position.y / DISTANCE_BETWEEN_ISLANDS);
+        goIsland.SetActive(false); //by default the islands are disabled
+        islands.Add(new Vector2Int(x, y), goIsland);
+    }
+
     public GameObject CreateIsland(int x, int y) {
         int randIndex = Random.Range(0, islandPrefabs.Length); //Select a random island
         GameObject go = Instantiate(islandPrefabs[randIndex], Vector3.zero, Quaternion.identity); //instantiate island
         Vector3 relativePosition = new Vector3(x*DISTANCE_BETWEEN_ISLANDS, y*DISTANCE_BETWEEN_ISLANDS, 0);
         go.transform.SetParent(this.gameObject.transform, false); //Set parent (Map object)
         go.transform.localPosition += relativePosition; //set relative position
-        go.SetActive(false); //by default the sectors are disabled
+        go.SetActive(false); //by default the islands are disabled
         islands.Add(new Vector2Int(x, y), go);
         return go;
     }
@@ -57,6 +67,9 @@ public class MapWithoutSectorsHandler : MonoBehaviour
 
     //Enable or disable any island (relative to the distance to the player)
     IEnumerator RefreshSetActive() {
+        while(updateActive==false) {
+            yield return null; //Waiting until activation
+        }
         while(true) {
             Vector3 playerPos = player.position;
             //Actual island (the player is in this island now)
@@ -89,6 +102,10 @@ public class MapWithoutSectorsHandler : MonoBehaviour
         if( d > DEACTIVATION_DISTANCE) {
             island.SetActive(false); //deactivate island
         }
+    }
+
+    public void ActivateRefresh() {
+        updateActive = true;
     }
 
 }

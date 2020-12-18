@@ -22,3 +22,4 @@ MonoBehaviour:
   SubProduct: {fileID: 0}
   listOfEffects:
   - {fileID: 11400000, guid: d33ad0f2360ba1a46b4a3d00d7d9c1e3, type: 2}
+  soundToPlay: 3
