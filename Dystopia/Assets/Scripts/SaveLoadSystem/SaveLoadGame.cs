@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SaveLoadMap), typeof(SaveLoadPlayer), typeof(SaveLoadInventories))]
+[RequireComponent(typeof(SaveLoadMap), typeof(SaveLoadPlayer), typeof(SaveLoadInventories))] 
+[RequireComponent(typeof(SaveLoadEnvironmentData))]
 public class SaveLoadGame : MonoBehaviour
 {
     private SaveLoadMap saveLoadMap;
     private SaveLoadPlayer saveLoadPlayer;
     private SaveLoadInventories saveLoadInventories;
+    private SaveLoadEnvironmentData saveLoadEnvironmentData;
 
     private void Start() {
         saveLoadMap = GetComponent<SaveLoadMap>();
         saveLoadPlayer = GetComponent<SaveLoadPlayer>();
         saveLoadInventories = GetComponent<SaveLoadInventories>();
+        saveLoadEnvironmentData = GetComponent<SaveLoadEnvironmentData>();
     }
 
     public void Save() {
@@ -32,6 +35,8 @@ public class SaveLoadGame : MonoBehaviour
         }
         //PLAYER INVENTORIES
         saveLoadInventories.Save();
+        //ENVIRONMENT DATA
+        saveLoadEnvironmentData.Save();
     }
 
     public void Load() {
@@ -52,5 +57,8 @@ public class SaveLoadGame : MonoBehaviour
         //PLAYER INVENTORIES
         if(saveLoadInventories==null) saveLoadInventories = GetComponent<SaveLoadInventories>();
         saveLoadInventories.Load();
+        //ENVIRONMENT DATA
+        if(saveLoadEnvironmentData==null) saveLoadEnvironmentData = GetComponent<SaveLoadEnvironmentData>();
+        saveLoadEnvironmentData.Load();
     }
 }

@@ -160,6 +160,8 @@ public class SaveLoadBuilding : MonoBehaviour
         newContainer.transform.SetParent(parent.transform, true);
         //Current Health
         newContainer.GetComponent<Hittable>()?.SetHealth(sc.currentHealth, newContainer.GetComponent<Hittable>().maxHealth);
+        //ContainerStartingItems
+        newContainer.GetComponent<ContainerStartingItems>().createdFromSavedGame = true;
         //Container:
         Container container = newContainer.GetComponent<Container>();
         if(container!=null) {
@@ -170,7 +172,7 @@ public class SaveLoadBuilding : MonoBehaviour
             //Fill inventory with objects
             List<Container.ContainerItem> containerItemList = GetContainerItemList(sc); 
             container.SetItems(containerItemList.ToArray());
-        }
+        } else Debug.LogError("Container component not found.");
     }
 
     private GameObject SelectContainerByName(string containerName) {

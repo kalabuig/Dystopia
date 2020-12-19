@@ -82,6 +82,17 @@ public class GameDateTimeHandler : MonoBehaviour
         return _gameTimeInMinutes % 60;;
     }
 
+    public void GetTimeDate(out int newTimeDays, out int newTimeMinutes) {
+        newTimeDays = _gameDateInDays;
+        newTimeMinutes = _gameTimeInMinutes;
+    }
+
+    public void SetTimeDate(int newTimeDays, int newTimeMinutes) {
+        _gameDateInDays = newTimeDays;
+        _gameTimeInMinutes = newTimeMinutes;
+    }
+
+
     private void OnDestroy() {
         timeOn=false;
         StopCoroutine(TimeCounter());

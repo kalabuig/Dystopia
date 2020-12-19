@@ -30,13 +30,12 @@ public class SaveLoadMap : MonoBehaviour
         newMap.name = "Map";
         //Instantiate Islands
         foreach(SerializableIsland si in serLoadedMap.islands) {
-            //loadIsland(si, islandsFolder.transform);
             GameObject newIsland = loadIsland(si, newMap.transform);
             if(newIsland!=null) {
                 newMap.GetComponent<MapWithoutSectorsHandler>().AddIslandToDictionary(newIsland);
             }
         }
-        //Activate Refresh
+        //Activate Automatic Map Refresh
         newMap.GetComponent<MapWithoutSectorsHandler>().ActivateRefresh();
     }
 

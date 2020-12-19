@@ -121,7 +121,10 @@ public class GameHandler : MonoBehaviour
         ResumeGame(); //Resume Game (needed in case we are createig a new game)
         selectedContainer = null; //Unselect any container
 
-        GameObject.Find("Map")?.GetComponent<MapWithoutSectorsHandler>()?.ActivateRefresh(); //Activate the auto refresh funcionality of the map to create the first island
+        if(PersistentData.instance.newGame) {
+            //Activate the auto refresh funcionality of the map to create the first island
+            GameObject.Find("Map")?.GetComponent<MapWithoutSectorsHandler>()?.ActivateRefresh();
+        }
     }
 
     private void Update() {
@@ -227,6 +230,7 @@ public class GameHandler : MonoBehaviour
     }
 
     public void UnSetContainer(GameObject container) {
+        if(container==null) return;
         if(container.layer == LayerMask.NameToLayer("Containers")) {
             scavengingPanel.GetComponent<ScavengingInventory>()?.storeItems(container.GetComponent<Container>());
             selectedContainer = null;
@@ -276,13 +280,19 @@ public class GameHandler : MonoBehaviour
     }
 
     public void SaveGame() {
+        //Unset container to force containere slots to be saved into its container inventory
+        UnSetContainer(selectedContainer);
+        //SaveGame
         saveLoadGame.Save();
+        //Disable panel and show message
         messagePanel.gameObject.SetActive(true);
         messagePanel.ShowPanel("Game Saved.", MessagePanel.MessageIcon.Celebration, SoundManager.Sound.ItemFound, 0.5f, 0.1f);
     }
 
     public void LoadGame() {
+        //Load Game
         saveLoadGame.Load();
+        //Disable panel and resume game (the loaded game)
         ResumeGame();
         pausePanel.SetActive(false);
     }

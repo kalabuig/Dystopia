@@ -12,12 +12,16 @@ public class ContainerStartingItems : MonoBehaviour
 
     private Container container;
 
+    public bool createdFromSavedGame = false;
+
     private void Awake() {
         container = GetComponent<Container>();
     }
 
     private void Start() {
-        CreateStartingItems();
+        if(createdFromSavedGame==false) {
+            CreateStartingItems();
+        }
     }
 
     private void CreateStartingItems() {
