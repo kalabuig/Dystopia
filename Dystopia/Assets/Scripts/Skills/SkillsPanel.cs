@@ -31,7 +31,7 @@ public class SkillsPanel : MonoBehaviour
         UpdateSkillsRowsList();
     }
 
-    private void UpdateSkillsRowsList() {
+    public void UpdateSkillsRowsList() {
         if(skills==null) return;
         //foreach skill to show
         for(int i = 0; i < skills.Count; i++) {
@@ -41,5 +41,9 @@ public class SkillsPanel : MonoBehaviour
             skillsUIs[i].SetPassiveSkill(skills[i]);
             skillsUIs[i].RefreshSkillOptionUI();
         }
+    }
+
+    private void OnEnable() {
+        RefreshSkillsList();
     }
 }

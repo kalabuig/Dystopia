@@ -6,7 +6,7 @@ public class OnGameStart : MonoBehaviour
 {
     [SerializeField] private GameObject pfMap;
 
-    private void Awake() {
+    private void Start() {
         //Check if we are starting the scene to load a game or to create a new game
         if(PersistentData.instance.newGame == false) {
             Debug.Log("loading game...");

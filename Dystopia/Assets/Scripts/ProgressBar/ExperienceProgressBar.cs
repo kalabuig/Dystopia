@@ -30,6 +30,7 @@ public class ExperienceProgressBar : MonoBehaviour
     private void LevelSystem_OnExperienceChanged(object sender, LevelSystem.AmountEventArgs e)
     {
         SetExperienceBarFillAmount(levelSystem.GetExperienceNormalized());
+        SetLevel(levelSystem.GetLevelNumber());
     }
 
     //Level changed

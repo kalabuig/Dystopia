@@ -128,4 +128,13 @@ public class CraftingPanel : MonoBehaviour, IItemsContainer
         }
         return numEmptySlots;
     }
+
+
+    public void EmptyInventory() {
+        for(int i = 0; i < componentSlots.Length; i++) {
+            componentSlots[i].item = null;
+            componentSlots[i].amount = 0;
+        }
+    }
+
 }

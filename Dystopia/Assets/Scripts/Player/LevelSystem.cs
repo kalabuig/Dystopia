@@ -44,8 +44,21 @@ public class LevelSystem
         return (float)experience / experienceToNextLevel;
     }
 
+    public int GetExperienceAbsolute() {
+        return experience;
+    }
+
     public int GetExperienceToNextLevel(int level)
     {
         return (int)Mathf.Floor(100 * level * Mathf.Pow(level, 0.5f));
+    }
+
+    public void LoadLevelExp(int level, int experience) {
+        this.level = level;
+        this.experience = experience;
+        experienceToNextLevel = GetExperienceToNextLevel(level);
+        if(OnExperienceChanged != null) {
+            OnExperienceChanged(this, new AmountEventArgs { amount = 0 }); //notify event to suscribers
+        }
     }
 }

@@ -22,10 +22,14 @@ public class RecipeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         set {
             _item = value;
             if (_item == null) {
-                itemImage.color = alpha0;
+                if(itemImage!=null) {
+                    itemImage.color = alpha0;
+                }
             } else {
-                itemImage.sprite = _item.icon;
-                itemImage.color = alpha1;
+                if(itemImage!=null) {
+                    itemImage.sprite = _item.icon;
+                    itemImage.color = alpha1;
+                }
             }
         }
     }
@@ -37,9 +41,11 @@ public class RecipeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             _amount = value;
             if(_amount < 0) _amount = 0;
             if(_amount == 0) item = null;
-            amountText.enabled = _item != null && _amount > 1;
-            if(amountText.enabled) {
-                amountText.text = _amount.ToString();
+            if(amountText!=null) {
+                amountText.enabled = _item != null && _amount > 1;
+                if(amountText.enabled) {
+                    amountText.text = _amount.ToString();
+                }
             }
         }
     }

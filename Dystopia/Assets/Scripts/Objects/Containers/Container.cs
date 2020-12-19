@@ -93,7 +93,7 @@ public class Container : MonoBehaviour
         items.Add(new ContainerItem { item = newItem.item, amount = newItem.amount});
     }
 
-    public void EmptyInvenoty() {
+    public void EmptyInventory() {
         items = null;
         items = new List<ContainerItem>();
     }

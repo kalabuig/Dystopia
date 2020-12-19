@@ -48,7 +48,7 @@ public class TestingHotkeys : MonoBehaviour
         //}
 
         //Level System
-        if(Input.GetKeyDown(KeyCode.Alpha0)){ //normal weather
+        if(Input.GetKeyDown(KeyCode.Alpha0)){ //add experience
             gameHandler.levelSystem.AddExperience(25);
         }
     }

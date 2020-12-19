@@ -166,7 +166,7 @@ public class SaveLoadBuilding : MonoBehaviour
             //Remaining scavengings
             container.remainingScavengings = sc.remainingScavengings;
             //Empty the inventory (because of the fact that some random objects are created when the new instance is called)
-            container.EmptyInvenoty();
+            container.EmptyInventory();
             //Fill inventory with objects
             List<Container.ContainerItem> containerItemList = GetContainerItemList(sc); 
             container.SetItems(containerItemList.ToArray());

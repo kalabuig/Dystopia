@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4985760026149827217}
   - component: {fileID: 4985760026149827216}
   - component: {fileID: 4985760026149827231}
+  - component: {fileID: 1056077011}
+  - component: {fileID: 1056077012}
   - component: {fileID: 4985760026149827218}
   m_Layer: 0
   m_Name: SaveLoadGameHandler
@@ -85,6 +87,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfMap: {fileID: 8500222961466787354, guid: c64f14e0aaee26048b888aa4e62ffe51, type: 3}
+--- !u!114 &1056077011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985760026149827230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ab2d0f02036f445b857a0ede0b7362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1056077012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985760026149827230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96356b7821facf0479ad59159ca1bedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4985760026149827218
 MonoBehaviour:
   m_ObjectHideFlags: 0

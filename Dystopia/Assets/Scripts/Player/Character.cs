@@ -206,10 +206,10 @@ public class Character : MonoBehaviour
 
             //Launch events
             int amount = 0;
-            OnHealthChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
-            OnHungryChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
-            OnThirstChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
-            OnVigorChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            if(OnHealthChange!=null) OnHealthChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            if(OnHungryChange!=null) OnHungryChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            if(OnThirstChange!=null) OnThirstChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
+            if(OnVigorChange!=null) OnVigorChange(this, new AmountEventArgs { amount = amount }); //Launch event to suscribers
 
             CalculateTickRates(); //recalculate tick rates
         }

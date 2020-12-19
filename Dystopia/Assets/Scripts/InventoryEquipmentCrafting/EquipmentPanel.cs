@@ -69,4 +69,11 @@ public class EquipmentPanel : MonoBehaviour
         }
         return itemsList;
     }
+
+    public void EmptyInventory() {
+        for(int i = 0; i < equipmentSlots.Length; i++) {
+            equipmentSlots[i].item = null;
+            equipmentSlots[i].amount = 0;
+        }
+    }
 }

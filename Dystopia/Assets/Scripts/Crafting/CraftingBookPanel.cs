@@ -31,14 +31,26 @@ public class CraftingBookPanel : MonoBehaviour
         //foreach recipe to show
         for(int i = 0; i < knownCraftingRecipes.Count; i++) {
             if(craftingRecipeUIs.Count == i) { //if we are at the end of the list
-                craftingRecipeUIs.Add(Instantiate(pfRecipeUI, recipeUIParent, false)); //add a new row
+                CraftingRecipeUI newCraftingRecipeUI = Instantiate(pfRecipeUI, recipeUIParent, false); //new row
+                newCraftingRecipeUI.name = "RecipeRow";
+                newCraftingRecipeUI.gameObject.SetActive(true);
+                craftingRecipeUIs.Add(newCraftingRecipeUI); //add a new row
             } 
             craftingRecipeUIs[i].inventory = inventory; //assign inventory to the row
             craftingRecipeUIs[i].craftingRecipe = knownCraftingRecipes[i]; //assign recipe to the row
         }
-        //if thereare more rows that recipes, set them to null (maybe this is not necessary to do)
+        //if thereare more rows than recipes, set them to null (maybe this is not necessary to do, but...)
         for(int i = knownCraftingRecipes.Count; i < craftingRecipeUIs.Count; i++) {
             craftingRecipeUIs[i].craftingRecipe = null; // null --> deactivate it
         }
+    }
+
+    public void EmptyInventory() {
+        knownCraftingRecipes = null;
+        knownCraftingRecipes = new List<CraftingRecipe>();
+    }
+
+    private void OnEnable() {
+        UpdateCraftingRecipeRowsList();
     }
 }

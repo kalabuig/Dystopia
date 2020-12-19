@@ -44,14 +44,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             _amount = value;
             if(_amount < 0) _amount = 0;
             if(_amount == 0) item = null;
-            amountText.enabled = ( _item != null ) && 
-                ( _amount > 1 || _item.isMultiUsable == true ); //quantity visible if it is bigger than 1 or if it is multi usable
-            if(amountText.enabled) {
-                //if it is a multiusable object (tools, bottles, food, etc)
-                if(_item.isMultiUsable) {
-                    amountText.text = Mathf.Floor(100f * _amount / _item.MaximumStacks).ToString() + "%";
-                } else { //otherwise
-                    amountText.text = _amount > 0 ? _amount.ToString() : string.Empty;
+            if(amountText!=null) {
+                amountText.enabled = ( _item != null ) && 
+                    ( _amount > 1 || _item.isMultiUsable == true ); //quantity visible if it is bigger than 1 or if it is multi usable
+                if(amountText.enabled) {
+                    //if it is a multiusable object (tools, bottles, food, etc)
+                    if(_item.isMultiUsable) {
+                        amountText.text = Mathf.Floor(100f * _amount / _item.MaximumStacks).ToString() + "%";
+                    } else { //otherwise
+                        amountText.text = _amount > 0 ? _amount.ToString() : string.Empty;
+                    }
                 }
             }
         }

@@ -123,6 +123,11 @@ public class Skills : MonoBehaviour
         return skills;
     }
 
+    public void EmptySkills() {
+        skills = null;
+        skills = new List<PassiveSkillData>();
+    }
+
     //Upgrade Skill Level
     private void UpgradeSkillLevel(int skillIndex, SkillLevel newLevel, int newValue) {
         if(skillIndex>=0 && skillIndex<skills.Count) {

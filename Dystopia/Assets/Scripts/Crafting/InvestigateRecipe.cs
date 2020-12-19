@@ -23,6 +23,8 @@ public class InvestigateRecipe : MonoBehaviour
     public StatsModifiers statsModifiers { get => _statsModifiers;}
 
     private ComponentSlot[] componentSlots;
+    public ComponentSlot[] ComponentSlots { get => componentSlots;}
+    
     private List<CraftingRecipe> allCraftingRecipes;
 
     private void Awake() {
@@ -81,13 +83,9 @@ public class InvestigateRecipe : MonoBehaviour
                 //We have a candidate, Check if all the component slots have a component that is part of the recipe
                 if(CheckAllMaterials(cr)) {
                     if(AddRecipeToKnownRecipes(cr)) { //Add this recipe to the known recipes
-                        //TODO: Message new recipe discovered
                         gameHandler.levelSystem.AddExperience(20);
-                        //Debug.Log("Recipe discovered: " + cr.name);
                         gameHandler.ShowMessage("Recipe discovered: " + cr.name, MessagePanel.MessageIcon.Celebration, SoundManager.Sound.ItemFound);
                     } else {
-                        //TODO: Message already known recipe
-                        //Debug.Log("Recipe already known: " + cr.name);
                         gameHandler.ShowMessage("Recipe already known: " + cr.name, MessagePanel.MessageIcon.IDontKnow, SoundManager.Sound.ItemNotFound);
                     }
                     return;

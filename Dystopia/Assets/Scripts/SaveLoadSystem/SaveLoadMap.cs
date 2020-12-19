@@ -41,6 +41,7 @@ public class SaveLoadMap : MonoBehaviour
     }
 
     private GameObject loadIsland(SerializableIsland si, Transform parent) {
+        if(saveLoadIsland==null) saveLoadIsland = GetComponent<SaveLoadIsland>();
         return saveLoadIsland.Load(si, parent);
     }
 }

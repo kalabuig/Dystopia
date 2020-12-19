@@ -11,7 +11,7 @@ public class SkillOption : MonoBehaviour
     private PassiveSkillData _passiveSkillData;
     public PassiveSkillData passiveSkillData { get => _passiveSkillData; }
 
-    public void SetPassiveSkill(PassiveSkill newPassiveSkill) {
+    public void SetPassiveSkill(PassiveSkill newPassiveSkill, bool refreshUI = true) {
         _passiveSkillData = new PassiveSkillData();
         _passiveSkillData.skillSprite = newPassiveSkill.skillSprite;
         _passiveSkillData.skillName = newPassiveSkill.skillName;
@@ -22,7 +22,7 @@ public class SkillOption : MonoBehaviour
         CopyStatsModifiers(newPassiveSkill);
         CopyCharacterModifiers(newPassiveSkill);
         CopySpecialModifiers(newPassiveSkill);
-        RefreshSkillOptionUI();
+        if(refreshUI) RefreshSkillOptionUI();
     }
 
     private void CopyStatsModifiers(PassiveSkill newPassiveSkill) {

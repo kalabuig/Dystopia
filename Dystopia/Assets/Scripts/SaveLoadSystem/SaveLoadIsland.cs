@@ -60,6 +60,7 @@ public class SaveLoadIsland : MonoBehaviour
     }
 
     private void loadBuilding(SerializableBuilding sb, Transform parent) {
+        if(saveLoadBuilding==null) saveLoadBuilding = GetComponent<SaveLoadBuilding>();
         saveLoadBuilding.Load(sb, parent);
     }
 }

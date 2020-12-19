@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour, IItemsContainer
     [SerializeField] Container.ContainerItem[] startingItems; //Starting items in the inventory
     [SerializeField] Transform itemsParent; //GridLayout (UI)
     [SerializeField] protected ItemSlot[] itemSlots; //Item Slots (UI)
+    public ItemSlot[] ItemSlots { get => itemSlots; }
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action OnPointerExitEvent;
@@ -36,6 +37,15 @@ public class Inventory : MonoBehaviour, IItemsContainer
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
     }
 */
+
+    public void SetStartingItems(Container.ContainerItem[] newStartingItems) {
+        startingItems = null;
+        startingItems = new Container.ContainerItem[newStartingItems.Length];
+        for(int i = 0; i < newStartingItems.Length; i++) {
+            startingItems[i] = newStartingItems[i]; //Structs are passed by value, not by reference
+        }
+        SetStartingItems();
+    }
 
     private void SetStartingItems() {
         int i = 0;
@@ -131,6 +141,13 @@ public class Inventory : MonoBehaviour, IItemsContainer
             }
         }
         return counter;
+    }
+
+    public void EmptyInventory() {
+        for(int i = 0; i < itemSlots.Length; i++) {
+            itemSlots[i].item = null;
+            itemSlots[i].amount = 0;
+        }
     }
 
 }
