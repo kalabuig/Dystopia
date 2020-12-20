@@ -857,6 +857,49 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4088234972701153888, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: m_text
+      value: '
+
+        TESTING HOTKEYS
+
+
+        <color=#FF00FF>Controls</color>
+
+        K
+        - Swap movement controls
+
+        ASDW / Arrows - Move player
+
+        Mouse
+        - View direction / Move direction
+
+        E- Interact with object
+
+        I
+        - Open/Close Inventory
+
+        C - Open/Close Crafting Investigation Panels
+
+
+        <color=#FFFF00>Testing
+        hotkeys</color>
+
+        Y/U - Increase / Decrease health
+
+        H/J -
+        Increase / Decrease hungry
+
+        N/M - Increase / Decrease thirst
+
+        1/2/3
+        - No Weather / Fog / Rain
+
+        0 - (+)25 XP
+
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 4088234972701153951, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0

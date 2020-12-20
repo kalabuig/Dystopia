@@ -12,7 +12,8 @@ public static class Loader
         LoadingScene,
         MainMenuScene,
         GameScene,
-        SettingsScene
+        SettingsScene,
+        IntroScene
     }
 
     private static Action onLoaderCallBack;

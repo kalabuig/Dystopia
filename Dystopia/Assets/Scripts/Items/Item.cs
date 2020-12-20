@@ -16,11 +16,13 @@ public class Item : ScriptableObject
     public int maxMultiUses; //Not used now, should be deleted
 
     //This method needs to be commented when compiling RunBuild.
+    /*
     private void OnValidate() { //Only works on editor mode
         string path = AssetDatabase.GetAssetPath(this); 
         id = AssetDatabase.AssetPathToGUID(path); //Getting the unity UID created
     }
-
+    */
+    
     public virtual Item GetCopy() {
         return MaximumStacks > 1 ? this: Instantiate(this); //Create a new instance if the object is not stackable
     }

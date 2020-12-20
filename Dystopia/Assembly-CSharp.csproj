@@ -125,6 +125,7 @@
      <Compile Include="Assets\Scripts\Texts\DamagePopup.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\FireSourceInventory.cs" />
      <Compile Include="Assets\Scripts\Guys\Guy.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadEnvironmentData.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadBuilding.cs" />
      <Compile Include="Assets\Scripts\Objects\Barriers\Barrier.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\Loader.cs" />
@@ -171,12 +172,12 @@
      <Compile Include="Assets\Scripts\Objects\WaterResources\WaterResource.cs" />
      <Compile Include="Assets\Scripts\Skills\PassiveSkill.cs" />
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableEnvironment.cs" />
-     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadEnvironmentData.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
+     <Compile Include="Assets\Scripts\Texts\IntroTexts.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\Shaders\Mask.shader" />
+     <None Include="Assets\ShadersParticles\Mask.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
