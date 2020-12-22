@@ -36,6 +36,10 @@ public class GameHandler : MonoBehaviour
     //Weapon
     [SerializeField] private EquipmentSlot weaponSlot; 
 
+    //Batteries Slot and lantern
+    [SerializeField] private EquipmentSlot batterySlot;
+    private Lantern lantern;
+
     //Player Level and experience (UI)
     [SerializeField] private ExperienceProgressBar experienceProgressBar;
     private LevelSystem _levelSystem;
@@ -43,10 +47,10 @@ public class GameHandler : MonoBehaviour
 
     //Zoom
     private float zoom=100f; //Zoom level
-    private float zoomSpeed = 150f; //Zoom in and out speed
-    private float minZoom = 40f; //More close zoom
+    private float zoomSpeed = 100f; //Zoom in and out speed
+    private float minZoom = 70f; //More close zoom
     private float maxZoom = 100f; //More far zoom
-    private float zoomWheelSensibility = 10f;
+    private float zoomWheelSensibility = 5f;
     
     //Pause control
     private static bool _gameIsPaused;
@@ -60,8 +64,10 @@ public class GameHandler : MonoBehaviour
     private void Awake() {
         //Camera
         cameraBehavior = Camera.main.GetComponent<CameraBehavior>();
-        //Player transform
+        //Player transform and lantern
         _playerTransform = GameObject.Find("Player").transform;
+        if(_playerTransform!=null) lantern = _playerTransform.GetComponent<Lantern>();
+        if(lantern!=null) lantern.SetBatterySlot(batterySlot);
         //CharacterPanel
         characterPanel = GameObject.Find("CharacterPanel");
         //EquipmentPanel
@@ -267,7 +273,6 @@ public class GameHandler : MonoBehaviour
     }
 
     private void HandlePausedKeyboardInputs() {
-        //Open or close the character panel
         if(Input.GetKeyDown(KeyCode.R)){ //resume game
             PauseResumeGame();
         } else if(Input.GetKeyDown(KeyCode.S)) { //save game
@@ -303,7 +308,7 @@ public class GameHandler : MonoBehaviour
     }
 
     private void HandleKeyboardInputs() {
-        //Open or close the character panel
+        //Open or close the character/inventory panel
         if(Input.GetKeyDown(KeyCode.I)){
             OpenCloseCharacterPanel();
         }
@@ -312,9 +317,13 @@ public class GameHandler : MonoBehaviour
             characterPanel.SetActive(true);
             OpenCraftingPanel();
         }
+        //Switch on or switc off the player lantern light
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            SwitchOnOffPlayerLight();
+        }
         //Interact
         if(Input.GetKeyDown(KeyCode.E)) {
-            if(selectedContainer!=null) { //Open the interactive panel (it dependts of the type of object which player is interacting)
+            if(selectedContainer!=null) { //Open the interactive panel (it depends of the type of object which the player is interacting)
                 textPanel.SetActive(false);
                 if(selectedContainer.gameObject.layer == LayerMask.NameToLayer("Containers")) {
                     if(scavengingPanel.activeSelf) CloseScavengingPanel();
@@ -332,7 +341,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    private void OpenCloseCharacterPanel() {
+    public void OpenCloseCharacterPanel() {
         characterPanel.SetActive(!characterPanel.activeSelf);
     }
 
@@ -465,5 +474,12 @@ public class GameHandler : MonoBehaviour
     public void ShowMessage(string textToShow, MessagePanel.MessageIcon messageIcon = MessagePanel.MessageIcon.None, SoundManager.Sound messageSound = SoundManager.Sound.ItemFound, float showTime = 1.5f, float fadeTime = 2f) {
         messagePanel.gameObject.SetActive(true);
         messagePanel.ShowPanel(textToShow, messageIcon, messageSound, showTime, fadeTime);
+    }
+
+    public void SwitchOnOffPlayerLight() {
+        if(lantern!=null) {
+            lantern.SwitchOnOffLantern();
+            lantern.ForceUIUpdate();
+        }
     }
 }

@@ -24,7 +24,7 @@ public class ScavengingInventory : WorldInventory
     protected override void DoSomething() {
         Item scavengedItem = GameHandler.GetSelectedContainer()?.GetComponent<Container>()?.GetRandomItem();
         if(scavengedItem!=null) {
-            AddItem(scavengedItem); //Add item to the scavenging inventory/panel
+            AddItem(scavengedItem, scavengedItem.MaximumStacks); //Add item to the scavenging inventory/panel
             SoundManager.PlaySound(SoundManager.Sound.ItemFound);
             gameHandler.levelSystem.AddExperience(5);
         } else {

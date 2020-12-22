@@ -34,7 +34,7 @@ public class ContainerStartingItems : MonoBehaviour
             for(int i = 0; i<numOfItems; i++) { //Create numOfItems amount of random items
                 Item randomItem = container.GetRandomItem(); //itemAssets.GetRandomItem();
                 if(randomItem!=null) {
-                    container.AddItem(new Container.ContainerItem { item = randomItem, amount = 1}); //Add item to the container inventory
+                    container.AddItem(new Container.ContainerItem { item = randomItem, amount = randomItem.MaximumStacks}); //Add item to the container inventory
                 }
             }
             

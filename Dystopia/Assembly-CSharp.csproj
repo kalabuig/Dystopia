@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableMap.cs" />
      <Compile Include="Assets\Scripts\GameHandler\GameHandler.cs" />
      <Compile Include="Assets\Scripts\GameHandler\ScenesManager\LoadingProgressBar.cs" />
+     <Compile Include="Assets\Scripts\Texts\IntroTexts.cs" />
      <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\WaterFillerInventory.cs" />
      <Compile Include="Assets\Scripts\Triggers\RoofTrigger.cs" />
@@ -174,7 +175,7 @@
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableEnvironment.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
-     <Compile Include="Assets\Scripts\Texts\IntroTexts.cs" />
+     <Compile Include="Assets\Scripts\Player\Lantern.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ShadersParticles\Mask.shader" />

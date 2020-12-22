@@ -12,6 +12,7 @@ public class ProgressBar : MonoBehaviour
     public Image mask;
     public Color fillColor;
     public Color maskColor;
+    public Color textColor;
     public TextMeshProUGUI text;
 
     public int Current { 
@@ -26,7 +27,7 @@ public class ProgressBar : MonoBehaviour
     private void Awake() {
         if(fill!=null) fill.color = fillColor;
         if(mask!=null) mask.color = maskColor;
-        if(text!=null) text.color = fillColor;
+        if(text!=null) text.color = textColor;
         _current = minValue;
     }
 

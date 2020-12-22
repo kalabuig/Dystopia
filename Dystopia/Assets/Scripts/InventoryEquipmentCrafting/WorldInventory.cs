@@ -74,7 +74,7 @@ public class WorldInventory : Inventory
                 }
                 DoSomething();
             }
-            progressText.text = (actionTick * 100f / actionTickMax).ToString() + "%";
+            progressText.text = (actionTick * 100f / actionTickMax).ToString("F0") + "%";
             progressSlider.value = (actionTick * 1f / actionTickMax);
         }
     }

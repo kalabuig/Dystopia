@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 3868298503200052967}
   - component: {fileID: 3868298503200052968}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 1292308816}
   - component: {fileID: 1038060169}
   - component: {fileID: 198225128}
+  - component: {fileID: 320426871235838767}
   m_Layer: 14
   m_Name: pfPlayer
   m_TagString: Player
@@ -608,6 +609,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guy: {fileID: 8402444056179596760}
+--- !u!114 &320426871235838767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868298503565952389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fad9d36a7a3444ca784d6638f25703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lantern: {fileID: 3868298503200052968}
 --- !u!1001 &2420054251182334275
 PrefabInstance:
   m_ObjectHideFlags: 0

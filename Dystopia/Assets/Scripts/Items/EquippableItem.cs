@@ -9,6 +9,7 @@ public enum EquipmentType {
     Accessory,
     Back,
     Weapon,
+    Battery,
 }
 
 public enum AttackRange {
@@ -40,6 +41,9 @@ public class EquippableItem : Item
     [Header("Only Weapons")]
     public int damage;
     public AttackRange attackRange;
+    [Header("Only Batteries")]
+    public bool isRechargable; //If the battery can be recharged
+
 
     public override Item GetCopy() {
         return Instantiate(this); //Equippable items are not stackable, so we create a new instance

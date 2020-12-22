@@ -216,6 +216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGuy01
       objectReference: {fileID: 0}
+    - target: {fileID: 466729972418307481, guid: 030a745ffa9b14440b3014c095de98f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 466729972418307483, guid: 030a745ffa9b14440b3014c095de98f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -83.08563
@@ -450,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 466729972418307481, guid: b3f8596bfed6c7445aca1dfcf949bffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 466729972418307483, guid: b3f8596bfed6c7445aca1dfcf949bffe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -87.7
@@ -564,6 +572,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3868298503200052969, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3868298503565952387, guid: b866fb813ebcf444ab26aaf5fb87f161, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.95
@@ -857,49 +869,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4088234972701153888, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
-      propertyPath: m_text
-      value: '
-
-        TESTING HOTKEYS
-
-
-        <color=#FF00FF>Controls</color>
-
-        K
-        - Swap movement controls
-
-        ASDW / Arrows - Move player
-
-        Mouse
-        - View direction / Move direction
-
-        E- Interact with object
-
-        I
-        - Open/Close Inventory
-
-        C - Open/Close Crafting Investigation Panels
-
-
-        <color=#FFFF00>Testing
-        hotkeys</color>
-
-        Y/U - Increase / Decrease health
-
-        H/J -
-        Increase / Decrease hungry
-
-        N/M - Increase / Decrease thirst
-
-        1/2/3
-        - No Weather / Fog / Rain
-
-        0 - (+)25 XP
-
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 4088234972701153951, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1016,6 +985,14 @@ PrefabInstance:
       propertyPath: rain
       value: 
       objectReference: {fileID: 1250342491}
+    - target: {fileID: 4088234972783124554, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: ingameMinutsBetweenWeatherChanges
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088234972783124554, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: chanceOfWeatherChange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4088234972835086417, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -2126,6 +2103,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6396473969761331496, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409108606108677589, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409108606108677589, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409108606108677589, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409108606108677589, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7830409925434156239, guid: 73b95ceb6270af84eb7587602169148d, type: 3}
