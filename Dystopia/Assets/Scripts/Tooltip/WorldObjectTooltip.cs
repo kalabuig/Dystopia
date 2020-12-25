@@ -38,6 +38,9 @@ public class WorldObjectTooltip : MonoBehaviour
         //Enemy
         nameToReturn = go.GetComponent<Enemy>()?.GetEnemyName();
         if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
+        //StreetLight
+        nameToReturn = go.GetComponent<LightEffects>()?.GetName();
+        if(nameToReturn!=null && nameToReturn!="") return nameToReturn;
         return "unknown";
     }
 }

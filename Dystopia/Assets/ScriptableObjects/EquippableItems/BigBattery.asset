@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigBattery
   m_EditorClassIdentifier: 
   id: da6dcbc44e3655b4081242dc80600a64
-  itemName: Battery
+  itemName: Big Battery
   icon: {fileID: 21300000, guid: e9fe87c978ebda5499e0df46dffaba5c, type: 3}
   MaximumStacks: 300
   isMultiUsable: 1

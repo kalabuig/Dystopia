@@ -16,6 +16,7 @@ public static class SoundManager
         WoodenItemHitted,
         MetalItemHitted,
         AttackMele,
+        BZT,
     }
 
     //Static attributes no use just one instance (performance)
@@ -43,11 +44,14 @@ public static class SoundManager
     }
 
     //3D Sound
-    public static void PlaySound(Sound sound, Vector3 position) {
+    public static void PlaySound3D(Sound sound, Vector3 position, float minDistance = 10f, float maxDistance = 50f) {
         SoundAssets.SoundAudioClip soundAudioClip = GetSoundAudioClip(sound);
         if(soundAudioClip.CanPlay()) {
             GameObject soundGO = new GameObject("Sound");
+            soundGO.transform.position = position;
             AudioSource audioSource = soundGO.AddComponent<AudioSource>();
+            audioSource.minDistance = minDistance;
+            audioSource.maxDistance = maxDistance;
             audioSource.clip = soundAudioClip.audioClip;
             audioSource.spatialBlend = 1f; //full 3D
             audioSource.Play();

@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\Testing\DevPanel.cs" />
      <Compile Include="Assets\Scripts\Tooltip\WorldObjectTooltip.cs" />
      <Compile Include="Assets\Scripts\ProgressBar\ProgressBar.cs" />
+     <Compile Include="Assets\Scripts\Player\Lantern.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\EquipmentPanel.cs" />
      <Compile Include="Assets\Scripts\Player\Character.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
@@ -175,7 +176,7 @@
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableEnvironment.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
-     <Compile Include="Assets\Scripts\Player\Lantern.cs" />
+     <Compile Include="Assets\Scripts\Objects\Lights\LightEffects.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ShadersParticles\Mask.shader" />

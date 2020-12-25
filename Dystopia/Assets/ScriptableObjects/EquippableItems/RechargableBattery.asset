@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RechargableBattery
   m_EditorClassIdentifier: 
   id: af9986c3d70c09c48beb3a9acd4045e8
-  itemName: Battery
+  itemName: Rechargable Battery
   icon: {fileID: 21300000, guid: 994e2008596584547956f3cfc9c3b36b, type: 3}
   MaximumStacks: 100
   isMultiUsable: 1
