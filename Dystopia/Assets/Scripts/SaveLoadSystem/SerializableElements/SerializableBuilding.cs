@@ -14,6 +14,7 @@ public class SerializableBuilding
     public List<SerializableContainer> containers;
     public List<SerializableWaterFiller> waterFillers;
     public List<SerializableFireSource> fireSources;
+    public List<SerializableStreetLight> streetLights;
     
     public SerializableBuilding(GameObject building) {
         walls = new List<SerializableTransform>();
@@ -22,6 +23,7 @@ public class SerializableBuilding
         containers = new List<SerializableContainer>();
         waterFillers = new List<SerializableWaterFiller>();
         fireSources = new List<SerializableFireSource>();
+        streetLights = new List<SerializableStreetLight>();
         DoSerialization(building);
     }
 
@@ -83,6 +85,14 @@ public class SerializableBuilding
                 foreach(Transform subchild in child.transform) {
                     if(subchild.gameObject.layer == LayerMask.NameToLayer("FireSources")) {
                         fireSources.Add(new SerializableFireSource(subchild.gameObject));
+                    }
+                }
+            }
+            //StreetLights
+            if (child.name=="StreetLights") {
+                foreach(Transform subchild in child.transform) {
+                    if(subchild.gameObject.layer == LayerMask.NameToLayer("StreetLights")) {
+                        streetLights.Add(new SerializableStreetLight(subchild.gameObject));
                     }
                 }
             }

@@ -93,7 +93,7 @@ public class Character : MonoBehaviour
         healthTick++;
         if(healthTick>=healthTickRate) {
             healthTick -= healthTickRate;
-            if(_hungry == 0 || _thirst == 0) {
+            if(_hungry == 0 || _thirst == 0 || _vigor == 0) {
                 ModifyHealth(-1);
             }
         }

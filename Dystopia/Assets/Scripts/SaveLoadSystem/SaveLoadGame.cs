@@ -11,7 +11,7 @@ public class SaveLoadGame : MonoBehaviour
     private SaveLoadInventories saveLoadInventories;
     private SaveLoadEnvironmentData saveLoadEnvironmentData;
 
-    private void Start() {
+    private void Awake() {
         saveLoadMap = GetComponent<SaveLoadMap>();
         saveLoadPlayer = GetComponent<SaveLoadPlayer>();
         saveLoadInventories = GetComponent<SaveLoadInventories>();

@@ -122,6 +122,7 @@ public class CraftingRecipeUI : MonoBehaviour
                 isDoingAction = false;
                 UnSuscribe(); //unsubscribe from the tick system
                 ResetProgress();
+                character.ModifyVigor(-1); //-1 in vigor when crafting is finished (succesfully or not)
                 craftingRecipe.Craft(inventory);
                 gameHandler.levelSystem.AddExperience(10);
             }

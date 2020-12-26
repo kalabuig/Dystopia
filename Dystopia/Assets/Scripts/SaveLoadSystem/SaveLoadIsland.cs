@@ -40,7 +40,7 @@ public class SaveLoadIsland : MonoBehaviour
         GameObject buildingsFolder = GameObject.Instantiate(emptyObject, posIsland, Quaternion.identity);
         buildingsFolder.name = "Buildings";
         buildingsFolder.transform.SetParent(newIsland.transform, true);
-        //Instantiate Boxes
+        //Instantiate Buildings
         foreach(SerializableBuilding sb in serLoadedIsland.buildings) {
             loadBuilding(sb, buildingsFolder.transform);
         }

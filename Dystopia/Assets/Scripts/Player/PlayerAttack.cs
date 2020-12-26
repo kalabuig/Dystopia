@@ -90,6 +90,7 @@ public class PlayerAttack : MonoBehaviour
         }
         SetScaleAttackTrail(scale);
         StartCoroutine("ShowAttackTrail");
+        character.ModifyVigor(-1); //-1 in vigor when attacking
     }
 
     IEnumerator ShowAttackTrail() {

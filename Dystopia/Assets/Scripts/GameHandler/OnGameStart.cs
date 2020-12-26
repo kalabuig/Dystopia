@@ -8,10 +8,10 @@ public class OnGameStart : MonoBehaviour
 
     private void Start() {
         //Check if we are starting the scene to load a game or to create a new game
-        if(PersistentData.instance.newGame == false) {
-            Debug.Log("loading game...");
+        if(PersistentData.instance.newGame == false) { //load a game
+            Debug.Log("Loading saved game...");
             GameObject.Find("SaveLoadGameHandler")?.GetComponent<SaveLoadGame>()?.Load();
-        } else {
+        } else { //new game
             Debug.Log("Creating new game...");
             if(pfMap!=null) {
                 GameObject mapGO = Instantiate(pfMap, Vector3.zero, Quaternion.identity);

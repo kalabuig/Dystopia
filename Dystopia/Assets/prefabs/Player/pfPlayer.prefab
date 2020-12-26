@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3868298503200052967
 Transform:
   m_ObjectHideFlags: 0
@@ -570,7 +570,7 @@ MonoBehaviour:
   attackRange: 5
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 44032
+    m_Bits: 109568
   srAttackTrail: {fileID: 1856394950}
 --- !u!114 &1292308816
 MonoBehaviour:

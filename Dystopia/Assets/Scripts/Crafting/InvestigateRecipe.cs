@@ -51,6 +51,7 @@ public class InvestigateRecipe : MonoBehaviour
                 UnSuscribe(); //unsubscribe from the tick system
                 actionTick = 0;
                 ResetProgress();
+                character.ModifyVigor(-1); //-1 in vigor when investigation is finished (succesfully or not)
                 TryRecipe();
             }
             //show progress

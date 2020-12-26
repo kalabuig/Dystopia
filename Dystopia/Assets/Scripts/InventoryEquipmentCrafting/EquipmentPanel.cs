@@ -70,6 +70,18 @@ public class EquipmentPanel : MonoBehaviour
         return itemsList;
     }
 
+    public List<EquippableItem> GetEquippedItemsWithAmounts(out List<int> amounts) {
+        List<EquippableItem> itemsList = new List<EquippableItem>();
+        amounts = new List<int>();
+        foreach(EquipmentSlot slot in equipmentSlots) {
+            if(slot != null && slot.item != null) {
+                itemsList.Add((EquippableItem)slot.item);
+                amounts.Add(slot.amount);
+            }
+        }
+        return itemsList;
+    }
+
     public void EmptyInventory() {
         for(int i = 0; i < equipmentSlots.Length; i++) {
             equipmentSlots[i].item = null;

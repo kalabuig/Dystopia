@@ -20,21 +20,31 @@ public class LightEffects : MonoBehaviour
     [Header("Blink effect duration")]
     [SerializeField] private float totalTimeInSeconds = 2f;
 
-    private bool bucle = true;
+    private Transform player;
+    private float distanceToDisableLight = 200f; //for performance purposes
+
+    public bool bucle = true;
 
     private void Awake() {
-        int randExist = UnityEngine.Random.Range(0, 101);
-        if(randExist>withEffectsChance) {
+        player = GameObject.Find("Player")?.transform;
+        int randItHasEffect = UnityEngine.Random.Range(0, 101);
+        if(randItHasEffect>withEffectsChance) {
             bucle = false;
         }
     }
 
-    public string GetName() {
-        return myName;
-    }
-
     private void Start() {
         StartCoroutine(BlinkEffect());
+    }
+
+    private void FixedUpdate() {
+        if(player!=null) {
+            if(Vector3.Distance(player.position, this.transform.position) >= distanceToDisableLight) {
+                light.gameObject.SetActive(false);
+            } else {
+                light.gameObject.SetActive(true);
+            }
+        }
     }
 
     public IEnumerator BlinkEffect() {
@@ -43,18 +53,24 @@ public class LightEffects : MonoBehaviour
         while(bucle) {
             yield return new WaitForSeconds(UnityEngine.Random.Range(minWaitingTime, maxWaitingTime)); //random waiting time between effects (blinks)
             for(int i = 0; i< UnityEngine.Random.Range(1, 4); i++) { //random núm of blinks: 1 - 3
-                SoundManager.PlaySound3D(SoundManager.Sound.BZT, this.transform.position);
-                while (light.intensity > 0) {
-                    light.intensity -= Time.deltaTime / halfTime; //Decrease intensity
-                    yield return null;
-                }
-                while (light.intensity < maxIntensity) {
-                    light.intensity += Time.deltaTime / halfTime; // Increase intensity
-                    yield return null;
-                }
+                if(light.gameObject.activeSelf) {
+                    SoundManager.PlaySound3D(SoundManager.Sound.BZT, this.transform.position);
+                    while (light.intensity > 0) {
+                        light.intensity -= Time.deltaTime / halfTime; //Decrease intensity
+                        yield return null;
+                    }
+                    while (light.intensity < maxIntensity) {
+                        light.intensity += Time.deltaTime / halfTime; // Increase intensity
+                        yield return null;
+                    }
+                }   
             }
         }
         yield return null;
+    }
+
+    public string GetName() {
+        return myName;
     }
 
     private void OnDisable() {

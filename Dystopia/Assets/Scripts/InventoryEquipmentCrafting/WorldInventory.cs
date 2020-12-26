@@ -72,6 +72,7 @@ public class WorldInventory : Inventory
                 if(progressPanel!=null) {
                     progressPanel.HidePanel();
                 }
+                character.ModifyVigor(-1); //-1 in vigor when action is finished (scavenging, fill with water, use fire...)
                 DoSomething();
             }
             progressText.text = (actionTick * 100f / actionTickMax).ToString("F0") + "%";

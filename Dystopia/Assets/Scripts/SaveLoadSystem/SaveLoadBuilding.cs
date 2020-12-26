@@ -12,6 +12,7 @@ public class SaveLoadBuilding : MonoBehaviour
     [SerializeField] public GameObject[] pfContainers;
     [SerializeField] public GameObject[] pfWaterFillers;
     [SerializeField] public GameObject[] pfFireSources;
+    [SerializeField] public GameObject[] pfStreetLights;
 
 /*
     private const string fileName = "buildings";
@@ -85,6 +86,14 @@ public class SaveLoadBuilding : MonoBehaviour
         //Instantiate FireSources
         foreach(SerializableFireSource sf in serLoadedBuilding.fireSources) {
             loadFireSource(sf, fireSourcesFolder);
+        }
+        //StreetLights
+        GameObject streetLightsFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
+        streetLightsFolder.name = "StreetLights";
+        streetLightsFolder.transform.SetParent(newBuilding.transform, true);
+        //Instantiate StreetLights
+        foreach(SerializableStreetLight sl in serLoadedBuilding.streetLights) {
+            loadStreetLight(sl, streetLightsFolder);
         }
         //Destroy dummy object
         Destroy(emptyObject);
@@ -268,6 +277,32 @@ public class SaveLoadBuilding : MonoBehaviour
     private GameObject SelectFireSourceByName(string fireSourceName) {
         foreach(GameObject go in pfFireSources) {
             if(go.GetComponent<FireSource>().GetFireSourceName() == fireSourceName) {
+                return go;
+            }
+        }
+        return null;
+    }
+
+    private void loadStreetLight(SerializableStreetLight sl, GameObject parent) {
+        //Transform
+        SerializableTransform st = sl.transform;
+        Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
+        Quaternion rot = new Quaternion(st.rotation.x, st.rotation.y, st.rotation.z, st.rotation.w);
+        Vector3 lsc = new Vector3(st.localScale.x, st.localScale.y, st.localScale.z);
+        GameObject streetLight = GameObject.Instantiate(SelectStreetLightByName(sl.lightName), pos , rot);
+        streetLight.transform.localScale = lsc;
+        streetLight.name = sl.lightName;
+        streetLight.transform.SetParent(parent.transform, true);
+        //Light Effects:
+        LightEffects lightEffectsComponent = streetLight.GetComponent<LightEffects>();
+        if(lightEffectsComponent!=null) {
+            lightEffectsComponent.bucle = sl.bucle; //true = it has effect, false = it has no light effect (blink)
+        }
+    }
+
+    private GameObject SelectStreetLightByName(string streetLightName) {
+        foreach(GameObject go in pfStreetLights) {
+            if(go.GetComponent<LightEffects>().GetName() == streetLightName) {
                 return go;
             }
         }

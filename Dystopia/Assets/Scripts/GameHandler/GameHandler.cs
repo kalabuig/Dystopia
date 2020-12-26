@@ -32,6 +32,7 @@ public class GameHandler : MonoBehaviour
     private GameObject gameOverPanel;
     private MessagePanel messagePanel;
     private ProgressPanel progressPanel;
+    private GameObject sleepingPanel;
 
     //Weapon
     [SerializeField] private EquipmentSlot weaponSlot; 
@@ -57,6 +58,10 @@ public class GameHandler : MonoBehaviour
     public static bool gameIsPaused {
         get => _gameIsPaused;
     }
+
+    //Sleeping
+    private bool sleeping = false;
+    private int sleepingMinutes = 0;
 
     //Save Load Game Handler
     private SaveLoadGame saveLoadGame;
@@ -96,12 +101,17 @@ public class GameHandler : MonoBehaviour
         messagePanel = GameObject.Find("MessagePanel")?.GetComponent<MessagePanel>();
         //Progress Panel
         progressPanel = GameObject.Find("ProgressPanel")?.GetComponent<ProgressPanel>();
+        //Sleeping Panel
+        sleepingPanel = GameObject.Find("SleepingPanel");
         //Save Load Game
         saveLoadGame = GameObject.Find("SaveLoadGameHandler")?.GetComponent<SaveLoadGame>();
         //Level System
         CreateLevelSystem();
         //Time Tick System
         TimeTickSystem.Create();
+        //Unselect any container
+        selectedContainer = null; 
+
     }
 
     void Start()
@@ -119,16 +129,16 @@ public class GameHandler : MonoBehaviour
         CloseWaterFillerPanel();
         CloseFireSourcePanel();
         CloseSkillSelectionPanel();
+        CloseSleepingPanel();
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
         messagePanel.gameObject.SetActive(false);
         progressPanel.gameObject.SetActive(false);
         
         ResumeGame(); //Resume Game (needed in case we are createig a new game)
-        selectedContainer = null; //Unselect any container
 
         if(PersistentData.instance.newGame) {
-            //Activate the auto refresh funcionality of the map to create the first island
+            //if it's a new game, activate the auto refresh funcionality of the map to create the first island
             GameObject.Find("Map")?.GetComponent<MapWithoutSectorsHandler>()?.ActivateRefresh();
         }
     }
@@ -149,6 +159,8 @@ public class GameHandler : MonoBehaviour
         } else { //if paused
             HandlePausedKeyboardInputs();
         }
+        //Sleeping management
+        SleepControl();
     }
 
     public static bool IsMouseOverUI() {
@@ -339,6 +351,10 @@ public class GameHandler : MonoBehaviour
                 }
             }
         }
+        //Sleep
+        if(Input.GetKeyDown(KeyCode.Z)) {
+            Sleep();
+        }
     }
 
     public void OpenCloseCharacterPanel() {
@@ -447,6 +463,48 @@ public class GameHandler : MonoBehaviour
             skillSelectionPanel.SetActive(false);
             skillsPanel.RefreshSkillsList();
             statsPanel.RefreshStats();
+        }
+    }
+
+    private void OpenSleepingPanel() {
+        sleepingPanel.SetActive(true);
+    }
+
+    private void CloseSleepingPanel() {
+        sleepingPanel.SetActive(false);
+    }
+
+    public void Sleep() {
+        Character character = playerTransform.GetComponent<Character>();
+        if(character!=null && character.vigor < character.maxVigor) {
+            sleeping = true;
+            sleepingMinutes = 0;
+            GetComponent<GameDateTimeHandler>().OnTimeChange += SleepControl; //suscribe to ingame time events
+            Time.timeScale = 10f;
+            OpenSleepingPanel();
+        }
+    }
+
+    public void WakeUp() {
+        sleeping = false;
+        GetComponent<GameDateTimeHandler>().OnTimeChange -= SleepControl; //unsuscribe to ingame time events
+        Time.timeScale = 1f;
+        CloseSleepingPanel();
+    }
+
+    public void SleepControl() {
+        if(sleeping) {
+            sleepingMinutes++;
+            if(sleepingMinutes>=15) { //in 7 hours of ingame time it refills 100 vigor points (100%)
+            sleepingMinutes = 0;
+            Character character = playerTransform.GetComponent<Character>();
+            if(character!=null) {
+                character.ModifyVigor(1);
+                if(character.vigor == character.maxVigor) {
+                    WakeUp();
+                }
+            }
+            }
         }
     }
 
