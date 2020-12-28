@@ -140,6 +140,8 @@ public class GameHandler : MonoBehaviour
         if(PersistentData.instance.newGame) {
             //if it's a new game, activate the auto refresh funcionality of the map to create the first island
             GameObject.Find("Map")?.GetComponent<MapWithoutSectorsHandler>()?.ActivateRefresh();
+            //New games start in fog weather
+            WeatherHandler.Instance.SetWeather(WeatherHandler.WeatherType.Fog);
         }
     }
 

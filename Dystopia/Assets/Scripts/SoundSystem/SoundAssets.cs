@@ -5,6 +5,9 @@ using UnityEngine;
 //Class used as a container for the sound clips to use in the game
 public class SoundAssets : GenericSingletonClass<SoundAssets>
 {
+    //Here the intro background music
+    public AudioClip introBackgroundMusic;
+
     //Here the list of Background sounds/music to use in the game
     public List<AudioClip> backgroundSoundsList;
 

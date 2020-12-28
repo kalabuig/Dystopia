@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   islands:
+  - {fileID: 6076335570096542904, guid: 8bb2a7a2348946b48b212b037ef44827, type: 3}
+  - {fileID: 6076335570096542904, guid: ea4f77654f491ea45bd086e0012b1233, type: 3}
   - {fileID: 6076335570096542904, guid: 444865cf4c2b95d408eda101f33e0efd, type: 3}
   - {fileID: 3105178061060910060, guid: 2bf52ee7889f61346a98b444f099b2ae, type: 3}

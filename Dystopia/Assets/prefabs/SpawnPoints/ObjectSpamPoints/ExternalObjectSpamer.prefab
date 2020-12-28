@@ -47,3 +47,4 @@ MonoBehaviour:
   boxes:
   - {fileID: 7729428583084971122, guid: fa97cfa84c1360347a01165dd135bfd7, type: 3}
   - {fileID: 8807687828045729635, guid: bd4509d69a1695740b32e7436595d850, type: 3}
+  - {fileID: 7729428583084971122, guid: 33b21354e76d9dd4e8210b5d398f5b31, type: 3}

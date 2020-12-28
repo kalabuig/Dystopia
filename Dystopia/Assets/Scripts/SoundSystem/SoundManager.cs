@@ -87,4 +87,17 @@ public static class SoundManager
         return SoundAssets.Instance.backgroundSoundsList[randIndex];
     }
 
+    /////////////// INTRO MUSIC ////////////////////
+
+    public static void PlayIntroMusic() {
+        AudioClip soundAudioClip = SoundAssets.Instance.introBackgroundMusic;
+        if(soundAudioClip!=null) {
+            if(oneShotGO == null) {
+                oneShotGO = new GameObject("OneShotSound");
+                oneShotAS = oneShotGO.AddComponent<AudioSource>();
+            }
+            oneShotAS.PlayOneShot(soundAudioClip);
+        }
+    }
+
 }

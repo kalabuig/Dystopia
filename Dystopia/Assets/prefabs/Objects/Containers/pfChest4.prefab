@@ -315,7 +315,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: f9ba98d6e9ff996a77713f66b328847d
+  m_ApplyToSortingLayers: f9ba98d6e9ff996a
   m_ShapePath:
   - {x: -6.4, y: -6.4, z: 0}
   - {x: 6.4, y: -6.4, z: 0}

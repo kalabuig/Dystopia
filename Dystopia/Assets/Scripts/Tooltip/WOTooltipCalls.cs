@@ -21,4 +21,12 @@ public class WOTooltipCalls : MonoBehaviour
     {
         gameHandler.worldObjectTooltip.HideTooltip();
     }
+
+    private void OnDisable() {
+        gameHandler.worldObjectTooltip.HideTooltip();
+    }
+
+    private void OnDestroy() {
+        gameHandler.worldObjectTooltip.HideTooltip();
+    }
 }
