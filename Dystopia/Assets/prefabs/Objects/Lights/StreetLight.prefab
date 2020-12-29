@@ -148,6 +148,7 @@ MonoBehaviour:
   minWaitingTime: 0.5
   maxWaitingTime: 5
   totalTimeInSeconds: 0.2
+  bucle: 1
 --- !u!1 &8473364327073402237
 GameObject:
   m_ObjectHideFlags: 0

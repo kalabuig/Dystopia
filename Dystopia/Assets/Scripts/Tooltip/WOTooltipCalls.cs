@@ -10,23 +10,30 @@ public class WOTooltipCalls : MonoBehaviour
     }
 
     private void OnMouseEnter() {
-        if(GameHandler.IsMouseOverUI() == false) {
-            gameHandler.worldObjectTooltip.ShowTooltip(this.gameObject);
-        } else {
+        if(gameHandler!=null && gameHandler.worldObjectTooltip!=null) {
+            if(GameHandler.IsMouseOverUI() == false) {
+                gameHandler.worldObjectTooltip.ShowTooltip(this.gameObject);
+            } else {
+                gameHandler.worldObjectTooltip.HideTooltip();
+            }
+        }
+    }
+
+    void OnMouseExit(){
+        if(gameHandler!=null && gameHandler.worldObjectTooltip!=null) {
             gameHandler.worldObjectTooltip.HideTooltip();
         }
     }
 
-    void OnMouseExit()
-    {
-        gameHandler.worldObjectTooltip.HideTooltip();
-    }
-
     private void OnDisable() {
-        gameHandler.worldObjectTooltip.HideTooltip();
+        if(gameHandler!=null && gameHandler.worldObjectTooltip!=null) {
+            gameHandler.worldObjectTooltip.HideTooltip();
+        }
     }
 
     private void OnDestroy() {
-        gameHandler.worldObjectTooltip.HideTooltip();
+        if(gameHandler!=null && gameHandler.worldObjectTooltip!=null) {
+            gameHandler.worldObjectTooltip.HideTooltip();
+        }
     }
 }

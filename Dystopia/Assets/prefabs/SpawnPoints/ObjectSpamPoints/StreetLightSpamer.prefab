@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chanceToSpawn: 80
   boxes:
-  - {fileID: 2130150885855809508, guid: 52cbee480d2741346b251bdd0d5f3faa, type: 3}
+  - {fileID: 2130150885855809508, guid: e5de368e0d050f0428cbf33d37c90d75, type: 3}
