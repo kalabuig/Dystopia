@@ -27,6 +27,14 @@ public class Container : MonoBehaviour
     [Range(0,10)]
     [SerializeField] int maxAmountToScavenge = 5;
 
+    [Space]
+    [Header("Hurt chance at scavenge fail")]
+    [Range(0,100)]
+    [SerializeField] private int _hurtChance = 5; //% chance to be hurted when the scavenging fails
+    public int hurtChance { get => _hurtChance; }
+    [SerializeField] private int _hurtAmount = 1; //amount of damage to do when hurted
+    public int hurtAmount { get => _hurtAmount; }
+
     private List<ContainerItem> items; //Items in the container
     public int remainingScavengings;
 

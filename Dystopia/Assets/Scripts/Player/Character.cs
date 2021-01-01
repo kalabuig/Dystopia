@@ -170,6 +170,10 @@ public class Character : MonoBehaviour
         return (int)(1f * amount * multiplyFactor);
     }
 
+    public void GetDamage(int amount) {
+        ModifyHealth(-amount);
+    }
+
     private void UnSuscribeTimeTickSystem() {
          TimeTickSystem.OnTick -= TimeTickSystem_OnTick;
     }

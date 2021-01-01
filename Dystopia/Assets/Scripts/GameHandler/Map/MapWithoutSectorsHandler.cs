@@ -10,7 +10,7 @@ public class MapWithoutSectorsHandler : MonoBehaviour
     private Dictionary<Vector2Int, GameObject> islands; //islands in the map
     private const int SIZE = 1; // SIZE x SIZE array of islands
     private const int DISTANCE_BETWEEN_ISLANDS = 1000;
-    private const int ACTIVATION_DISTANCE = DISTANCE_BETWEEN_ISLANDS - 200; //=750
+    private const int ACTIVATION_DISTANCE = DISTANCE_BETWEEN_ISLANDS - 100; //=800
     private const int DEACTIVATION_DISTANCE = DISTANCE_BETWEEN_ISLANDS + 250; //=1250
     private const float SECONDS_TO_NEXT_REFRESH = 0.1f; //5f;
 

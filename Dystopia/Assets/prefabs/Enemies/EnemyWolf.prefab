@@ -17,12 +17,12 @@ GameObject:
   - component: {fileID: 2541905465976159471}
   - component: {fileID: 3276259074533921013}
   m_Layer: 13
-  m_Name: Enemy
+  m_Name: EnemyWolf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &466729972418307483
 Transform:
   m_ObjectHideFlags: 0
@@ -161,6 +161,7 @@ MonoBehaviour:
   damage: 1
   attackDelayInSeconds: 0.5
   timeBetweenAttacks: 1
+  experience: 25
 --- !u!114 &1196333862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 0
   _enemyName: Enemy
+  _level: 1
   _damage: 10
   _attackDelay: 0.5
   _timeBetweenAttacks: 1
@@ -203,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTakeDamage: 1
-  maxHealth: 50
-  hitSound: 6
+  _maxHealth: 100
+  hitSound: 7
 --- !u!1 &466729972633154215
 GameObject:
   m_ObjectHideFlags: 0

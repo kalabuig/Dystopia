@@ -22,13 +22,20 @@ public class ScavengingInventory : WorldInventory
     }
 
     protected override void DoSomething() {
-        Item scavengedItem = GameHandler.GetSelectedContainer()?.GetComponent<Container>()?.GetRandomItem();
+        Container selectedContainerComponent = GameHandler.GetSelectedContainer()?.GetComponent<Container>();
+        Item scavengedItem = selectedContainerComponent?.GetRandomItem();
         if(scavengedItem!=null) {
             AddItem(scavengedItem, scavengedItem.MaximumStacks); //Add item to the scavenging inventory/panel
             SoundManager.PlaySound(SoundManager.Sound.ItemFound);
             gameHandler.levelSystem.AddExperience(5);
         } else {
-            SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
+            if(selectedContainerComponent!=null) {
+                if(UnityEngine.Random.Range(0,100) < selectedContainerComponent.hurtChance) {
+                    character.ModifyHealth(-selectedContainerComponent.hurtAmount);
+                } else {
+                    SoundManager.PlaySound(SoundManager.Sound.ItemNotFound);
+                }
+            } 
         }
     }
 

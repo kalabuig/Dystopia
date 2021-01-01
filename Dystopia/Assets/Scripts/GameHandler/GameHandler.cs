@@ -520,7 +520,9 @@ public class GameHandler : MonoBehaviour
     //Experience changed
     private void LevelSystem_OnExperienceChanged(object sender, LevelSystem.AmountEventArgs e)
     {
-        XPPopup.Create(playerTransform.position, e.amount);
+        if(playerTransform!=null) {
+            XPPopup.Create(playerTransform.position, e.amount);
+        }
     }
 
     //Level changed

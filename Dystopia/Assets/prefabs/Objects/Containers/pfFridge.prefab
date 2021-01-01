@@ -225,6 +225,8 @@ MonoBehaviour:
   itemAssets: {fileID: 4646542164021282931}
   minAmountToScavenge: 0
   maxAmountToScavenge: 3
+  _hurtChance: 5
+  _hurtAmount: 2
   remainingScavengings: 0
 --- !u!114 &3066539391274375519
 MonoBehaviour:

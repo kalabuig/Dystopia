@@ -223,6 +223,8 @@ MonoBehaviour:
   itemAssets: {fileID: 4099928456192171660}
   minAmountToScavenge: 2
   maxAmountToScavenge: 6
+  _hurtChance: 20
+  _hurtAmount: 1
   remainingScavengings: 0
 --- !u!114 &4480071023192210293
 MonoBehaviour:
@@ -238,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAmount: 0
   maxAmount: 2
+  createdFromSavedGame: 0
 --- !u!114 &1416668650
 MonoBehaviour:
   m_ObjectHideFlags: 0
