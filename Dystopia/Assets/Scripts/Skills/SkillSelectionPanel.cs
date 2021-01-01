@@ -47,6 +47,7 @@ public class SkillSelectionPanel : MonoBehaviour
 
     //Update the level if the player it has this skill
     private void UpdateSkillLevel(SkillOption so, int skillAssetsIndex) {
+        if(playerSkills==null) return;
         int numOfLevelsAvailable = Enum.GetNames(typeof(SkillLevel)).Length;
         if(playerSkills.IsTheSkillThere(so.passiveSkillData, out int index)) { //The player has the skill
             PassiveSkillData psd = playerSkills.GetSkillData(index);

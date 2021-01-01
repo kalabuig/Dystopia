@@ -181,6 +181,18 @@ public class GameHandler : MonoBehaviour
         _playerTransform.gameObject.GetComponent<PlayerAttack>().OnAttackHitSomething += Player_OnAttackHitSomething;
     }
 
+    private void UnSuscribeToPlayerEvents() {
+        Character character = _playerTransform.gameObject.GetComponent<Character>();
+        if(character!=null) {
+            character.OnHealthZero -= Character_OnHealthZero;
+            character.OnHealthChange -= Character_OnHealthChange;
+            character.OnHungryChange -= Character_OnHungryChange;
+            character.OnThirstChange -= Character_OnThirstChange;
+            character.OnVigorChange -= Character_OnVigorChange;
+        }
+        _playerTransform.gameObject.GetComponent<PlayerAttack>().OnAttackHitSomething -= Player_OnAttackHitSomething;
+    }
+
     private void Character_OnHealthChange(object sender, Character.AmountEventArgs e) {
         Vector3 pos = new Vector3(_playerTransform.position.x + 3, _playerTransform.position.y + 3, 0);
         if(e.amount == 1 || e.amount == -1) return;
@@ -309,15 +321,24 @@ public class GameHandler : MonoBehaviour
     }
 
     public void LoadGame() {
+        /*
         //Load Game
         saveLoadGame.Load();
         //Disable panel and resume game (the loaded game)
         ResumeGame();
         pausePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        */
+        UnSuscribeToPlayerEvents();
+        UnSuscribeToLevelSystem();
+        PersistentData.instance.newGame = false;
+        Loader.Load(Loader.Scene.GameScene);
     }
 
     public void ExitGame() {
         ResumeGame();
+        UnSuscribeToPlayerEvents();
+        UnSuscribeToLevelSystem();
         Loader.Load(Loader.Scene.MainMenuScene);
     }
 
@@ -515,6 +536,13 @@ public class GameHandler : MonoBehaviour
         experienceProgressBar.SetLevelSystem(_levelSystem); //Set level system to the experience progress bar
         levelSystem.OnExperienceChanged += LevelSystem_OnExperienceChanged; //suscribe to event
         levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged; //suscribe to event
+    }
+
+    private void UnSuscribeToLevelSystem() {
+        if(levelSystem!=null) {
+            levelSystem.OnExperienceChanged -= LevelSystem_OnExperienceChanged; //suscribe to event
+            levelSystem.OnLevelChanged -= LevelSystem_OnLevelChanged; //suscribe to event
+        }
     }
 
     //Experience changed

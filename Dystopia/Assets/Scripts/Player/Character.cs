@@ -171,7 +171,16 @@ public class Character : MonoBehaviour
     }
 
     public void GetDamage(int amount) {
-        ModifyHealth(-amount);
+        //calculate de total defense of the player
+        int fullDefense = defense;
+        StatsModifiers statsModifiers = GetComponent<StatsModifiers>();
+        fullDefense += statsModifiers!=null ? statsModifiers.GetIntStatMod(StatsModifiers.Modifier.protection) : 0;
+        Skills skills = GetComponent<Skills>();
+        fullDefense += skills!=null ? skills.GetStatSkillModifiersAmount(StatsModifiers.Modifier.protection) : 0;
+        //calculate de total damage done after defense applied
+        int totalDamage = amount - fullDefense;
+        if(totalDamage<=0) totalDamage = 1; //mínimum damage = 1
+        ModifyHealth(-totalDamage); //do damage
     }
 
     private void UnSuscribeTimeTickSystem() {

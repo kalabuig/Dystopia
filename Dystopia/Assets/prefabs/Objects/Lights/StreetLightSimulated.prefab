@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightGO: {fileID: 2886448075936574986}
-  myName: Street Light
+  myName: StreetLightSimulated
   withEffectsChance: 25
   minWaitingTime: 0.5
   maxWaitingTime: 5

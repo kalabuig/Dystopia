@@ -25,5 +25,12 @@ public class SerializableStreetLight
             //Effects bucle (true or false)
             bucle = lightEffectsComponent.bucle;
         }
+        LightEffectsSimulated lightEffectsSimulatedComponent = streetLight.GetComponent<LightEffectsSimulated>();
+        if(lightEffectsSimulatedComponent!=null) {
+            //Light name
+            lightName = lightEffectsSimulatedComponent.GetName();
+            //Effects bucle (true or false)
+            bucle = lightEffectsSimulatedComponent.bucle;
+        }
     }
 }

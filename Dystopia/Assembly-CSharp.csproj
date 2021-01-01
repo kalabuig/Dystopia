@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\UIHandler\FlashPanel.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableVector3.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSelectionPanel.cs" />
+     <Compile Include="Assets\Scripts\Guys\EnemyBody.cs" />
      <Compile Include="Assets\Scripts\InventoryEquipmentCrafting\ResultSlot.cs" />
      <Compile Include="Assets\Scripts\Items\GlobalItemAssets.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadIsland.cs" />
@@ -181,7 +182,7 @@
      <Compile Include="Assets\Scripts\Stats\StatsPanel.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableEnvironment.cs" />
      <Compile Include="Assets\Scripts\SaveLoadSystem\SaveLoadGame.cs" />
-     <Compile Include="Assets\Scripts\Guys\EnemyBody.cs" />
+     <Compile Include="Assets\Scripts\SaveLoadSystem\SerializableElements\SerializableEnemy.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\ShadersParticles\Mask.shader" />

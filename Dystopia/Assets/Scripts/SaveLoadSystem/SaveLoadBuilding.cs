@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class SaveLoadBuilding : MonoBehaviour
     [SerializeField] public GameObject[] pfWaterFillers;
     [SerializeField] public GameObject[] pfFireSources;
     [SerializeField] public GameObject[] pfStreetLights;
+    [SerializeField] public GameObject[] pfEnemies;
 
 /*
     private const string fileName = "buildings";
@@ -45,7 +47,7 @@ public class SaveLoadBuilding : MonoBehaviour
         wallsFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate Walls
         foreach(SerializableTransform st in serLoadedBuilding.walls) {
-            loadWall(st, wallsFolder);
+            LoadWall(st, wallsFolder);
         }
         //Cols Folder
         GameObject colsFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -53,7 +55,7 @@ public class SaveLoadBuilding : MonoBehaviour
         colsFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate Cols
         foreach(SerializableTransform st in serLoadedBuilding.cols) {
-            loadCol(st, colsFolder);
+            LoadCol(st, colsFolder);
         }
         //Barriers Folder
         GameObject barriersFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -61,7 +63,7 @@ public class SaveLoadBuilding : MonoBehaviour
         barriersFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate Barriers
         foreach(SerializableBarrier sb in serLoadedBuilding.barriers) {
-            loadBarrier(sb, barriersFolder);
+            LoadBarrier(sb, barriersFolder);
         }
         //Container Folder
         GameObject containersFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -69,7 +71,7 @@ public class SaveLoadBuilding : MonoBehaviour
         containersFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate Boxes
         foreach(SerializableContainer sc in serLoadedBuilding.containers) {
-            loadContainer(sc, containersFolder);
+            LoadContainer(sc, containersFolder);
         }
         //Water Resources Folder
         GameObject waterResourcesFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -77,7 +79,7 @@ public class SaveLoadBuilding : MonoBehaviour
         waterResourcesFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate WaterFillers
         foreach(SerializableWaterFiller sw in serLoadedBuilding.waterFillers) {
-            loadWaterFiller(sw, waterResourcesFolder);
+            LoadWaterFiller(sw, waterResourcesFolder);
         }
         //Fire Sources Folder
         GameObject fireSourcesFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -85,7 +87,7 @@ public class SaveLoadBuilding : MonoBehaviour
         fireSourcesFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate FireSources
         foreach(SerializableFireSource sf in serLoadedBuilding.fireSources) {
-            loadFireSource(sf, fireSourcesFolder);
+            LoadFireSource(sf, fireSourcesFolder);
         }
         //StreetLights
         GameObject streetLightsFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
@@ -93,7 +95,15 @@ public class SaveLoadBuilding : MonoBehaviour
         streetLightsFolder.transform.SetParent(newBuilding.transform, true);
         //Instantiate StreetLights
         foreach(SerializableStreetLight sl in serLoadedBuilding.streetLights) {
-            loadStreetLight(sl, streetLightsFolder);
+            LoadStreetLight(sl, streetLightsFolder);
+        }
+        //Enemies
+        GameObject enemiesFolder = GameObject.Instantiate(emptyObject, posBuilding, Quaternion.identity);
+        enemiesFolder.name = "Enemies";
+        enemiesFolder.transform.SetParent(newBuilding.transform, true);
+        //Instantiate Enemies
+        foreach(SerializableEnemy se in serLoadedBuilding.enemies) {
+            LoadEnemies(se, enemiesFolder);
         }
         //Destroy dummy object
         Destroy(emptyObject);
@@ -119,7 +129,7 @@ public class SaveLoadBuilding : MonoBehaviour
         newFloor.transform.SetParent(parent.transform, true);
     }
 
-    private void loadWall(SerializableTransform st, GameObject parent) {
+    private void LoadWall(SerializableTransform st, GameObject parent) {
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
         Quaternion rot = new Quaternion(st.rotation.x, st.rotation.y, st.rotation.z, st.rotation.w);
         Vector3 lsc = new Vector3(st.localScale.x, st.localScale.y, st.localScale.z);
@@ -129,7 +139,7 @@ public class SaveLoadBuilding : MonoBehaviour
         newWall.transform.SetParent(parent.transform, true);
     }
 
-    private void loadCol(SerializableTransform st, GameObject parent) {
+    private void LoadCol(SerializableTransform st, GameObject parent) {
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
         Quaternion rot = new Quaternion(st.rotation.x, st.rotation.y, st.rotation.z, st.rotation.w);
         Vector3 lsc = new Vector3(st.localScale.x, st.localScale.y, st.localScale.z);
@@ -140,7 +150,7 @@ public class SaveLoadBuilding : MonoBehaviour
         newCol.transform.SetParent(parent.transform, true);
     }
 
-    private void loadBarrier(SerializableBarrier sb, GameObject parent) {
+    private void LoadBarrier(SerializableBarrier sb, GameObject parent) {
         //Transform
         SerializableTransform st = sb.transform;
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
@@ -157,7 +167,7 @@ public class SaveLoadBuilding : MonoBehaviour
         newBarrier.GetComponent<Hittable>()?.SetHealth(sb.currentHealth, newBarrier.GetComponent<Hittable>().maxHealth);
     }
 
-    private void loadContainer(SerializableContainer sc, GameObject parent) {
+    private void LoadContainer(SerializableContainer sc, GameObject parent) {
         //Transform
         SerializableTransform st = sc.transform;
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
@@ -211,7 +221,7 @@ public class SaveLoadBuilding : MonoBehaviour
         return item;
     }
 
-    private void loadWaterFiller(SerializableWaterFiller sw, GameObject parent) {
+    private void LoadWaterFiller(SerializableWaterFiller sw, GameObject parent) {
         //Transform
         SerializableTransform st = sw.transform;
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
@@ -247,7 +257,7 @@ public class SaveLoadBuilding : MonoBehaviour
         return null;
     }
 
-    private void loadFireSource(SerializableFireSource sf, GameObject parent) {
+    private void LoadFireSource(SerializableFireSource sf, GameObject parent) {
         //Transform
         SerializableTransform st = sf.transform;
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
@@ -283,7 +293,7 @@ public class SaveLoadBuilding : MonoBehaviour
         return null;
     }
 
-    private void loadStreetLight(SerializableStreetLight sl, GameObject parent) {
+    private void LoadStreetLight(SerializableStreetLight sl, GameObject parent) {
         //Transform
         SerializableTransform st = sl.transform;
         Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
@@ -298,11 +308,45 @@ public class SaveLoadBuilding : MonoBehaviour
         if(lightEffectsComponent!=null) {
             lightEffectsComponent.bucle = sl.bucle; //true = it has effect, false = it has no light effect (blink)
         }
+        //Light Effects Simulated
+        LightEffectsSimulated lightEffectsSimulatedComponent = streetLight.GetComponent<LightEffectsSimulated>();
+        if(lightEffectsSimulatedComponent!=null) {
+            lightEffectsSimulatedComponent.bucle = sl.bucle; //true = it has effect, false = it has no light effect (blink)
+        }
     }
 
     private GameObject SelectStreetLightByName(string streetLightName) {
         foreach(GameObject go in pfStreetLights) {
-            if(go.GetComponent<LightEffects>().GetName() == streetLightName) {
+            LightEffects le = go.GetComponent<LightEffects>();
+            if(le!=null && le.GetName() == streetLightName) {
+                return go;
+            }
+            LightEffectsSimulated les = go.GetComponent<LightEffectsSimulated>();
+            if(les!=null && les.GetName() == streetLightName) {
+                return go;
+            }
+        }
+        return null;
+    }
+
+    private void LoadEnemies(SerializableEnemy se, GameObject parent) {
+        //Transform
+        SerializableTransform st = se.transform;
+        Vector3 pos = new Vector3(st.position.x, st.position.y, st.position.z);
+        Quaternion rot = new Quaternion(st.rotation.x, st.rotation.y, st.rotation.z, st.rotation.w);
+        Vector3 lsc = new Vector3(st.localScale.x, st.localScale.y, st.localScale.z);
+        GameObject enemy = GameObject.Instantiate(SelectEnemyByName(se.enemyName), pos , rot);
+        enemy.transform.localScale = lsc;
+        enemy.transform.SetParent(parent.transform, true);
+        enemy.GetComponent<Enemy>()?.CalculateAttributes(); //calculate level and damage after been positioned
+        //Current Health
+        enemy.GetComponent<Hittable>()?.SetHealth(se.currentHealth, enemy.GetComponent<Hittable>().maxHealth);
+    }
+
+    private GameObject SelectEnemyByName(string enemyName)
+    {
+        foreach(GameObject go in pfEnemies) {
+            if(go.GetComponent<Enemy>().GetEnemyName() == enemyName) {
                 return go;
             }
         }

@@ -40,6 +40,10 @@ public class Enemy : MonoBehaviour
     }
 
     private void Awake() {
+        CalculateAttributes();
+    }
+
+    public void CalculateAttributes() {
         //The level of the enemy is proportional to the distance to the initial point
         float distanceLevel = Vector3.Distance(transform.position, Vector3.zero) / 4000f;
         _level = 1 + (int)distanceLevel;

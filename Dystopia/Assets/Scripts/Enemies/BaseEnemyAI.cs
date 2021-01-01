@@ -52,6 +52,10 @@ public class BaseEnemyAI : Enemy
         myRigidbody2D = GetComponent<Rigidbody2D>();
         distanceToAttackPoint = 2f * Vector3.Distance(attackPoint.position,transform.position); //Distance calculated from the center, so we need to multiply by 2
         timeAuxiliar = 0f;
+
+    }
+
+    private void Start() {
         startingPosition = transform.position; //set the starting position
     }
 
@@ -93,7 +97,7 @@ public class BaseEnemyAI : Enemy
             case State.Idleing:
                 if(CheckPlayerInView()) {
                     myState = State.Chasing;
-                    Debug.Log("Chasing");
+                    //Debug.Log("Chasing");
                 } else {
                     if(timeAuxiliar==0f) {
                         timeAuxiliar = Time.time;
@@ -104,7 +108,7 @@ public class BaseEnemyAI : Enemy
             case State.Moving:
                 if(CheckPlayerInView()) {
                     myState = State.Chasing;
-                    Debug.Log("Chasing");
+                    //Debug.Log("Chasing");
                 } else {
                     if(timeAuxiliar==0f) {
                         timeAuxiliar = Time.time;
@@ -122,7 +126,7 @@ public class BaseEnemyAI : Enemy
                 } else {
                     timePlayerHasBeenLost = Time.time;
                     myState = State.Searching;
-                    Debug.Log("Searching");
+                    //Debug.Log("Searching");
                 }
                 break;
             case State.KnockBack:
@@ -130,7 +134,7 @@ public class BaseEnemyAI : Enemy
             case State.Searching:
                 if(CheckPlayerInView()) {
                     myState = State.Chasing;
-                    Debug.Log("Chasing");
+                    //Debug.Log("Chasing");
                 } else {
                     SearchPlayer();
                 }
@@ -159,7 +163,7 @@ public class BaseEnemyAI : Enemy
                 StartCoroutine(DoAttack()); //Attack
          } else {
                 myState = State.Chasing; //Chase to get in range
-                Debug.Log("Chasing");
+                //Debug.Log("Chasing");
             }
         }
     }
@@ -175,7 +179,7 @@ public class BaseEnemyAI : Enemy
             Character character = obj.GetComponent<Character>();
             if(character!=null) {
                 character.GetDamage(damage);
-                Debug.Log("Damage done to player: " + damage);
+                //Debug.Log("Damage done to player: " + damage);
             }
             //Check for objectes than can be hitted by the enemy
             Hittable hittableObj = obj.GetComponent<Hittable>(); 
@@ -184,7 +188,7 @@ public class BaseEnemyAI : Enemy
             }
         }
         StartCoroutine("ShowAttackTrail");
-        Debug.Log("Attack Done");
+        //Debug.Log("Attack Done");
         yield return new WaitForSeconds(timeBetweenAttacks); //time until the next attack
         attacking = false;
     }
@@ -202,7 +206,7 @@ public class BaseEnemyAI : Enemy
         myRigidbody2D?.MovePosition(transform.position + moveDir * speed * Time.deltaTime);
         if(InRange(lastPlayerPosition)) { //if we are very close to the target position
             myState = State.Attacking;
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
         }
     }
 
@@ -222,7 +226,7 @@ public class BaseEnemyAI : Enemy
             if(searchingCounter > amountOfSearchingsToDo) {
                 searchingCounter = 0;
                 myState = State.Idleing;
-                Debug.Log("Iddleing");
+                //Debug.Log("Iddleing");
             }
         }
     }
@@ -262,7 +266,7 @@ public class BaseEnemyAI : Enemy
         if(myState != State.Attacking && other.gameObject.CompareTag("Player")) {
             lastPlayerPosition = player.position;
             myState = State.Chasing;
-            Debug.Log("Chasing");
+            //Debug.Log("Chasing");
         }
     }
 

@@ -73,6 +73,8 @@ MonoBehaviour:
   - {fileID: 2130150885855809508, guid: 2969a144758a9cd4a83f8c78c8b9ba9f, type: 3}
   pfStreetLights:
   - {fileID: 2130150885855809508, guid: 52cbee480d2741346b251bdd0d5f3faa, type: 3}
+  pfEnemies:
+  - {fileID: 466729972418307481, guid: 030a745ffa9b14440b3014c095de98f7, type: 3}
 --- !u!114 &4985760026149827216
 MonoBehaviour:
   m_ObjectHideFlags: 0

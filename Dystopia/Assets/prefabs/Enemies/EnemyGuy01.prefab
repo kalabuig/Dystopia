@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541671945}
   - component: {fileID: 1541671946}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackTrailEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ MonoBehaviour:
   attackPoint: {fileID: 466729972633154214}
   blockingLayerMasks:
     serializedVersion: 2
-    m_Bits: 17664
+    m_Bits: 50432
   viewDistance: 100
   fovAngle: 60
   speed: 40
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466729972633154214}
   - component: {fileID: 466729972633154217}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,18 +406,6 @@ PrefabInstance:
     - target: {fileID: 6129039402884201626, guid: 856aa7d4b793dbb41a0392afc2bc0574, type: 3}
       propertyPath: m_Name
       value: pfGuy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129039402884201627, guid: 856aa7d4b793dbb41a0392afc2bc0574, type: 3}
-      propertyPath: _defaultBodyColor.r
-      value: 0.17007834
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129039402884201627, guid: 856aa7d4b793dbb41a0392afc2bc0574, type: 3}
-      propertyPath: _defaultBodyColor.g
-      value: 0.23222871
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129039402884201627, guid: 856aa7d4b793dbb41a0392afc2bc0574, type: 3}
-      propertyPath: _defaultBodyColor.b
-      value: 0.9245283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 856aa7d4b793dbb41a0392afc2bc0574, type: 3}
